@@ -1,120 +1,71 @@
-# H3 Studio
+# TaleMondo Studio
 
-Локальная студия ИИ-видео на MiniMax H3: референсы, сцены и шоты, очередь рендера, проверка дублей, монтаж
-и агенты (Claude Code, Codex) через MCP. Интерфейс работает на Mac, рендер — на вашем GPU-сервере через ComfyUI
-или в облаке через MiniMax API.
+TaleMondo Studio is a local AI filmmaking workspace built around [MiniMax H3](https://huggingface.co/MiniMaxAI/MiniMax-H3). Plan scenes, organize references, generate and review takes, assemble an edit, and work with coding agents through MCP. The interface runs on a Mac in English or Russian; generation runs on your own NVIDIA GPU through ComfyUI. This is an independent, noncommercial application by Klimentios.
 
-*English summary below.*
+**[Product walkthrough and seven video examples](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md)** · [MiniMax H3 field notes](https://github.com/Klimentios/Klimentios/blob/main/writing/minimax-h3-field-notes.md)
 
-## Что умеет
+## From idea to finished sequence
 
-- **Создать**: фото, видео и звук как референсы с ролями (лицо, персонаж целиком, костюм, окружение, движение, камера),
-  промпт, 1–4 варианта, режиссёрские поля (камера, движение, свет, цвет).
-- **Сюжет**: сцены и шоты, опорные кадры, сборка сцены цепочкой, «Мир фантазии», проверка стартовых кадров.
-- **Франшизы**: паспорт мира и героев, пакет идеи, постановка на плане, проверка шотов по паспорту.
-- **Замена героев по видео** и **смена мира по видео** — по встроенным настройкам или по своим принятым рецептам (сохраняются в данных Studio).
-- **Где рендерить**: свой GPU (ComfyUI, полный BF16, LoRA, мегапиксели, кэш, Turbo по выбору) или MiniMax API (768P).
-- **Свои воркфлоу**: любой граф ComfyUI с любой моделью становится формой Studio, REST-адресом и инструментом агентов.
-- **Монтаж**: монтажный лист, переходы, звук, экспорт в Premiere / DaVinci Resolve / Final Cut.
-- **Агенты**: MCP-сервер `h3-studio` (`scripts/h3_studio_mcp.py`) — агент собирает сцену, ставит рендер по разрешению,
-  проверяет MP4.
-- **Проверки до GPU**: формат промпта, склейки в форме MiniMax «At MM:SS.mmm», состав героев, шоты короче 1 с,
-  повтор отклонённых дублей.
+- **Source library:** Add images, video, and audio as references with roles for face, full character, costume, environment, motion, and camera. Keep prompts and one to four candidate takes with each shot.
+- **Scenes and shots:** Plan keyframes, arrange shots into scenes, and record camera, movement, lighting, and colour decisions. Review opening frames before spending GPU time.
+- **Story worlds:** Keep character and world guides alongside ideas and shot plans; check shots against the guide to preserve identity and visual continuity.
+- **Video adaptation:** Use character-replacement and world-change workflows with configurable settings and reusable recipes stored in Studio data.
+- **Render and review:** Queue generation on your GPU, inspect the resulting MP4, compare takes, and approve or reject them. Pre-render checks catch some prompt and continuity errors; final visual and audio quality still need human review.
+- **Editing:** Build an edit list with transitions and sound, then export for Premiere Pro, DaVinci Resolve, or Final Cut Pro.
+- **Custom workflows:** Import a ComfyUI graph as a Studio form, REST endpoint, and agent tool. Compatibility depends on the graph, model, and installed nodes.
+- **Agents:** The `h3-studio` MCP server in `scripts/h3_studio_mcp.py` exposes scene-building, render-queue, and review tools to Claude Code and Codex.
 
-## Язык интерфейса
+## Interface language
 
-Studio работает по-русски и по-английски: переключатель RU/EN внизу левого меню; при первом запуске язык берётся из
-языка браузера. Английский слой — `preview/h3-director/dom-translate.mjs` и словарь `preview/h3-director/i18n/en.json`.
+Use the RU/EN switch at the bottom of the side menu. On first launch, Studio selects a language from the browser. The English translation layer lives in `preview/h3-director/dom-translate.mjs` and `preview/h3-director/i18n/en.json`.
 
-## Установка (Mac)
+## Install on Mac
 
-Дважды щёлкните **«Установить Studio.command»** в корне папки (если macOS не даёт открыть — правый щелчок → «Открыть»).
-Установщик сам поставит Python, ffmpeg и службу Studio и откроет «Первый запуск» —
-`http://127.0.0.1:18187/setup.html`: пять шагов с кнопками, без терминала.
-Подробно — [docs/guides/STUDIO_INSTALL.md](docs/guides/STUDIO_INSTALL.md). Данные Studio лежат в
-`$H3_MAC_DATA_DIR` (по умолчанию `~/Library/Application Support/H3 Studio`), не в репозитории.
+Run the `.command` installer in the repository root. If macOS blocks it, use the Finder context menu and choose **Open**. The installer sets up Python, ffmpeg, and the Studio service, then opens the five-step first-run wizard at `http://127.0.0.1:18187/setup.html`. Studio data lives in `$H3_MAC_DATA_DIR`, defaulting to `~/Library/Application Support/H3 Studio`, outside the repository. See the [installation guide](docs/guides/STUDIO_INSTALL.md).
 
-## GPU-сервер
+## Connect a GPU server
 
-Нужна NVIDIA от 96 ГБ видеопамяти, ОЗУ от 256 ГБ, диск от 500 ГБ, Ubuntu с root по SSH (например, Vast.ai или RunPod).
+The documented H3 server baseline is an NVIDIA GPU with at least 96 GB VRAM, 256 GB system RAM, 500 GB storage, and Ubuntu with root SSH access. Vast.ai and RunPod are example hosts; availability and prices vary.
 
-Проще всего — из Studio: «Первый запуск» → API-ключ Vast.ai → «GPU и модели» → «Арендовать» → «Установить».
-Свой сервер — одной командой с Mac:
+The first-run wizard can provision a Vast.ai machine through **GPU & Models**. To configure an existing server from the Mac:
 
 ```bash
 bash scripts/h3_new_server.sh --host root@HOST --port PORT
 ```
 
-Ставится ComfyUI с закреплённой сборкой, открытые веса MiniMax H3 с Hugging Face (без токена, с проверкой SHA-256),
-узлы Studio и GPU API; затем Mac подключается туннелем. Проверка без рендера: `bash scripts/verify_h3_server.sh --host root@HOST --port PORT`.
-От нуля до первого ролика — [docs/reference/H3_SERVER_FROM_ZERO.md](docs/reference/H3_SERVER_FROM_ZERO.md).
+The setup installs a pinned ComfyUI build, public MiniMax H3 weights from Hugging Face with SHA-256 verification, Studio nodes, and the GPU API. Verify the deployment without starting a render:
 
-## MiniMax API
+```bash
+bash scripts/verify_h3_server.sh --host root@HOST --port PORT
+```
 
-Вставьте ключ на «Первом запуске» и выберите «MiniMax API» в «Параметрах ролика». Задания API — 768P, без LoRA,
-шагов и кэша. Замена героев по видео идёт только на своём GPU.
+See the [server setup guide](docs/reference/H3_SERVER_FROM_ZERO.md). Model weights are downloaded separately and are not included here. The default local profile favours BF16 quality and 24 steps; Turbo LoRAs, other profiles, and 4–50 steps are optional. Performance and quality depend on the hardware, model, references, and workflow settings.
 
-## Агенты
+The code also contains a MiniMax API route for 768P jobs. Its availability depends on MiniMax's current service; the local GPU path is the primary documented setup. Video character replacement runs on your own GPU.
 
-Claude Code и Codex подключаются к Studio как к MCP-серверу; команду с путями вашего Mac показывает «Первый запуск».
-Правила для агентов — [AGENTS.md](AGENTS.md), навыки — `skills/`.
+## Examples and upstream credits
 
-## Примеры и благодарности
+The [product walkthrough](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md) explains the workspace and links seven video examples. These creative examples are not controlled comparisons or proof that each clip used the same workflow.
 
-[Обзор Studio и семь видеопримеров](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md) опубликованы отдельно от кода и данных Studio.
-[MiniMax AI](https://huggingface.co/MiniMaxAI/MiniMax-H3) создала модель H3;
-[Comfy-Org](https://github.com/Comfy-Org/ComfyUI/blob/master/comfy_extras/nodes_minimax_h3.py) реализовала нативные узлы H3 для ComfyUI.
-Инструменты [Kijai](https://github.com/kijai/ComfyUI-KJNodes) входят в экосистему Studio, в том числе в дополнительный путь подбора цвета.
-TaleMondo Studio — самостоятельное приложение автора, не официальный выпуск этих проектов.
+- [MiniMax AI](https://huggingface.co/MiniMaxAI/MiniMax-H3) developed the H3 model.
+- [Comfy-Org](https://github.com/Comfy-Org/ComfyUI/blob/master/comfy_extras/nodes_minimax_h3.py) provides the native H3 nodes in ComfyUI.
+- [Kijai](https://github.com/kijai/ComfyUI-KJNodes) maintains tools used in optional Studio paths, including colour matching.
 
-## Тесты
+TaleMondo Studio is not an official release of MiniMax AI, Comfy-Org, or Kijai. Their models, nodes, and tools retain their own licences and attribution requirements; see [NOTICE](NOTICE).
+
+## Checks
 
 ```bash
 python -m pytest tests
-```
-
-```bash
 cd preview/h3-director && node --test *.test.mjs
 ```
 
-## Автор и лицензия
+These commands run existing tests. They do not certify the visual or audio quality of a generated video.
 
-© 2026 **Klimentios** — Klimentioss@gmail.com.
+## Author and licence
 
-Studio распространяется по лицензии [PolyForm Noncommercial 1.0.0](LICENSE): её можно бесплатно использовать,
-изучать, менять, дополнять своими моделями и узлами и делиться изменениями — **только не в коммерческих целях**.
-При любом распространении (в том числе изменённой версии) сохраняйте файл `LICENSE` со строкой
-`Required Notice: Copyright (c) 2026 Klimentios`. Коммерческое использование — только по отдельному
-разрешению автора (пишите на почту выше). Сторонние компоненты остаются под своими лицензиями — см. [NOTICE](NOTICE).
+Copyright 2026 **Klimentios** · Klimentioss@gmail.com.
 
-«TaleMondo» — название автора. Лицензия даёт права на код, но не на название: изменённые версии распространяйте под
-другим именем и не выдавайте их за версию автора.
+The Studio code is licensed under [PolyForm Noncommercial 1.0.0](LICENSE). You may use, study, modify, extend, and share it for noncommercial purposes under that licence. Keep the `LICENSE` file and its `Required Notice: Copyright (c) 2026 Klimentios` line in redistributed copies, including modified versions. Commercial use requires separate written permission from the author. Third-party components retain their own licences; see [NOTICE](NOTICE).
 
-## Лицензии моделей
-
-Код Studio не содержит весов. MiniMax H3 и LoRA скачиваются с их страниц; условия использования каждой модели
-(в том числе некоммерческие) проверяйте сами перед работой.
-
----
-
-## English summary
-
-H3 Studio is a local AI-video studio for MiniMax H3: references with roles, scenes and shots, a render queue,
-take review, editing and MCP access for coding agents. The UI runs on your Mac in English or Russian (RU/EN switch at the bottom of the side menu; the browser language picks the first one); rendering
-runs on your own GPU server through ComfyUI, or in the cloud through the MiniMax API.
-
-- Install on macOS: double-click «Установить Studio.command»; the first-run wizard opens at `http://127.0.0.1:18187/setup.html`.
-- GPU server (≥96 GB VRAM): rent and install from the Studio UI (Vast.ai), or `bash scripts/h3_new_server.sh --host root@HOST --port PORT`. All models are public; no Hugging Face token is needed.
-- Any ComfyUI workflow (any model) can be imported in «Свои воркфлоу» and becomes a Studio form and an agent tool.
-- Defaults favour quality (BF16, 24 steps); Turbo LoRAs, other profiles and 4–50 steps are opt-in.
-- Model weights are not included; check each model's licence yourself.
-- [Product walkthrough and seven video examples](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md). MiniMax AI created H3; Comfy-Org supplies native H3 nodes; Kijai's ComfyUI tools support optional Studio paths. This is an independent application.
-
-### Author and licence
-
-© 2026 **Klimentios** — Klimentioss@gmail.com. Licensed under [PolyForm Noncommercial 1.0.0](LICENSE): free to use,
-study, modify, extend with your own models and nodes, and share — for noncommercial purposes only. Keep the
-`LICENSE` file and its `Required Notice: Copyright (c) 2026 Klimentios` line in every copy, modified or not.
-Commercial use needs the author's written permission. Third-party components keep their own licences ([NOTICE](NOTICE)).
-“TaleMondo” is the author's name for the studio: the licence covers the code, not the name, so modified versions must
-use a different name and must not present themselves as the author's.
+The TaleMondo name is the author's product name, not a licence grant for branding. Distribute modified versions under a different name and do not present them as an official TaleMondo release. Check the terms of every model and LoRA before use; their weights and licences are separate from the Studio code.
