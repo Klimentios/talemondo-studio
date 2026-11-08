@@ -59,6 +59,14 @@ bash scripts/h3_new_server.sh --host root@HOST --port PORT
 Claude Code и Codex подключаются к Studio как к MCP-серверу; команду с путями вашего Mac показывает «Первый запуск».
 Правила для агентов — [AGENTS.md](AGENTS.md), навыки — `skills/`.
 
+## Примеры и благодарности
+
+[Обзор Studio и семь видеопримеров](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md) опубликованы отдельно от кода и данных Studio.
+[MiniMax AI](https://huggingface.co/MiniMaxAI/MiniMax-H3) создала модель H3;
+[Comfy-Org](https://github.com/Comfy-Org/ComfyUI/blob/master/comfy_extras/nodes_minimax_h3.py) реализовала нативные узлы H3 для ComfyUI.
+Инструменты [Kijai](https://github.com/kijai/ComfyUI-KJNodes) входят в экосистему Studio, в том числе в дополнительный путь подбора цвета.
+TaleMondo Studio — самостоятельное приложение автора, не официальный выпуск этих проектов.
+
 ## Тесты
 
 ```bash
@@ -100,6 +108,7 @@ runs on your own GPU server through ComfyUI, or in the cloud through the MiniMax
 - Any ComfyUI workflow (any model) can be imported in «Свои воркфлоу» and becomes a Studio form and an agent tool.
 - Defaults favour quality (BF16, 24 steps); Turbo LoRAs, other profiles and 4–50 steps are opt-in.
 - Model weights are not included; check each model's licence yourself.
+- [Product walkthrough and seven video examples](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md). MiniMax AI created H3; Comfy-Org supplies native H3 nodes; Kijai's ComfyUI tools support optional Studio paths. This is an independent application.
 
 ### Author and licence
 
