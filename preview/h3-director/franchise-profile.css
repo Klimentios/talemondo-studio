@@ -1,0 +1,52 @@
+/* «Паспорт франшизы» (franchise-profile.html). Colours and radii: tokens.css only. */
+body.fp-page { margin: 0; background: var(--k-canvas); color: var(--k-text); font-family: var(--k-font, Inter, system-ui, sans-serif); }
+.fp-main { display: grid; gap: 16px; max-width: 1180px; margin: 0 auto; padding: 28px 24px 64px; box-sizing: border-box; }
+.fp-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; }
+.fp-top h1 { margin: 4px 0 6px; font-size: 28px; letter-spacing: -.02em; }
+.fp-top .fp-hint { max-width: 640px; }
+.fp-kicker { color: var(--k-accent); font-size: 11px; font-weight: 700; letter-spacing: .08em; }
+.fp-actions { display: flex; align-items: center; gap: 10px; }
+.fp-actions select { min-width: 200px; }
+.fp-status { margin: 0; min-height: 18px; color: var(--k-muted); font-size: 13px; }
+.fp-status[data-level="good"] { color: var(--k-good); }
+.fp-status[data-level="warn"] { color: var(--k-warn); }
+.fp-status[data-level="bad"] { color: var(--k-bad); }
+.fp-sections { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 16px; }
+.fp-section { display: grid; gap: 12px; align-content: start; padding: 18px; }
+.fp-section h2 { margin: 0; font-size: 17px; }
+.fp-hint { margin: 0; color: var(--k-muted); font-size: 12.5px; line-height: 1.5; }
+.fp-label { color: var(--k-muted); font-size: 12px; }
+.fp-row { display: flex; flex-wrap: wrap; gap: 10px 12px; align-items: end; }
+.fp-row--checks { align-items: center; }
+.fp-field { display: grid; gap: 5px; flex: 1 1 180px; min-width: 0; color: var(--k-muted); font-size: 12px; }
+.fp-field--short { flex: 0 1 120px; }
+.fp-field--wide { flex: 3 1 320px; }
+.fp-field .k-field { width: 100%; box-sizing: border-box; }
+.fp-field textarea { resize: vertical; font: inherit; }
+.fp-check { display: flex; align-items: center; gap: 7px; color: var(--k-text); font-size: 13px; }
+.fp-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.fp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 10px; padding-top: 10px; }
+.fp-defaults { border-top: 1px solid var(--k-line-soft); padding-top: 10px; }
+.fp-defaults summary { cursor: pointer; font-size: 13px; font-weight: 650; }
+.fp-defaults summary small { color: var(--k-accent); font-weight: 500; }
+.fp-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.fp-role { display: grid; gap: 10px; padding: 14px; border: 1px solid var(--k-line-soft); border-radius: var(--k-radius); background: var(--k-inset); }
+.fp-assets { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start; }
+.fp-asset { display: grid; gap: 4px; width: 132px; font-size: 11px; color: var(--k-muted); }
+.fp-asset img, .fp-asset .fp-pick-kind { width: 132px; height: 132px; object-fit: cover; border-radius: var(--k-radius); background: var(--k-surface); }
+.fp-asset select { font-size: 11px; padding: 4px; }
+.fp-pick-kind { display: grid; place-items: center; font-size: 28px; color: var(--k-muted); }
+.fp-bad { margin: 0; color: var(--k-bad); font-size: 12px; }
+.fp-look { margin: 0; padding: 10px 12px; white-space: pre-wrap; border-radius: var(--k-radius); background: var(--k-inset); color: var(--k-text); font-size: 12px; }
+.fp-picker { width: min(880px, calc(100vw - 32px)); max-height: 82vh; padding: 18px; color: var(--k-text); }
+.fp-picker[open] { display: grid; gap: 12px; }
+.fp-picker::backdrop { background: rgb(0 0 0 / .6); }
+.fp-picker-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 10px; overflow: auto; max-height: 56vh; }
+.fp-pick { display: grid; gap: 3px; padding: 6px; border: 1px solid var(--k-line-soft); border-radius: var(--k-radius); background: var(--k-surface); color: var(--k-text); text-align: left; cursor: pointer; }
+.fp-pick:hover { border-color: var(--k-accent); }
+.fp-pick img, .fp-pick .fp-pick-kind { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; }
+.fp-pick small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; color: var(--k-muted); }
+@media (max-width: 760px) {
+  .fp-main { padding: 18px 16px 48px; }
+  .fp-actions { width: 100%; flex-wrap: wrap; }
+}

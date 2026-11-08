@@ -1,0 +1,14 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>STUDIO Image Companion</title><style>
+:root{font:15px/1.5 system-ui,sans-serif;color-scheme:light dark}body{margin:0;padding:24px;max-width:780px}h1{font-size:24px}button,select{font:inherit;padding:10px;margin:4px 6px 4px 0}button:disabled{opacity:.5}#status{white-space:pre-wrap}p{margin:14px 0}select{max-width:100%}
+</style></head><body><h1>STUDIO · Image Companion</h1>
+<p>Панель передаёт запрос Studio в текущую или новую беседу ChatGPT. Сюжет, шот, референсы и визуальный паспорт беседа прочитает через MCP.</p>
+<p>Для генерации нужен обычный ChatGPT со встроенным ImageGen. Панель не выбирает модель и режим новой беседы. Если клиент создаёт Codex, используй черновик и переключись на ChatGPT перед отправкой.</p>
+<label for="requests">Ожидающие задания</label><br><select id="requests"></select><button id="refresh" type="button">Обновить очередь</button>
+<p id="request"></p><p id="status" role="status">Подключаюсь к клиенту ChatGPT…</p>
+<button id="active" type="button" disabled>Добавить задание в текущий чат</button><button id="send" type="button" disabled>Открыть беседу и отправить задание</button><button id="draft" type="button" disabled>Открыть черновик беседы</button>
+<p>Кнопка текущего чата добавляет задание в поле ввода: убедись, что открыт обычный ChatGPT с ImageGen, и отправь его. История чата Studio при этом не объединяется с историей ChatGPT.</p>
+<p>Ни API-ключей, ни вызовов Codex CLI или Qwen. Подтверждение отправки ещё не означает, что ImageGen сработал: результат должен вернуться в очередь Studio.</p>
+<script type="module">/*COMPANION_SCRIPT*/
+mountCompanion(window, document);
+</script></body></html>

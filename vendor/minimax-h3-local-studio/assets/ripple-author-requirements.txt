@@ -1,0 +1,13 @@
+# Optional ripple_author experiment only; install in the ComfyUI venv with
+# its existing pip-freeze constraints. Do not replace the approved default recipe.
+diffusers==0.41.0
+colour-science==0.4.7
+OpenImageIO==3.1.18.1
+importlib_metadata==9.0.1
+zipp==4.1.1
+# SageAttention 2.2.0 requires CUDA compilation with --no-build-isolation --no-deps.
+# Source: https://github.com/thu-ml/SageAttention
+# Commit: d1a57a546c3d395b1ffcbeecc66d81db76f3b4b5
+# Blackwell build: MAX_JOBS=16 NVCC_APPEND_FLAGS="--threads 4"
+# TORCH_CUDA_ARCH_LIST="12.0" /workspace/h3/venv/bin/pip install
+# --no-build-isolation --no-deps /workspace/h3/SageAttention-author-test

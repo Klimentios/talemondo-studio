@@ -1,0 +1,17 @@
+diff --git a/server.py b/server.py
+index ac871911..a5eba1c0 100644
+--- a/server.py
++++ b/server.py
+@@ -123,7 +123,10 @@ def create_cors_middleware(allowed_origin: str):
+ 
+         response.headers['Access-Control-Allow-Origin'] = allowed_origin
+         response.headers['Access-Control-Allow-Methods'] = 'POST, GET, DELETE, PUT, OPTIONS, PATCH'
+-        response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
++        # MiniMax Design's embedded ComfyUI sends the selected profile in the
++        # standard ComfyUI `Comfy-User` header.  Without allowing it, Chromium
++        # rejects the preflight and the editor remains on its loading splash.
++        response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization, Comfy-User'
+         response.headers['Access-Control-Allow-Credentials'] = 'true'
+         return response
+ 
+

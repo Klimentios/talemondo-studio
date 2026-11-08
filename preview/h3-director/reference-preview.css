@@ -1,0 +1,9 @@
+.reference-preview { margin: 16px 0; min-width: 0; }
+.reference-preview h4 { margin: 0 0 10px; font-size: 14px; }
+.reference-preview-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(180px,100%),1fr)); gap: 12px; }
+.reference-preview figure { margin: 0; padding: 10px; min-width: 0; border: 1px solid #3b424c; border-radius: 12px; background: #181d23; }
+.reference-preview img,.reference-preview video { display: block; width: 100%; height: 160px; object-fit: contain; background: #101317; border-radius: 6px; }
+.reference-preview audio { width: 100%; }
+.reference-preview figcaption,.reference-preview p { margin: 8px 0; font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; }
+.reference-preview a { color: #cfe891; font-size: 12px; }
+.reference-preview a:focus-visible { outline: 2px solid #d7ff4f; outline-offset: 4px; }

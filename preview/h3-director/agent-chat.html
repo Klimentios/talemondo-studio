@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru" data-boot-hold>
+<head>
+  <meta charset="utf-8">
+    <script src="/page-boot.js?v=20261107-fixed-rail-1"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="/assets/talemondo-mark.svg">
+  <title>Агент — TaleMondo</title>
+  <link rel="stylesheet" href="/tokens.css?v=20261102-unified-1">
+  <link rel="stylesheet" href="/components.css?v=20261101-studio-finish-1">
+  <link rel="stylesheet" href="/studio-rail.css?v=20261107-fixed-rail-1">
+  <link rel="stylesheet" href="/agent-chat.css?v=20261102-home-2">
+  <link rel="stylesheet" href="/tasks.css?v=20261101-chat-production-1">
+<link rel="stylesheet" href="/studio-glass.css?v=20261102-status-2">
+<link rel="stylesheet" href="/chat-home.css?v=20261107-fixed-rail-1">
+<link rel="stylesheet" href="/studio-system.css?v=20261102-talemondo-2">
+<meta name="application-name" content="TaleMondo">
+<link rel="apple-touch-icon" href="/assets/talemondo-studio-icon.png">
+</head>
+<body class="ac-page">
+  <aside class="studio-rail"></aside>
+  <div class="ac-shell">
+    <nav class="ac-side" aria-label="Чаты">
+      <button id="acNew" type="button" class="k-btn k-btn--primary">＋ Новый разговор</button>
+      <div id="acChats" class="ac-chats"></div>
+      <button id="acClear" type="button" class="k-btn k-btn--ghost k-btn--sm" title="Удалить все чаты, кроме тех, где агент сейчас отвечает">Удалить все чаты</button>
+    </nav>
+    <main class="ac-main">
+      <header class="ac-head">
+        <label>Режим работы <select id="acInteraction" class="k-field" aria-label="Режим работы"><option value="chat">Обычный чат · ChatGPT</option><option value="image">Картинка · ChatGPT</option><option value="agent" selected>Агент · Codex / Claude Code</option></select></label>
+        <p id="acSubscriptionHint" class="ac-hint">Для работы требуется включённое расширение TaleMondo Subscription Connector. Ответы и картинки возвращаются сюда.</p>
+        <div class="ac-head-row">
+          <div id="acProvider" class="ac-group" role="group" aria-label="Агент"></div>
+          <details id="studioStatusPanel" class="studio-status-panel"><summary title="Состояние сервера и очереди"><span class="studio-status-dot" aria-hidden="true"></span><span data-status-summary>Проверяем GPU…</span></summary><div class="studio-status-card"><strong>Сервер и очередь</strong><p>GPU · <span data-status-server>Проверяем…</span></p><p data-status-load>Загрузка GPU: нет данных</p><p data-status-queue>Проверяем очередь…</p><p data-status-detail></p><progress max="100" aria-label="Ход сэмплинга" hidden></progress><a href="/#jobQueue">Открыть очередь</a></div></details>
+          <details class="ac-config"><summary>Настройки агента</summary>
+            <div class="ac-config-content">
+              <label class="ac-model"><span>Модель</span><select id="acModel" class="k-field"></select></label>
+              <label class="ac-model" title="Чем легче, тем меньше расход подписки"><span>Мощность</span><select id="acEffort" class="k-field"></select></label>
+              <button id="acDelete" type="button" class="k-btn k-btn--ghost k-btn--sm" title="Удалить чат">Удалить чат</button>
+            </div>
+          </details>
+        </div>
+        <div class="ac-head-row">
+          <div id="acMode" class="ac-group" role="group" aria-label="Права агента"></div>
+          <span id="acModeHint" class="ac-hint"></span>
+        </div>
+        <p id="acLogin" class="ac-login" hidden></p>
+      </header>
+      <section id="acMessages" class="ac-messages" aria-live="polite"></section>
+      <footer class="ac-composer">
+        <p id="acStatus" class="ac-status" role="status"></p>
+        <details id="acTaskOptions" class="ac-task-options">
+          <summary>Франшиза и задача</summary>
+          <div id="acTaskRow" class="ac-task-row">
+            <label class="ac-task-toggle" title="Агент составит план и будет вести задачу"><input id="acTaskToggle" type="checkbox" checked> Агент ведёт задачу</label>
+            <select id="acFranchise" class="k-field" aria-label="Франшиза задачи" hidden></select>
+            <select id="acDeliverable" class="k-field" aria-label="Результат задачи" hidden><option value="task">Рабочая задача</option><option value="film">Готовый фильм — с приёмкой MP4</option></select>
+          </div>
+        </details>
+        <div class="ac-compose-row">
+          <span class="ac-compose-spark" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2.5l1.8 5.7L19.5 10l-5.7 1.8L12 17.5l-1.8-5.7L4.5 10l5.7-1.8L12 2.5Z" fill="currentColor"/><path d="M19.5 15l.7 2.1 2.1.7-2.1.7-.7 2.1-.7-2.1-2.1-.7 2.1-.7.7-2.1Z" fill="currentColor"/></svg></span>
+          <textarea id="acInput" class="k-field" rows="1" aria-label="Сообщение агенту" placeholder="Опишите идею, сцену или задачу для агента…"></textarea>
+          <button id="acSend" type="button" class="k-btn k-btn--primary" aria-label="Отправить сообщение" title="Отправить"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m4 4 16 8-16 8 2-7 9-1-9-1-2-7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></button>
+          <button id="acStop" type="button" class="k-btn k-btn--danger" hidden>Стоп</button>
+        </div>
+      </footer>
+    </main>
+    <aside id="acTaskPanel" class="ac-taskpanel" aria-label="Задача" hidden></aside>
+  </div>
+  <script type="module" src="/studio-status-panel.mjs?v=20261102-status-4"></script>
+  <script type="module" src="/studio-rail.mjs?v=20261107-fixed-rail-1"></script>
+  <script type="module" src="/agent-chat.mjs?v=20261107-fixed-rail-1"></script>
+</body>
+</html>

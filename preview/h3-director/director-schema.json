@@ -1,0 +1,3409 @@
+{
+  "$comment": "Единственный источник полей H3 Director. Читают: app/director_config.py (сервер), preview/h3-director/director-config.mjs (Studio). Значения value уходят на сервер и в промпт — не переводить. label.ru/label.en — только для интерфейса.",
+  "version": 1,
+  "palette_tags": [
+    "cyan",
+    "magenta",
+    "near_black",
+    "neutral",
+    "warm_skin",
+    "earth",
+    "sky",
+    "charcoal",
+    "single_accent",
+    "amber",
+    "cream",
+    "muted_brown",
+    "limited"
+  ],
+  "short_text_pattern": "^[A-Za-zА-Яа-яЁё0-9 -]{1,60}$",
+  "categories": {
+    "camera": [
+      {
+        "key": "capture",
+        "label": {
+          "ru": "Носитель",
+          "en": "Capture"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "digital",
+            "label": {
+              "ru": "Цифра",
+              "en": "Digital"
+            }
+          },
+          {
+            "value": "film35",
+            "label": {
+              "ru": "Плёнка 35 мм",
+              "en": "35 mm film"
+            }
+          },
+          {
+            "value": "film16",
+            "label": {
+              "ru": "Плёнка 16 мм",
+              "en": "16 mm film"
+            }
+          },
+          {
+            "value": "documentary",
+            "label": {
+              "ru": "Документальная",
+              "en": "Documentary"
+            }
+          },
+          {
+            "value": "vintage",
+            "label": {
+              "ru": "Винтаж",
+              "en": "Vintage"
+            }
+          }
+        ]
+      },
+      {
+        "key": "contrast",
+        "label": {
+          "ru": "Контраст",
+          "en": "Contrast"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "natural",
+            "label": {
+              "ru": "Естественный",
+              "en": "Natural"
+            }
+          },
+          {
+            "value": "soft",
+            "label": {
+              "ru": "Мягкий",
+              "en": "Soft"
+            }
+          },
+          {
+            "value": "low",
+            "label": {
+              "ru": "Низкий",
+              "en": "Low"
+            }
+          },
+          {
+            "value": "medium",
+            "label": {
+              "ru": "Средний",
+              "en": "Medium"
+            }
+          },
+          {
+            "value": "high",
+            "label": {
+              "ru": "Высокий",
+              "en": "High"
+            }
+          }
+        ]
+      },
+      {
+        "key": "sensor_format",
+        "label": {
+          "ru": "Формат сенсора",
+          "en": "Sensor format"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "full-frame",
+            "label": {
+              "ru": "Полный кадр",
+              "en": "Full frame"
+            }
+          },
+          {
+            "value": "large format",
+            "label": {
+              "ru": "Большой формат",
+              "en": "Large format"
+            }
+          },
+          {
+            "value": "super_35",
+            "label": {
+              "ru": "Super 35",
+              "en": "Super 35"
+            }
+          }
+        ]
+      },
+      {
+        "key": "grain",
+        "label": {
+          "ru": "Зерно",
+          "en": "Grain"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "subtle",
+            "label": {
+              "ru": "Лёгкое",
+              "en": "Subtle"
+            }
+          },
+          {
+            "value": "fine",
+            "label": {
+              "ru": "Мелкое",
+              "en": "Fine"
+            }
+          }
+        ]
+      },
+      {
+        "key": "stabilization",
+        "label": {
+          "ru": "Стабилизация",
+          "en": "Stabilization"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "natural",
+            "label": {
+              "ru": "Естественная",
+              "en": "Natural"
+            }
+          },
+          {
+            "value": "smooth",
+            "label": {
+              "ru": "Плавная",
+              "en": "Smooth"
+            }
+          }
+        ]
+      },
+      {
+        "key": "detail",
+        "label": {
+          "ru": "Детализация",
+          "en": "Detail"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "crisp",
+            "label": {
+              "ru": "Чёткая",
+              "en": "Crisp"
+            }
+          },
+          {
+            "value": "natural",
+            "label": {
+              "ru": "Естественная",
+              "en": "Natural"
+            }
+          }
+        ]
+      },
+      {
+        "key": "iso",
+        "label": {
+          "ru": "ISO",
+          "en": "ISO"
+        },
+        "type": "number",
+        "min": 100,
+        "max": 12800,
+        "step": 100
+      },
+      {
+        "key": "shutter_angle_deg",
+        "label": {
+          "ru": "Угол затвора",
+          "en": "Shutter angle"
+        },
+        "type": "number",
+        "min": 45,
+        "max": 360,
+        "step": 1
+      }
+    ],
+    "lens": [
+      {
+        "key": "focal_length_mm",
+        "label": {
+          "ru": "Фокусное расстояние, мм",
+          "en": "Focal length"
+        },
+        "type": "number",
+        "min": 12,
+        "max": 135,
+        "step": 1
+      },
+      {
+        "key": "aperture_f",
+        "label": {
+          "ru": "Диафрагма, f/",
+          "en": "Aperture"
+        },
+        "type": "number",
+        "min": 1.2,
+        "max": 16,
+        "step": 0.1
+      },
+      {
+        "key": "look",
+        "label": {
+          "ru": "Оптический характер",
+          "en": "Optical look"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "wide",
+            "label": {
+              "ru": "Широкоугольный",
+              "en": "Wide"
+            }
+          },
+          {
+            "value": "natural",
+            "label": {
+              "ru": "Естественный",
+              "en": "Natural"
+            }
+          },
+          {
+            "value": "standard",
+            "label": {
+              "ru": "Стандартный",
+              "en": "Standard"
+            }
+          },
+          {
+            "value": "portrait",
+            "label": {
+              "ru": "Портретный",
+              "en": "Portrait"
+            }
+          },
+          {
+            "value": "telephoto",
+            "label": {
+              "ru": "Телеобъектив",
+              "en": "Telephoto"
+            }
+          },
+          {
+            "value": "macro",
+            "label": {
+              "ru": "Макро",
+              "en": "Macro"
+            }
+          },
+          {
+            "value": "anamorphic",
+            "label": {
+              "ru": "Анаморфот",
+              "en": "Anamorphic"
+            }
+          }
+        ]
+      }
+    ],
+    "shot": [
+      {
+        "key": "framing",
+        "label": {
+          "ru": "Крупность",
+          "en": "Framing"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "wide",
+            "label": {
+              "ru": "Общий",
+              "en": "Wide"
+            }
+          },
+          {
+            "value": "full",
+            "label": {
+              "ru": "В полный рост",
+              "en": "Full"
+            }
+          },
+          {
+            "value": "medium",
+            "label": {
+              "ru": "Средний",
+              "en": "Medium"
+            }
+          },
+          {
+            "value": "close",
+            "label": {
+              "ru": "Крупный",
+              "en": "Close"
+            }
+          },
+          {
+            "value": "extreme_close",
+            "label": {
+              "ru": "Деталь",
+              "en": "Extreme close-up"
+            }
+          },
+          {
+            "value": "over_shoulder",
+            "label": {
+              "ru": "Через плечо",
+              "en": "Over the shoulder"
+            }
+          },
+          {
+            "value": "two_shot",
+            "label": {
+              "ru": "Двое в кадре",
+              "en": "Two shot"
+            }
+          },
+          {
+            "value": "point_of_view",
+            "label": {
+              "ru": "От первого лица",
+              "en": "Point of view"
+            }
+          },
+          {
+            "value": "insert",
+            "label": {
+              "ru": "Врезка / предмет",
+              "en": "Insert"
+            }
+          },
+          {
+            "value": "extreme_wide",
+            "label": {
+              "ru": "Сверхобщий",
+              "en": "Extreme wide"
+            }
+          },
+          {
+            "value": "medium_full",
+            "label": {
+              "ru": "Средне-общий (до колен)",
+              "en": "Medium full"
+            }
+          },
+          {
+            "value": "medium_close",
+            "label": {
+              "ru": "Средне-крупный (по грудь)",
+              "en": "Medium close-up"
+            }
+          }
+        ]
+      },
+      {
+        "key": "angle",
+        "label": {
+          "ru": "Ракурс",
+          "en": "Angle"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "eye",
+            "label": {
+              "ru": "На уровне глаз",
+              "en": "Eye"
+            }
+          },
+          {
+            "value": "low",
+            "label": {
+              "ru": "Снизу",
+              "en": "Low"
+            }
+          },
+          {
+            "value": "high",
+            "label": {
+              "ru": "Сверху",
+              "en": "High"
+            }
+          },
+          {
+            "value": "overhead",
+            "label": {
+              "ru": "Строго сверху",
+              "en": "Overhead"
+            }
+          },
+          {
+            "value": "dutch",
+            "label": {
+              "ru": "Наклон горизонта",
+              "en": "Dutch"
+            }
+          },
+          {
+            "value": "worm",
+            "label": {
+              "ru": "С уровня пола",
+              "en": "Worm's-eye"
+            }
+          }
+        ]
+      },
+      {
+        "key": "purpose",
+        "label": {
+          "ru": "Задача шота",
+          "en": "Shot purpose"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "establishing",
+            "label": {
+              "ru": "Установочный",
+              "en": "Establishing"
+            }
+          },
+          {
+            "value": "master",
+            "label": {
+              "ru": "Мастер-план",
+              "en": "Master"
+            }
+          },
+          {
+            "value": "coverage",
+            "label": {
+              "ru": "Покрытие действия",
+              "en": "Coverage"
+            }
+          },
+          {
+            "value": "reaction",
+            "label": {
+              "ru": "Реакция",
+              "en": "Reaction"
+            }
+          },
+          {
+            "value": "reveal",
+            "label": {
+              "ru": "Раскрытие",
+              "en": "Reveal"
+            }
+          },
+          {
+            "value": "detail",
+            "label": {
+              "ru": "Деталь",
+              "en": "Detail"
+            }
+          },
+          {
+            "value": "transition",
+            "label": {
+              "ru": "Переход",
+              "en": "Transition"
+            }
+          },
+          {
+            "value": "payoff",
+            "label": {
+              "ru": "Развязка",
+              "en": "Payoff"
+            }
+          }
+        ]
+      },
+      {
+        "key": "emotion",
+        "label": {
+          "ru": "Что чувствует зритель",
+          "en": "Viewer emotion"
+        },
+        "type": "short_text"
+      },
+      {
+        "key": "subject_view",
+        "label": {
+          "ru": "Поворот героя",
+          "en": "Subject view"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "frontal",
+            "label": {
+              "ru": "Анфас",
+              "en": "Frontal"
+            }
+          },
+          {
+            "value": "three_quarter",
+            "label": {
+              "ru": "Три четверти",
+              "en": "Three-quarter"
+            }
+          },
+          {
+            "value": "profile",
+            "label": {
+              "ru": "Профиль",
+              "en": "Profile"
+            }
+          },
+          {
+            "value": "back",
+            "label": {
+              "ru": "Со спины",
+              "en": "Back"
+            }
+          }
+        ]
+      },
+      {
+        "key": "composition",
+        "label": {
+          "ru": "Композиция",
+          "en": "Composition"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "center",
+            "label": {
+              "ru": "По центру",
+              "en": "Center"
+            }
+          },
+          {
+            "value": "thirds",
+            "label": {
+              "ru": "По третям",
+              "en": "Rule of thirds"
+            }
+          },
+          {
+            "value": "symmetry",
+            "label": {
+              "ru": "Симметрия",
+              "en": "Symmetry"
+            }
+          },
+          {
+            "value": "leading_lines",
+            "label": {
+              "ru": "Ведущие линии",
+              "en": "Leading lines"
+            }
+          },
+          {
+            "value": "frame_within_frame",
+            "label": {
+              "ru": "Кадр в кадре",
+              "en": "Frame within a frame"
+            }
+          },
+          {
+            "value": "negative_space",
+            "label": {
+              "ru": "Негативное пространство",
+              "en": "Negative space"
+            }
+          },
+          {
+            "value": "foreground_layer",
+            "label": {
+              "ru": "Передний план",
+              "en": "Foreground layer"
+            }
+          },
+          {
+            "value": "silhouette",
+            "label": {
+              "ru": "Силуэт",
+              "en": "Silhouette"
+            }
+          }
+        ]
+      },
+      {
+        "key": "depth",
+        "label": {
+          "ru": "Глубина",
+          "en": "Depth staging"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "flat",
+            "label": {
+              "ru": "Плоскостная",
+              "en": "Flat"
+            }
+          },
+          {
+            "value": "layered",
+            "label": {
+              "ru": "Три плана",
+              "en": "Layered"
+            }
+          },
+          {
+            "value": "deep_space",
+            "label": {
+              "ru": "Глубинная",
+              "en": "Deep space"
+            }
+          }
+        ]
+      },
+      {
+        "key": "subject_side",
+        "label": {
+          "ru": "Герой в кадре",
+          "en": "Subject side"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "left",
+            "label": {
+              "ru": "Слева",
+              "en": "Left"
+            }
+          },
+          {
+            "value": "center",
+            "label": {
+              "ru": "По центру",
+              "en": "Center"
+            }
+          },
+          {
+            "value": "right",
+            "label": {
+              "ru": "Справа",
+              "en": "Right"
+            }
+          }
+        ]
+      },
+      {
+        "key": "look_room",
+        "label": {
+          "ru": "Место для взгляда",
+          "en": "Look room"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "lead_room",
+            "label": {
+              "ru": "Перед взглядом",
+              "en": "Lead room"
+            }
+          },
+          {
+            "value": "centered",
+            "label": {
+              "ru": "Нейтрально",
+              "en": "Centered"
+            }
+          },
+          {
+            "value": "short_side",
+            "label": {
+              "ru": "Зажат взгляд",
+              "en": "Short side"
+            }
+          }
+        ]
+      },
+      {
+        "key": "transition_in",
+        "label": {
+          "ru": "Вход в шот",
+          "en": "Transition in"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "cut",
+            "label": {
+              "ru": "Прямая склейка",
+              "en": "Straight cut"
+            }
+          },
+          {
+            "value": "cut_on_action",
+            "label": {
+              "ru": "Склейка на движении",
+              "en": "Cut on action"
+            }
+          },
+          {
+            "value": "match_cut",
+            "label": {
+              "ru": "Склейка по сходству",
+              "en": "Match cut"
+            }
+          },
+          {
+            "value": "whip_pan",
+            "label": {
+              "ru": "Вайп-пан",
+              "en": "Whip pan"
+            }
+          },
+          {
+            "value": "smash_cut",
+            "label": {
+              "ru": "Смэш-кат",
+              "en": "Smash cut"
+            }
+          },
+          {
+            "value": "jump_cut",
+            "label": {
+              "ru": "Скачок",
+              "en": "Jump cut"
+            }
+          },
+          {
+            "value": "pass_through",
+            "label": {
+              "ru": "Проход через предмет",
+              "en": "Pass-through"
+            }
+          },
+          {
+            "value": "morph",
+            "label": {
+              "ru": "Морф",
+              "en": "Morph"
+            }
+          },
+          {
+            "value": "dissolve",
+            "label": {
+              "ru": "Растворение",
+              "en": "Dissolve"
+            }
+          },
+          {
+            "value": "sound_bridge",
+            "label": {
+              "ru": "Звуковой мост",
+              "en": "Sound bridge"
+            }
+          },
+          {
+            "value": "fade",
+            "label": {
+              "ru": "Из/в затемнение",
+              "en": "Fade"
+            }
+          }
+        ]
+      },
+      {
+        "key": "transition_out",
+        "label": {
+          "ru": "Выход из шота",
+          "en": "Transition out"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "cut",
+            "label": {
+              "ru": "Прямая склейка",
+              "en": "Straight cut"
+            }
+          },
+          {
+            "value": "cut_on_action",
+            "label": {
+              "ru": "Склейка на движении",
+              "en": "Cut on action"
+            }
+          },
+          {
+            "value": "match_cut",
+            "label": {
+              "ru": "Склейка по сходству",
+              "en": "Match cut"
+            }
+          },
+          {
+            "value": "whip_pan",
+            "label": {
+              "ru": "Вайп-пан",
+              "en": "Whip pan"
+            }
+          },
+          {
+            "value": "smash_cut",
+            "label": {
+              "ru": "Смэш-кат",
+              "en": "Smash cut"
+            }
+          },
+          {
+            "value": "jump_cut",
+            "label": {
+              "ru": "Скачок",
+              "en": "Jump cut"
+            }
+          },
+          {
+            "value": "pass_through",
+            "label": {
+              "ru": "Проход через предмет",
+              "en": "Pass-through"
+            }
+          },
+          {
+            "value": "morph",
+            "label": {
+              "ru": "Морф",
+              "en": "Morph"
+            }
+          },
+          {
+            "value": "dissolve",
+            "label": {
+              "ru": "Растворение",
+              "en": "Dissolve"
+            }
+          },
+          {
+            "value": "sound_bridge",
+            "label": {
+              "ru": "Звуковой мост",
+              "en": "Sound bridge"
+            }
+          },
+          {
+            "value": "fade",
+            "label": {
+              "ru": "Из/в затемнение",
+              "en": "Fade"
+            }
+          }
+        ]
+      }
+    ],
+    "movement": [
+      {
+        "key": "movement",
+        "label": {
+          "ru": "Траектория",
+          "en": "Camera path"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "static",
+            "label": {
+              "ru": "Статика",
+              "en": "Static"
+            }
+          },
+          {
+            "value": "dolly",
+            "label": {
+              "ru": "Наезд/отъезд",
+              "en": "Dolly"
+            }
+          },
+          {
+            "value": "tracking",
+            "label": {
+              "ru": "Следование",
+              "en": "Tracking"
+            }
+          },
+          {
+            "value": "truck",
+            "label": {
+              "ru": "Боковой проезд",
+              "en": "Truck"
+            }
+          },
+          {
+            "value": "orbit",
+            "label": {
+              "ru": "Облёт",
+              "en": "Orbit"
+            }
+          },
+          {
+            "value": "pan",
+            "label": {
+              "ru": "Панорама",
+              "en": "Pan"
+            }
+          },
+          {
+            "value": "tilt",
+            "label": {
+              "ru": "Наклон",
+              "en": "Tilt"
+            }
+          },
+          {
+            "value": "handheld",
+            "label": {
+              "ru": "С рук",
+              "en": "Handheld"
+            }
+          },
+          {
+            "value": "crane",
+            "label": {
+              "ru": "Кран",
+              "en": "Crane"
+            }
+          },
+          {
+            "value": "zoom",
+            "label": {
+              "ru": "Зум",
+              "en": "Zoom"
+            }
+          },
+          {
+            "value": "slider",
+            "label": {
+              "ru": "Слайдер",
+              "en": "Slider"
+            }
+          },
+          {
+            "value": "pedestal",
+            "label": {
+              "ru": "Вертикальный проезд",
+              "en": "Pedestal"
+            }
+          }
+        ]
+      },
+      {
+        "key": "camera_move",
+        "label": {
+          "ru": "Библиотека движения",
+          "en": "Camera move library"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "static_shot",
+            "label": {
+              "ru": "Статичный план",
+              "en": "Static shot"
+            },
+            "category": "Pan/Tilt",
+            "camera_path": "static",
+            "direction": "none",
+            "speed": "none",
+            "prompt": "Static Shot: the camera body and the lens stay completely still and the composition does not change."
+          },
+          {
+            "value": "pan_right",
+            "label": {
+              "ru": "Панорама вправо",
+              "en": "Pan right"
+            },
+            "category": "Pan/Tilt",
+            "camera_path": "pan",
+            "direction": "right",
+            "speed": "slow",
+            "prompt": "The camera stays in one place and pans right across the scene."
+          },
+          {
+            "value": "pan_left",
+            "label": {
+              "ru": "Панорама влево",
+              "en": "Pan left"
+            },
+            "category": "Pan/Tilt",
+            "camera_path": "pan",
+            "direction": "left",
+            "speed": "slow",
+            "prompt": "The camera stays in one place and pans left across the scene."
+          },
+          {
+            "value": "whip_pan_right",
+            "label": {
+              "ru": "Резкая панорама вправо",
+              "en": "Whip pan right"
+            },
+            "category": "Pan/Tilt",
+            "camera_path": "pan",
+            "direction": "right",
+            "speed": "fast",
+            "prompt": "The camera starts framed on the main subject, then whip pans right at fast speed and lands on the next target to the right; the space between smears into horizontal motion blur in the middle of the move and the frame settles sharply on the new target."
+          },
+          {
+            "value": "whip_pan_left",
+            "label": {
+              "ru": "Резкая панорама влево",
+              "en": "Whip pan left"
+            },
+            "category": "Pan/Tilt",
+            "camera_path": "pan",
+            "direction": "left",
+            "speed": "fast",
+            "prompt": "The camera starts framed on the main subject, then whip pans left at fast speed and lands on the next target to the left; the space between smears into horizontal motion blur in the middle of the move and the frame settles sharply on the new target."
+          },
+          {
+            "value": "tilt_up",
+            "label": {
+              "ru": "Наклон вверх",
+              "en": "Tilt up"
+            },
+            "category": "Pan/Tilt",
+            "camera_path": "tilt",
+            "direction": "up",
+            "speed": "slow",
+            "prompt": "The camera stays in one place and tilts up."
+          },
+          {
+            "value": "tilt_down",
+            "label": {
+              "ru": "Наклон вниз",
+              "en": "Tilt down"
+            },
+            "category": "Pan/Tilt",
+            "camera_path": "tilt",
+            "direction": "down",
+            "speed": "slow",
+            "prompt": "The camera stays in one place and tilts down."
+          },
+          {
+            "value": "walk_past_camera",
+            "label": {
+              "ru": "Проход мимо камеры",
+              "en": "Walk past camera"
+            },
+            "category": "Pan/Tilt",
+            "camera_path": "pan",
+            "direction": "right",
+            "speed": "fast",
+            "prompt": "The subject walks straight toward the lens, growing from a full figure to a close-up, and passes right beside the camera; the camera pans right at fast speed as they go by and follows them from behind as they walk on."
+          },
+          {
+            "value": "tilt_up_reveal",
+            "label": {
+              "ru": "Раскрытие снизу вверх",
+              "en": "Tilt up reveal"
+            },
+            "category": "Pan/Tilt",
+            "camera_path": "tilt",
+            "direction": "up",
+            "speed": "slow",
+            "prompt": "The camera stays in one place and tilts up at slow speed, travelling up the subject's legs, body and shoulders, and comes to rest on their face in a medium close-up, so they are only revealed at the end."
+          },
+          {
+            "value": "slow_pan_reveal",
+            "label": {
+              "ru": "Медленная панорама к герою",
+              "en": "Slow pan reveal"
+            },
+            "category": "Pan/Tilt",
+            "camera_path": "pan",
+            "direction": "right",
+            "speed": "slow",
+            "prompt": "A wide shot looks across the place with no one in view; the camera stays in one place and pans right at slow speed and comes to rest on the subject, framing them in a medium shot."
+          },
+          {
+            "value": "zoom_in_slow",
+            "label": {
+              "ru": "Медленный зум вперёд",
+              "en": "Slow zoom in"
+            },
+            "category": "Zoom/Lens",
+            "camera_path": "zoom",
+            "direction": "forward",
+            "speed": "slow",
+            "prompt": "The camera zooms in at slow speed on the main subject: only the zoom lens changes and the camera body never moves; nothing shifts against anything else, the background changes size flat together with the subject."
+          },
+          {
+            "value": "zoom_out_slow",
+            "label": {
+              "ru": "Медленный зум назад",
+              "en": "Slow zoom out"
+            },
+            "category": "Zoom/Lens",
+            "camera_path": "zoom",
+            "direction": "backward",
+            "speed": "slow",
+            "prompt": "The camera zooms out at slow speed from the main subject: only the zoom lens changes and the camera body never moves; nothing shifts against anything else, the background changes size flat together with the subject."
+          },
+          {
+            "value": "zoom_in_fast",
+            "label": {
+              "ru": "Быстрый зум вперёд",
+              "en": "Fast zoom in"
+            },
+            "category": "Zoom/Lens",
+            "camera_path": "zoom",
+            "direction": "forward",
+            "speed": "fast",
+            "prompt": "The camera zooms in at fast speed on the main subject: only the zoom lens changes and the camera body never moves; nothing shifts against anything else, the background changes size flat together with the subject."
+          },
+          {
+            "value": "zoom_out_fast",
+            "label": {
+              "ru": "Быстрый зум назад",
+              "en": "Fast zoom out"
+            },
+            "category": "Zoom/Lens",
+            "camera_path": "zoom",
+            "direction": "backward",
+            "speed": "fast",
+            "prompt": "The camera zooms out at fast speed from the main subject: only the zoom lens changes and the camera body never moves; nothing shifts against anything else, the background changes size flat together with the subject."
+          },
+          {
+            "value": "crash_zoom_in",
+            "label": {
+              "ru": "Резкий зум на объект",
+              "en": "Crash zoom in"
+            },
+            "category": "Zoom/Lens",
+            "camera_path": "zoom",
+            "direction": "forward",
+            "speed": "fast",
+            "prompt": "The camera is locked off on a tripod and holds the wide shot completely still at first; only the zoom lens changes and the camera body never moves. Between one frame and the next the lens crash zooms in to a tight close-up of the main subject's face: the whole change takes only two or three frames, as abrupt as a cut, and nothing shifts against anything else, the background simply magnifies flat. After it lands the close-up is locked and does not change; the reaction lands with the zoom."
+          },
+          {
+            "value": "crash_zoom_out",
+            "label": {
+              "ru": "Резкий зум от объекта",
+              "en": "Crash zoom out"
+            },
+            "category": "Zoom/Lens",
+            "camera_path": "zoom",
+            "direction": "backward",
+            "speed": "fast",
+            "prompt": "The camera is locked off on a tripod and holds the tight close-up completely still at first; only the zoom lens changes and the camera body never moves. Between one frame and the next the lens crash zooms out to a wide shot with the main subject small and complete in frame: the whole change takes only two or three frames, as abrupt as a cut, and nothing shifts against anything else, the background simply shrinks flat. After it lands the wide framing is locked and does not change."
+          },
+          {
+            "value": "yoyo_zoom",
+            "label": {
+              "ru": "Зум туда-обратно",
+              "en": "Yo-yo zoom"
+            },
+            "category": "Zoom/Lens",
+            "camera_path": "zoom",
+            "direction": "backward",
+            "speed": "fast",
+            "prompt": "The camera begins in a tight close-up of the subject's face, then zooms out, accelerating harder and harder until the subject is tiny in the far distance; it holds there for about a second, then zooms back in with large amplitude at fast speed to the same close-up."
+          },
+          {
+            "value": "dolly_in",
+            "label": {
+              "ru": "Физический наезд",
+              "en": "Dolly in"
+            },
+            "category": "Dolly/Track",
+            "camera_path": "dolly",
+            "direction": "forward",
+            "speed": "slow",
+            "prompt": "The camera pushes in toward the main subject; nearer objects slide past the edges of frame, so the move reads as travel with parallax, not as a zoom."
+          },
+          {
+            "value": "dolly_out",
+            "label": {
+              "ru": "Физический отъезд",
+              "en": "Dolly out"
+            },
+            "category": "Dolly/Track",
+            "camera_path": "dolly",
+            "direction": "backward",
+            "speed": "slow",
+            "prompt": "The camera pulls out away from the main subject and reveals more of the space around it."
+          },
+          {
+            "value": "truck_right",
+            "label": {
+              "ru": "Проезд вправо",
+              "en": "Truck right"
+            },
+            "category": "Physical Moves",
+            "camera_path": "truck",
+            "direction": "right",
+            "speed": "medium",
+            "prompt": "The camera trucks right, travelling sideways while it keeps facing the same way."
+          },
+          {
+            "value": "truck_left",
+            "label": {
+              "ru": "Проезд влево",
+              "en": "Truck left"
+            },
+            "category": "Physical Moves",
+            "camera_path": "truck",
+            "direction": "left",
+            "speed": "medium",
+            "prompt": "The camera trucks left, travelling sideways while it keeps facing the same way."
+          },
+          {
+            "value": "pedestal_up",
+            "label": {
+              "ru": "Вертикальный подъём",
+              "en": "Pedestal up"
+            },
+            "category": "Physical Moves",
+            "camera_path": "pedestal",
+            "direction": "up",
+            "speed": "slow",
+            "prompt": "The camera pedestals up, the whole camera rising straight up while it keeps facing the same way."
+          },
+          {
+            "value": "pedestal_down",
+            "label": {
+              "ru": "Вертикальное опускание",
+              "en": "Pedestal down"
+            },
+            "category": "Physical Moves",
+            "camera_path": "pedestal",
+            "direction": "down",
+            "speed": "slow",
+            "prompt": "The camera pedestals down, the whole camera lowering straight down while it keeps facing the same way."
+          },
+          {
+            "value": "slider_right",
+            "label": {
+              "ru": "Слайдер вправо",
+              "en": "Slider right"
+            },
+            "category": "Physical Moves",
+            "camera_path": "slider",
+            "direction": "right",
+            "speed": "slow",
+            "prompt": "The camera trucks right with small amplitude at slow speed, a short slide that shows gentle parallax."
+          },
+          {
+            "value": "slider_left",
+            "label": {
+              "ru": "Слайдер влево",
+              "en": "Slider left"
+            },
+            "category": "Physical Moves",
+            "camera_path": "slider",
+            "direction": "left",
+            "speed": "slow",
+            "prompt": "The camera trucks left with small amplitude at slow speed, a short slide that shows gentle parallax."
+          },
+          {
+            "value": "push_past",
+            "label": {
+              "ru": "Проезд мимо переднего плана",
+              "en": "Push past"
+            },
+            "category": "Physical Moves",
+            "camera_path": "dolly",
+            "direction": "forward",
+            "speed": "medium",
+            "prompt": "The camera pushes in past a foreground edge close to the lens, which sweeps out of frame as the camera passes it, and continues into the space beyond."
+          },
+          {
+            "value": "arc_right",
+            "label": {
+              "ru": "Дуга вправо",
+              "en": "Arc right"
+            },
+            "category": "Physical Moves",
+            "camera_path": "orbit",
+            "direction": "right",
+            "speed": "slow",
+            "prompt": "The camera performs an arc shot to the right around the main subject, who stays where they are."
+          },
+          {
+            "value": "arc_left",
+            "label": {
+              "ru": "Дуга влево",
+              "en": "Arc left"
+            },
+            "category": "Physical Moves",
+            "camera_path": "orbit",
+            "direction": "left",
+            "speed": "slow",
+            "prompt": "The camera performs an arc shot to the left around the main subject, who stays where they are."
+          },
+          {
+            "value": "orbit_clockwise",
+            "label": {
+              "ru": "Облёт по часовой",
+              "en": "Orbit clockwise"
+            },
+            "category": "Physical Moves",
+            "camera_path": "orbit",
+            "direction": "right",
+            "speed": "slow",
+            "prompt": "The camera performs an arc shot clockwise around the main subject with large amplitude at fast speed, sweeping a complete circle and coming back to the front; the subject stays where they are."
+          },
+          {
+            "value": "orbit_counterclockwise",
+            "label": {
+              "ru": "Облёт против часовой",
+              "en": "Orbit counterclockwise"
+            },
+            "category": "Physical Moves",
+            "camera_path": "orbit",
+            "direction": "left",
+            "speed": "slow",
+            "prompt": "The camera performs an arc shot counterclockwise around the main subject with large amplitude at fast speed, sweeping a complete circle and coming back to the front; the subject stays where they are."
+          },
+          {
+            "value": "hero_spin",
+            "label": {
+              "ru": "Героический облёт снизу",
+              "en": "Hero spin"
+            },
+            "category": "Physical Moves",
+            "camera_path": "orbit",
+            "direction": "right",
+            "speed": "fast",
+            "prompt": "The camera sits low near the ground and performs an arc shot around the subject with large amplitude at fast speed, circling them while looking up as they rise to full height, the sky wheeling behind them."
+          },
+          {
+            "value": "tracking",
+            "label": {
+              "ru": "Следование за героем",
+              "en": "Tracking shot"
+            },
+            "category": "Dolly/Track",
+            "camera_path": "tracking",
+            "direction": "forward",
+            "speed": "medium",
+            "prompt": "Tracking Shot: the camera follows the moving subject and keeps them at the same readable distance."
+          },
+          {
+            "value": "follow_from_behind",
+            "label": {
+              "ru": "Следование сзади",
+              "en": "Follow shot from behind"
+            },
+            "category": "Dolly/Track",
+            "camera_path": "tracking",
+            "direction": "forward",
+            "speed": "medium",
+            "prompt": "Tracking Shot from behind: the camera follows the subject at shoulder height, their back to the camera."
+          },
+          {
+            "value": "reverse_tracking",
+            "label": {
+              "ru": "Движение перед героем",
+              "en": "Reverse tracking"
+            },
+            "category": "Dolly/Track",
+            "camera_path": "tracking",
+            "direction": "backward",
+            "speed": "medium",
+            "prompt": "Tracking Shot: the camera pulls out in front of the subject as they advance toward it, keeping their face in frame."
+          },
+          {
+            "value": "side_tracking",
+            "label": {
+              "ru": "Боковое следование",
+              "en": "Side tracking"
+            },
+            "category": "Dolly/Track",
+            "camera_path": "tracking",
+            "direction": "side",
+            "speed": "medium",
+            "prompt": "Tracking Shot: the camera trucks alongside the subject, level with them, keeping a clear profile."
+          },
+          {
+            "value": "low_tracking",
+            "label": {
+              "ru": "Низкое следование",
+              "en": "Low tracking"
+            },
+            "category": "Dolly/Track",
+            "camera_path": "tracking",
+            "direction": "forward",
+            "speed": "medium",
+            "prompt": "Tracking Shot close to the ground: the camera follows the movement low, keeping the ground-level detail in frame."
+          },
+          {
+            "value": "vehicle_tracking",
+            "label": {
+              "ru": "Следование за транспортом",
+              "en": "Vehicle tracking"
+            },
+            "category": "Dolly/Track",
+            "camera_path": "tracking",
+            "direction": "forward",
+            "speed": "medium",
+            "prompt": "Tracking Shot: the camera travels with the vehicle, which stays steady in frame while the background streams past."
+          },
+          {
+            "value": "chase_shot",
+            "label": {
+              "ru": "Погоня",
+              "en": "Chase shot"
+            },
+            "category": "Dolly/Track",
+            "camera_path": "tracking",
+            "direction": "forward",
+            "speed": "fast",
+            "prompt": "Tracking Shot at fast speed: the camera chases the moving subject closely, reacting to each turn while the subject stays readable."
+          },
+          {
+            "value": "super_dolly_in",
+            "label": {
+              "ru": "Стремительный наезд",
+              "en": "Super dolly in"
+            },
+            "category": "Dolly/Track",
+            "camera_path": "dolly",
+            "direction": "forward",
+            "speed": "fast",
+            "prompt": "The camera pushes in with large amplitude at fast speed, charging the whole length of the space toward the subject: near objects sweep outward past the edges of frame as the camera passes them, the ground streams underneath, and the move ends in a tight close-up of the subject's face."
+          },
+          {
+            "value": "eyes_in",
+            "label": {
+              "ru": "Наезд в глаза",
+              "en": "Eyes in"
+            },
+            "category": "Dolly/Track",
+            "camera_path": "dolly",
+            "direction": "forward",
+            "speed": "slow",
+            "prompt": "The camera pushes in with large amplitude at slow speed toward the subject's face and keeps going past it until one eye fills the entire frame edge to edge."
+          },
+          {
+            "value": "low_angle_hero",
+            "label": {
+              "ru": "Нижний героический наезд",
+              "en": "Low-angle hero"
+            },
+            "category": "Dolly/Track",
+            "camera_path": "dolly",
+            "direction": "forward",
+            "speed": "slow",
+            "prompt": "The camera stays low near the ground and tilted up at the subject the whole time, and pushes in at slow speed until they tower over the frame, looking down past the lens."
+          },
+          {
+            "value": "handheld_shot",
+            "label": {
+              "ru": "Ручная камера",
+              "en": "Handheld shot"
+            },
+            "category": "Human Camera",
+            "camera_path": "handheld",
+            "direction": "none",
+            "speed": "medium",
+            "prompt": "The camera shakes slightly while it performs a tracking shot alongside the subject, the frame drifting and correcting with the operator's steps."
+          },
+          {
+            "value": "snorricam",
+            "label": {
+              "ru": "Камера закреплена на герое",
+              "en": "Body-mounted camera"
+            },
+            "category": "Human Camera",
+            "camera_path": "handheld",
+            "direction": "none",
+            "speed": "medium",
+            "prompt": "The camera is fixed rigidly to the subject and holds their face locked dead-centre at exactly the same size and position throughout, while the whole background lurches, sways and swings behind them with each step."
+          },
+          {
+            "value": "crane_up",
+            "label": {
+              "ru": "Кран вверх",
+              "en": "Crane up"
+            },
+            "category": "Drone/Crane",
+            "camera_path": "crane",
+            "direction": "up",
+            "speed": "slow",
+            "prompt": "The camera starts low at ground level beside the subject, then performs a tracking shot, pedestalling up and tilting down to follow them from high overhead while they stay centred and sharp in frame."
+          },
+          {
+            "value": "crane_down",
+            "label": {
+              "ru": "Кран вниз",
+              "en": "Crane down"
+            },
+            "category": "Drone/Crane",
+            "camera_path": "crane",
+            "direction": "down",
+            "speed": "slow",
+            "prompt": "The camera cranes down at slow speed, pedestalling down and tilting up as it descends, and comes to rest at eye level in a medium close-up of the subject's face."
+          },
+          {
+            "value": "drone_push_in",
+            "label": {
+              "ru": "Подлёт дрона",
+              "en": "Drone push in"
+            },
+            "category": "Drone/Crane",
+            "camera_path": "dolly",
+            "direction": "forward",
+            "speed": "medium",
+            "prompt": "Glide forward through open space toward the subject or destination."
+          },
+          {
+            "value": "drone_pull_back",
+            "label": {
+              "ru": "Отлёт дрона",
+              "en": "Drone pull back"
+            },
+            "category": "Drone/Crane",
+            "camera_path": "dolly",
+            "direction": "backward",
+            "speed": "medium",
+            "prompt": "The camera pulls out with large amplitude at fast speed while pedestalling up, rising and retreating until the subject is small and alone far below and the whole location opens out around them."
+          },
+          {
+            "value": "helicopter_aerial",
+            "label": {
+              "ru": "Высотный воздушный план",
+              "en": "Helicopter aerial"
+            },
+            "category": "Drone/Crane",
+            "camera_path": "crane",
+            "direction": "up",
+            "speed": "slow",
+            "prompt": "Use a broad high-altitude path over the landscape."
+          },
+          {
+            "value": "jib_up",
+            "label": {
+              "ru": "Подъём на джибе",
+              "en": "Jib up"
+            },
+            "category": "Drone/Crane",
+            "camera_path": "crane",
+            "direction": "up",
+            "speed": "slow",
+            "prompt": "The camera jibs up at slow speed in one sweeping arc, rising from the subject's chest height up and over them while tilting down to keep them in frame, and ends in a high angle looking down with the location spread out around them."
+          },
+          {
+            "value": "overhead_swing",
+            "label": {
+              "ru": "Сверху на уровень глаз",
+              "en": "Overhead swing"
+            },
+            "category": "Drone/Crane",
+            "camera_path": "crane",
+            "direction": "down",
+            "speed": "slow",
+            "prompt": "The camera swings down in front of the subject in a smooth quarter-circle arc at slow speed, keeping the same distance the whole way: from straight above their head down to their eye level on the side they face, tilting from pointing straight down to pointing level."
+          },
+          {
+            "value": "fpv_drone",
+            "label": {
+              "ru": "FPV-дрон",
+              "en": "FPV drone"
+            },
+            "category": "Drone/Crane",
+            "camera_path": "tracking",
+            "direction": "forward",
+            "speed": "fast",
+            "prompt": "The camera flies like a racing FPV drone: it dives steeply at fast speed, rolls and banks through the air, skims low and fast over the ground toward the subject, then pulls up and slows to a stop in a medium shot of them, face sharp."
+          },
+          {
+            "value": "first_person",
+            "label": {
+              "ru": "Вид от первого лица",
+              "en": "First-person view"
+            },
+            "category": "Specials",
+            "camera_path": "tracking",
+            "direction": "forward",
+            "speed": "medium",
+            "prompt": "A first-person POV shot: the camera is the eyes of an unseen viewer and moves exactly as the viewer's head does, swaying gently with each step; only the viewer's own hand ever appears, from the bottom of frame."
+          },
+          {
+            "value": "tilt_shift",
+            "label": {
+              "ru": "Эффект миниатюры",
+              "en": "Tilt-shift miniature"
+            },
+            "category": "Specials",
+            "camera_path": "static",
+            "direction": "none",
+            "speed": "none",
+            "prompt": "Hold or gently glide above the scene with a miniature-scale focus treatment."
+          },
+          {
+            "value": "infinite_zoom",
+            "label": {
+              "ru": "Бесконечное увеличение",
+              "en": "Infinite zoom"
+            },
+            "category": "Specials",
+            "camera_path": "zoom",
+            "direction": "forward",
+            "speed": "fast",
+            "prompt": "Zoom continuously into the centered target until it fills the frame."
+          },
+          {
+            "value": "earth_zoom_out",
+            "label": {
+              "ru": "Отлёт до масштаба планеты",
+              "en": "Earth zoom out"
+            },
+            "category": "Specials",
+            "camera_path": "zoom",
+            "direction": "backward",
+            "speed": "fast",
+            "prompt": "Pull outward from the starting location through larger geographic scales."
+          },
+          {
+            "value": "time_lapse",
+            "label": {
+              "ru": "Таймлапс",
+              "en": "Time-lapse"
+            },
+            "category": "Specials",
+            "camera_path": "static",
+            "direction": "none",
+            "speed": "fast",
+            "prompt": "A static shot locked off on a tripod: the subject stays still while everything around them plays as a fast time-lapse, people and traffic streaming past as soft blurred streaks and the light changing quickly."
+          },
+          {
+            "value": "pass_through",
+            "label": {
+              "ru": "Проезд сквозь объект",
+              "en": "Pass-through movement"
+            },
+            "category": "Specials",
+            "camera_path": "dolly",
+            "direction": "forward",
+            "speed": "medium",
+            "prompt": "Move toward a visible opening or surface and continue into the revealed space."
+          },
+          {
+            "value": "dolly_zoom",
+            "label": {
+              "ru": "Долли-зум (вертиго)",
+              "en": "Dolly zoom"
+            },
+            "category": "Specials",
+            "camera_path": "dolly",
+            "direction": "forward",
+            "speed": "slow",
+            "prompt": "Throughout the entire shot the main subject's size and position in frame stay exactly constant, framed identically in the last frame as in the first and never drifting from the centre. The camera pushes in while simultaneously zooming out at exactly the matching rate, so only the background behind the subject stretches away and warps."
+          },
+          {
+            "value": "dutch_angle",
+            "label": {
+              "ru": "Голландский угол",
+              "en": "Dutch angle"
+            },
+            "category": "Specials",
+            "camera_path": "static",
+            "direction": "none",
+            "speed": "slow",
+            "prompt": "The camera rolls clockwise into a canted dutch angle and holds there, the horizon tilted, the subject off-axis."
+          },
+          {
+            "value": "rack_focus",
+            "label": {
+              "ru": "Перевод фокуса",
+              "en": "Rack focus"
+            },
+            "category": "Specials",
+            "camera_path": "static",
+            "direction": "none",
+            "speed": "slow",
+            "prompt": "The camera holds a static shot. The near subject is in sharp focus while the far subject behind them is soft; the focus then racks from the near face to the far subject, and the near subject falls into soft blur exactly as the far one resolves sharply."
+          }
+        ],
+        "prompt": false
+      },
+      {
+        "key": "direction",
+        "label": {
+          "ru": "Направление",
+          "en": "Direction"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "forward",
+            "label": {
+              "ru": "Вперёд",
+              "en": "Forward"
+            }
+          },
+          {
+            "value": "backward",
+            "label": {
+              "ru": "Назад",
+              "en": "Backward"
+            }
+          },
+          {
+            "value": "side",
+            "label": {
+              "ru": "Вбок",
+              "en": "Side"
+            }
+          },
+          {
+            "value": "left",
+            "label": {
+              "ru": "Влево",
+              "en": "Left"
+            }
+          },
+          {
+            "value": "right",
+            "label": {
+              "ru": "Вправо",
+              "en": "Right"
+            }
+          },
+          {
+            "value": "up",
+            "label": {
+              "ru": "Вверх",
+              "en": "Up"
+            }
+          },
+          {
+            "value": "down",
+            "label": {
+              "ru": "Вниз",
+              "en": "Down"
+            }
+          }
+        ]
+      },
+      {
+        "key": "speed",
+        "label": {
+          "ru": "Скорость",
+          "en": "Speed"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "none",
+            "label": {
+              "ru": "Нет",
+              "en": "None"
+            }
+          },
+          {
+            "value": "slow",
+            "label": {
+              "ru": "Медленно",
+              "en": "Slow"
+            }
+          },
+          {
+            "value": "medium",
+            "label": {
+              "ru": "Средне",
+              "en": "Medium"
+            }
+          },
+          {
+            "value": "fast",
+            "label": {
+              "ru": "Быстро",
+              "en": "Fast"
+            }
+          }
+        ]
+      },
+      {
+        "key": "end_framing",
+        "label": {
+          "ru": "Конечный кадр",
+          "en": "End framing"
+        },
+        "type": "enum",
+        "options_ref": "shot.framing"
+      },
+      {
+        "key": "subject_lock",
+        "label": {
+          "ru": "Удерживать героя",
+          "en": "Keep subject centered"
+        },
+        "type": "boolean"
+      },
+      {
+        "key": "stabilization",
+        "label": {
+          "ru": "Стабилизация",
+          "en": "Stabilization"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "smooth",
+            "label": {
+              "ru": "Плавная",
+              "en": "Smooth"
+            }
+          },
+          {
+            "value": "natural",
+            "label": {
+              "ru": "Естественная",
+              "en": "Natural"
+            }
+          }
+        ]
+      }
+    ],
+    "focus": [
+      {
+        "key": "target",
+        "label": {
+          "ru": "Цель фокуса",
+          "en": "Focus target"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "subject",
+            "label": {
+              "ru": "Герой",
+              "en": "Subject"
+            }
+          },
+          {
+            "value": "eyes",
+            "label": {
+              "ru": "Глаза",
+              "en": "Eyes"
+            }
+          },
+          {
+            "value": "object",
+            "label": {
+              "ru": "Предмет",
+              "en": "Object"
+            }
+          }
+        ]
+      },
+      {
+        "key": "depth",
+        "label": {
+          "ru": "Глубина резкости",
+          "en": "Depth of field"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "shallow",
+            "label": {
+              "ru": "Малая",
+              "en": "Shallow"
+            }
+          },
+          {
+            "value": "medium",
+            "label": {
+              "ru": "Средняя",
+              "en": "Medium"
+            }
+          },
+          {
+            "value": "deep",
+            "label": {
+              "ru": "Большая",
+              "en": "Deep"
+            }
+          }
+        ]
+      },
+      {
+        "key": "behavior",
+        "label": {
+          "ru": "Поведение",
+          "en": "Focus behavior"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "tracking",
+            "label": {
+              "ru": "Ведение",
+              "en": "Tracking"
+            }
+          },
+          {
+            "value": "rack",
+            "label": {
+              "ru": "Перевод",
+              "en": "Rack focus"
+            }
+          },
+          {
+            "value": "locked",
+            "label": {
+              "ru": "Зафиксирован",
+              "en": "Locked"
+            }
+          }
+        ]
+      },
+      {
+        "key": "from",
+        "label": {
+          "ru": "Перевод: от",
+          "en": "Focus from"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "foreground",
+            "label": {
+              "ru": "Передний план",
+              "en": "Foreground"
+            }
+          },
+          {
+            "value": "subject",
+            "label": {
+              "ru": "Герой",
+              "en": "Subject"
+            }
+          },
+          {
+            "value": "background",
+            "label": {
+              "ru": "Задний план",
+              "en": "Background"
+            }
+          }
+        ]
+      },
+      {
+        "key": "to",
+        "label": {
+          "ru": "Перевод: к",
+          "en": "Focus to"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "foreground",
+            "label": {
+              "ru": "Передний план",
+              "en": "Foreground"
+            }
+          },
+          {
+            "value": "subject",
+            "label": {
+              "ru": "Герой",
+              "en": "Subject"
+            }
+          },
+          {
+            "value": "background",
+            "label": {
+              "ru": "Задний план",
+              "en": "Background"
+            }
+          }
+        ]
+      },
+      {
+        "key": "focus_distance_m",
+        "label": {
+          "ru": "Дистанция фокуса, м",
+          "en": "Focus distance"
+        },
+        "type": "number",
+        "min": 0.3,
+        "max": 50,
+        "step": 0.1
+      }
+    ],
+    "lighting": [
+      {
+        "key": "source",
+        "label": {
+          "ru": "Источник",
+          "en": "Light source"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "daylight",
+            "label": {
+              "ru": "Дневной свет",
+              "en": "Daylight"
+            }
+          },
+          {
+            "value": "sun",
+            "label": {
+              "ru": "Солнце",
+              "en": "Sun"
+            }
+          },
+          {
+            "value": "window",
+            "label": {
+              "ru": "Окно",
+              "en": "Window"
+            }
+          },
+          {
+            "value": "practical",
+            "label": {
+              "ru": "Лампы в кадре",
+              "en": "Practical lights"
+            }
+          },
+          {
+            "value": "backlight",
+            "label": {
+              "ru": "Контровой",
+              "en": "Backlight"
+            }
+          },
+          {
+            "value": "neon",
+            "label": {
+              "ru": "Неон",
+              "en": "Neon"
+            }
+          },
+          {
+            "value": "overcast",
+            "label": {
+              "ru": "Пасмурно",
+              "en": "Overcast"
+            }
+          }
+        ]
+      },
+      {
+        "key": "direction",
+        "label": {
+          "ru": "Направление",
+          "en": "Direction"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "front",
+            "label": {
+              "ru": "Спереди",
+              "en": "Front"
+            }
+          },
+          {
+            "value": "side",
+            "label": {
+              "ru": "Сбоку",
+              "en": "Side"
+            }
+          },
+          {
+            "value": "back",
+            "label": {
+              "ru": "Сзади (контровой)",
+              "en": "Back"
+            }
+          },
+          {
+            "value": "top",
+            "label": {
+              "ru": "Сверху",
+              "en": "Top"
+            }
+          }
+        ]
+      },
+      {
+        "key": "softness",
+        "label": {
+          "ru": "Жёсткость",
+          "en": "Softness"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "soft",
+            "label": {
+              "ru": "Мягкий",
+              "en": "Soft"
+            }
+          },
+          {
+            "value": "medium",
+            "label": {
+              "ru": "Средний",
+              "en": "Medium"
+            }
+          },
+          {
+            "value": "hard",
+            "label": {
+              "ru": "Жёсткий",
+              "en": "Hard"
+            }
+          }
+        ]
+      },
+      {
+        "key": "contrast",
+        "label": {
+          "ru": "Контраст",
+          "en": "Contrast"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "low",
+            "label": {
+              "ru": "Низкий",
+              "en": "Low"
+            }
+          },
+          {
+            "value": "natural",
+            "label": {
+              "ru": "Естественный",
+              "en": "Natural"
+            }
+          },
+          {
+            "value": "medium",
+            "label": {
+              "ru": "Средний",
+              "en": "Medium"
+            }
+          },
+          {
+            "value": "high",
+            "label": {
+              "ru": "Высокий",
+              "en": "High"
+            }
+          }
+        ]
+      },
+      {
+        "key": "temperature",
+        "label": {
+          "ru": "Температура",
+          "en": "Temperature"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "warm",
+            "label": {
+              "ru": "Тёплая",
+              "en": "Warm"
+            }
+          },
+          {
+            "value": "neutral",
+            "label": {
+              "ru": "Нейтральная",
+              "en": "Neutral"
+            }
+          },
+          {
+            "value": "cool",
+            "label": {
+              "ru": "Холодная",
+              "en": "Cool"
+            }
+          }
+        ]
+      },
+      {
+        "key": "fill",
+        "label": {
+          "ru": "Заполнение",
+          "en": "Fill"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "low",
+            "label": {
+              "ru": "Слабое",
+              "en": "Low"
+            }
+          },
+          {
+            "value": "medium",
+            "label": {
+              "ru": "Среднее",
+              "en": "Medium"
+            }
+          },
+          {
+            "value": "high",
+            "label": {
+              "ru": "Сильное",
+              "en": "High"
+            }
+          }
+        ]
+      },
+      {
+        "key": "key",
+        "label": {
+          "ru": "Ключевой свет",
+          "en": "Key light"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "low",
+            "label": {
+              "ru": "Низкий",
+              "en": "Low"
+            }
+          },
+          {
+            "value": "medium",
+            "label": {
+              "ru": "Средний",
+              "en": "Medium"
+            }
+          },
+          {
+            "value": "high",
+            "label": {
+              "ru": "Высокий",
+              "en": "High"
+            }
+          }
+        ]
+      },
+      {
+        "key": "saturation",
+        "label": {
+          "ru": "Насыщенность света",
+          "en": "Saturation"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "controlled",
+            "label": {
+              "ru": "Сдержанная",
+              "en": "Controlled"
+            }
+          },
+          {
+            "value": "natural",
+            "label": {
+              "ru": "Естественная",
+              "en": "Natural"
+            }
+          },
+          {
+            "value": "high",
+            "label": {
+              "ru": "Высокая",
+              "en": "High"
+            }
+          }
+        ]
+      },
+      {
+        "key": "rim",
+        "label": {
+          "ru": "Контровой свет",
+          "en": "Rim light"
+        },
+        "type": "boolean"
+      },
+      {
+        "key": "reference_image",
+        "label": {
+          "ru": "Схема света картинкой в H3 (если нет фото)",
+          "en": "Send lighting diagram image to H3 (when no photo)"
+        },
+        "type": "boolean",
+        "prompt": false,
+        "$comment": "Авто/Да: Studio рисует сферу с этим светом и прикладывает её к заданию как <Picture N> с ролью «Свет». Нет — только текст."
+      },
+      {
+        "key": "scheme",
+        "label": {
+          "ru": "Схема света",
+          "en": "Lighting scheme"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "three_point",
+            "label": {
+              "ru": "Трёхточечная",
+              "en": "Three-point"
+            }
+          },
+          {
+            "value": "high_key",
+            "label": {
+              "ru": "Высокий ключ",
+              "en": "High key"
+            }
+          },
+          {
+            "value": "low_key",
+            "label": {
+              "ru": "Низкий ключ",
+              "en": "Low key"
+            }
+          },
+          {
+            "value": "chiaroscuro",
+            "label": {
+              "ru": "Светотень",
+              "en": "Chiaroscuro"
+            }
+          },
+          {
+            "value": "rembrandt",
+            "label": {
+              "ru": "Рембрандт",
+              "en": "Rembrandt"
+            }
+          },
+          {
+            "value": "butterfly",
+            "label": {
+              "ru": "Бабочка",
+              "en": "Butterfly"
+            }
+          },
+          {
+            "value": "split",
+            "label": {
+              "ru": "Половина лица",
+              "en": "Split"
+            }
+          },
+          {
+            "value": "silhouette",
+            "label": {
+              "ru": "Силуэт",
+              "en": "Silhouette"
+            }
+          },
+          {
+            "value": "practical_only",
+            "label": {
+              "ru": "Только свет в кадре",
+              "en": "Practicals only"
+            }
+          }
+        ]
+      },
+      {
+        "key": "time_of_day",
+        "label": {
+          "ru": "Время",
+          "en": "Time of day"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "golden_hour",
+            "label": {
+              "ru": "Золотой час",
+              "en": "Golden hour"
+            }
+          },
+          {
+            "value": "blue_hour",
+            "label": {
+              "ru": "Синий час",
+              "en": "Blue hour"
+            }
+          },
+          {
+            "value": "midday",
+            "label": {
+              "ru": "Полдень",
+              "en": "Midday"
+            }
+          },
+          {
+            "value": "overcast_day",
+            "label": {
+              "ru": "Пасмурный день",
+              "en": "Overcast day"
+            }
+          },
+          {
+            "value": "night",
+            "label": {
+              "ru": "Ночь",
+              "en": "Night"
+            }
+          },
+          {
+            "value": "interior_day",
+            "label": {
+              "ru": "Интерьер днём",
+              "en": "Interior day"
+            }
+          },
+          {
+            "value": "interior_night",
+            "label": {
+              "ru": "Интерьер ночью",
+              "en": "Interior night"
+            }
+          }
+        ]
+      },
+      {
+        "key": "atmosphere",
+        "label": {
+          "ru": "Воздух",
+          "en": "Atmosphere"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "clear",
+            "label": {
+              "ru": "Чистый",
+              "en": "Clear"
+            }
+          },
+          {
+            "value": "haze",
+            "label": {
+              "ru": "Дымка",
+              "en": "Haze"
+            }
+          },
+          {
+            "value": "volumetric_rays",
+            "label": {
+              "ru": "Лучи в дымке",
+              "en": "Volumetric rays"
+            }
+          }
+        ]
+      }
+    ],
+    "color": [
+      {
+        "key": "temperature",
+        "label": {
+          "ru": "Баланс",
+          "en": "Temperature"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "warm",
+            "label": {
+              "ru": "Тёплая",
+              "en": "Warm"
+            }
+          },
+          {
+            "value": "neutral",
+            "label": {
+              "ru": "Нейтральная",
+              "en": "Neutral"
+            }
+          },
+          {
+            "value": "cool",
+            "label": {
+              "ru": "Холодная",
+              "en": "Cool"
+            }
+          },
+          {
+            "value": "split",
+            "label": {
+              "ru": "Раздельная",
+              "en": "Split"
+            }
+          }
+        ]
+      },
+      {
+        "key": "saturation",
+        "label": {
+          "ru": "Насыщенность",
+          "en": "Saturation"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "none",
+            "label": {
+              "ru": "Ч/б",
+              "en": "None"
+            }
+          },
+          {
+            "value": "low",
+            "label": {
+              "ru": "Низкая",
+              "en": "Low"
+            }
+          },
+          {
+            "value": "natural",
+            "label": {
+              "ru": "Естественная",
+              "en": "Natural"
+            }
+          },
+          {
+            "value": "moderate",
+            "label": {
+              "ru": "Умеренная",
+              "en": "Moderate"
+            }
+          },
+          {
+            "value": "high",
+            "label": {
+              "ru": "Высокая",
+              "en": "High"
+            }
+          }
+        ]
+      },
+      {
+        "key": "contrast",
+        "label": {
+          "ru": "Контраст",
+          "en": "Contrast"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "low",
+            "label": {
+              "ru": "Низкий",
+              "en": "Low"
+            }
+          },
+          {
+            "value": "medium",
+            "label": {
+              "ru": "Средний",
+              "en": "Medium"
+            }
+          },
+          {
+            "value": "high",
+            "label": {
+              "ru": "Высокий",
+              "en": "High"
+            }
+          }
+        ]
+      },
+      {
+        "key": "shadows",
+        "label": {
+          "ru": "Тени",
+          "en": "Shadows"
+        },
+        "type": "short_text"
+      },
+      {
+        "key": "highlights",
+        "label": {
+          "ru": "Света",
+          "en": "Highlights"
+        },
+        "type": "short_text"
+      },
+      {
+        "key": "swatches",
+        "label": {
+          "ru": "Палитра",
+          "en": "Palette"
+        },
+        "type": "swatches"
+      },
+      {
+        "key": "grade_strength",
+        "label": {
+          "ru": "Сила цветокора по фото (0 — выкл.)",
+          "en": "Photo grade strength (0 = off)"
+        },
+        "type": "number",
+        "min": 0,
+        "max": 1,
+        "step": 0.05,
+        "prompt": false,
+        "$comment": "Не идёт в текст промпта: управляет узлом H3ColorGrade (сила переноса цвета с фото)."
+      }
+    ],
+    "style": [
+      {
+        "key": "rendering",
+        "label": {
+          "ru": "Рендеринг",
+          "en": "Rendering"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "photoreal",
+            "label": {
+              "ru": "Фотореализм",
+              "en": "Photoreal"
+            }
+          },
+          {
+            "value": "documentary",
+            "label": {
+              "ru": "Документальный",
+              "en": "Documentary"
+            }
+          },
+          {
+            "value": "commercial",
+            "label": {
+              "ru": "Реклама",
+              "en": "Commercial"
+            }
+          },
+          {
+            "value": "film",
+            "label": {
+              "ru": "Кино",
+              "en": "Film"
+            }
+          },
+          {
+            "value": "animation3d",
+            "label": {
+              "ru": "3D-анимация",
+              "en": "3D animation"
+            }
+          },
+          {
+            "value": "animation2d",
+            "label": {
+              "ru": "2D-анимация",
+              "en": "2D animation"
+            }
+          },
+          {
+            "value": "noir",
+            "label": {
+              "ru": "Нуар",
+              "en": "Noir"
+            }
+          },
+          {
+            "value": "scifi",
+            "label": {
+              "ru": "Научная фантастика",
+              "en": "Science fiction"
+            }
+          }
+        ]
+      },
+      {
+        "key": "genre",
+        "label": {
+          "ru": "Жанр",
+          "en": "Genre"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "thriller",
+            "label": {
+              "ru": "Триллер",
+              "en": "Thriller"
+            }
+          },
+          {
+            "value": "drama",
+            "label": {
+              "ru": "Драма",
+              "en": "Drama"
+            }
+          },
+          {
+            "value": "epic",
+            "label": {
+              "ru": "Эпик",
+              "en": "Epic"
+            }
+          },
+          {
+            "value": "noir",
+            "label": {
+              "ru": "Нуар",
+              "en": "Noir"
+            }
+          },
+          {
+            "value": "action",
+            "label": {
+              "ru": "Экшен",
+              "en": "Action"
+            }
+          },
+          {
+            "value": "memory",
+            "label": {
+              "ru": "Воспоминание",
+              "en": "Memory"
+            }
+          },
+          {
+            "value": "product",
+            "label": {
+              "ru": "Предметка",
+              "en": "Product"
+            }
+          },
+          {
+            "value": "fantasy",
+            "label": {
+              "ru": "Фэнтези",
+              "en": "Fantasy"
+            }
+          },
+          {
+            "value": "graphic",
+            "label": {
+              "ru": "Графика",
+              "en": "Graphic"
+            }
+          },
+          {
+            "value": "observational",
+            "label": {
+              "ru": "Наблюдение",
+              "en": "Observational"
+            }
+          }
+        ]
+      },
+      {
+        "key": "lighting",
+        "label": {
+          "ru": "Схема света",
+          "en": "Lighting design"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "motivated_neon",
+            "label": {
+              "ru": "Мотивированный неон",
+              "en": "Motivated neon"
+            }
+          },
+          {
+            "value": "soft_side",
+            "label": {
+              "ru": "Мягкий боковой",
+              "en": "Soft side"
+            }
+          },
+          {
+            "value": "atmospheric",
+            "label": {
+              "ru": "Атмосферный",
+              "en": "Atmospheric"
+            }
+          },
+          {
+            "value": "hard_side",
+            "label": {
+              "ru": "Жёсткий боковой",
+              "en": "Hard side"
+            }
+          },
+          {
+            "value": "motivated",
+            "label": {
+              "ru": "Мотивированный",
+              "en": "Motivated"
+            }
+          },
+          {
+            "value": "soft_warm",
+            "label": {
+              "ru": "Мягкий тёплый",
+              "en": "Soft warm"
+            }
+          },
+          {
+            "value": "controlled_reflections",
+            "label": {
+              "ru": "Контроль бликов",
+              "en": "Controlled reflections"
+            }
+          },
+          {
+            "value": "soft_luminous",
+            "label": {
+              "ru": "Мягкое сияние",
+              "en": "Soft luminous"
+            }
+          },
+          {
+            "value": "available",
+            "label": {
+              "ru": "Естественный",
+              "en": "Available"
+            }
+          }
+        ]
+      },
+      {
+        "key": "palette",
+        "label": {
+          "ru": "Цветовые акценты",
+          "en": "Color accents"
+        },
+        "type": "palette_tags"
+      },
+      {
+        "key": "camera_grammar",
+        "label": {
+          "ru": "Язык камеры",
+          "en": "Camera grammar"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "deliberate_tracking",
+            "label": {
+              "ru": "Осознанное ведение",
+              "en": "Deliberate tracking"
+            }
+          },
+          {
+            "value": "restrained_close",
+            "label": {
+              "ru": "Сдержанные крупные",
+              "en": "Restrained close"
+            }
+          },
+          {
+            "value": "wide_reveal",
+            "label": {
+              "ru": "Широкое раскрытие",
+              "en": "Wide reveal"
+            }
+          },
+          {
+            "value": "controlled_push",
+            "label": {
+              "ru": "Контролируемый наезд",
+              "en": "Controlled push"
+            }
+          },
+          {
+            "value": "subject_tracking",
+            "label": {
+              "ru": "Ведение героя",
+              "en": "Subject tracking"
+            }
+          },
+          {
+            "value": "slow_observational",
+            "label": {
+              "ru": "Медленное наблюдение",
+              "en": "Slow observational"
+            }
+          },
+          {
+            "value": "macro_to_medium",
+            "label": {
+              "ru": "От макро к среднему",
+              "en": "Macro to medium"
+            }
+          },
+          {
+            "value": "expressive_stable",
+            "label": {
+              "ru": "Выразительно и стабильно",
+              "en": "Expressive stable"
+            }
+          },
+          {
+            "value": "clear_silhouettes",
+            "label": {
+              "ru": "Ясные силуэты",
+              "en": "Clear silhouettes"
+            }
+          },
+          {
+            "value": "patient_human_scale",
+            "label": {
+              "ru": "Спокойно, на уровне человека",
+              "en": "Patient human scale"
+            }
+          }
+        ]
+      },
+      {
+        "key": "contrast",
+        "label": {
+          "ru": "Контраст",
+          "en": "Contrast"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "high",
+            "label": {
+              "ru": "Высокий",
+              "en": "High"
+            }
+          },
+          {
+            "value": "medium",
+            "label": {
+              "ru": "Средний",
+              "en": "Medium"
+            }
+          },
+          {
+            "value": "controlled_high",
+            "label": {
+              "ru": "Высокий, под контролем",
+              "en": "Controlled high"
+            }
+          },
+          {
+            "value": "natural",
+            "label": {
+              "ru": "Естественный",
+              "en": "Natural"
+            }
+          }
+        ]
+      },
+      {
+        "key": "subject_scale",
+        "label": {
+          "ru": "Масштаб героя",
+          "en": "Subject scale"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "small_in_frame",
+            "label": {
+              "ru": "Мелко в кадре",
+              "en": "Small in frame"
+            }
+          },
+          {
+            "value": "medium",
+            "label": {
+              "ru": "Средний",
+              "en": "Medium"
+            }
+          },
+          {
+            "value": "close",
+            "label": {
+              "ru": "Крупно",
+              "en": "Close"
+            }
+          }
+        ]
+      },
+      {
+        "key": "motion_energy",
+        "label": {
+          "ru": "Энергия движения",
+          "en": "Motion energy"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "low",
+            "label": {
+              "ru": "Низкий",
+              "en": "Low"
+            }
+          },
+          {
+            "value": "medium",
+            "label": {
+              "ru": "Средний",
+              "en": "Medium"
+            }
+          },
+          {
+            "value": "high",
+            "label": {
+              "ru": "Высокий",
+              "en": "High"
+            }
+          }
+        ]
+      },
+      {
+        "key": "continuity",
+        "label": {
+          "ru": "Непрерывность",
+          "en": "Continuity"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "screen_direction",
+            "label": {
+              "ru": "Направление в кадре",
+              "en": "Screen direction"
+            }
+          },
+          {
+            "value": "spatial",
+            "label": {
+              "ru": "Пространственная",
+              "en": "Spatial"
+            }
+          },
+          {
+            "value": "temporal",
+            "label": {
+              "ru": "Временная",
+              "en": "Temporal"
+            }
+          }
+        ]
+      },
+      {
+        "key": "texture",
+        "label": {
+          "ru": "Фактура",
+          "en": "Texture"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "clean",
+            "label": {
+              "ru": "Чистая",
+              "en": "Clean"
+            }
+          },
+          {
+            "value": "subtle_grain",
+            "label": {
+              "ru": "Лёгкое зерно",
+              "en": "Subtle grain"
+            }
+          },
+          {
+            "value": "organic",
+            "label": {
+              "ru": "Органичная",
+              "en": "Organic"
+            }
+          },
+          {
+            "value": "tactile",
+            "label": {
+              "ru": "Тактильная",
+              "en": "Tactile"
+            }
+          }
+        ]
+      },
+      {
+        "key": "detail",
+        "label": {
+          "ru": "Деталь",
+          "en": "Detail"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "material",
+            "label": {
+              "ru": "Материальная",
+              "en": "Material"
+            }
+          },
+          {
+            "value": "soft",
+            "label": {
+              "ru": "Мягкая",
+              "en": "Soft"
+            }
+          },
+          {
+            "value": "crisp",
+            "label": {
+              "ru": "Чёткая",
+              "en": "Crisp"
+            }
+          }
+        ]
+      },
+      {
+        "key": "materials",
+        "label": {
+          "ru": "Материалы",
+          "en": "Materials"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "tactile_stylized",
+            "label": {
+              "ru": "Тактильная стилизация",
+              "en": "Tactile stylized"
+            }
+          },
+          {
+            "value": "realistic",
+            "label": {
+              "ru": "Реалистичные",
+              "en": "Realistic"
+            }
+          },
+          {
+            "value": "graphic",
+            "label": {
+              "ru": "Графичные",
+              "en": "Graphic"
+            }
+          }
+        ]
+      },
+      {
+        "key": "linework",
+        "label": {
+          "ru": "Контур",
+          "en": "Linework"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "consistent",
+            "label": {
+              "ru": "Ровный",
+              "en": "Consistent"
+            }
+          },
+          {
+            "value": "expressive",
+            "label": {
+              "ru": "Выразительный",
+              "en": "Expressive"
+            }
+          },
+          {
+            "value": "none",
+            "label": {
+              "ru": "Без контура",
+              "en": "None"
+            }
+          }
+        ]
+      },
+      {
+        "key": "motion_timing",
+        "label": {
+          "ru": "Тайминг движения",
+          "en": "Motion timing"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "readable",
+            "label": {
+              "ru": "Читаемый",
+              "en": "Readable"
+            }
+          },
+          {
+            "value": "restrained",
+            "label": {
+              "ru": "Сдержанный",
+              "en": "Restrained"
+            }
+          },
+          {
+            "value": "energetic",
+            "label": {
+              "ru": "Энергичный",
+              "en": "Energetic"
+            }
+          }
+        ]
+      }
+    ],
+    "acting": [
+      {
+        "key": "cast",
+        "label": {
+          "ru": "Кто играет",
+          "en": "Cast"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "human",
+            "label": {
+              "ru": "Человек",
+              "en": "Human"
+            }
+          },
+          {
+            "value": "animal",
+            "label": {
+              "ru": "Животное",
+              "en": "Animal"
+            }
+          },
+          {
+            "value": "mixed",
+            "label": {
+              "ru": "Человек и животное",
+              "en": "Human and animal"
+            }
+          }
+        ]
+      },
+      {
+        "key": "performance",
+        "label": {
+          "ru": "Манера игры",
+          "en": "Performance"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "natural",
+            "label": {
+              "ru": "Естественная",
+              "en": "Natural"
+            }
+          },
+          {
+            "value": "dramatic",
+            "label": {
+              "ru": "Драматическая",
+              "en": "Dramatic"
+            }
+          },
+          {
+            "value": "comedic",
+            "label": {
+              "ru": "Комедийная",
+              "en": "Comedic"
+            }
+          },
+          {
+            "value": "anthropomorphic",
+            "label": {
+              "ru": "Животное играет как человек",
+              "en": "Animal acts like a human"
+            }
+          }
+        ]
+      },
+      {
+        "key": "dialogue",
+        "label": {
+          "ru": "Подача реплик",
+          "en": "Dialogue delivery"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "natural",
+            "label": {
+              "ru": "Живая речь",
+              "en": "Natural speech"
+            }
+          },
+          {
+            "value": "expressive",
+            "label": {
+              "ru": "Эмоциональная",
+              "en": "Expressive"
+            }
+          },
+          {
+            "value": "quiet",
+            "label": {
+              "ru": "Тихая и близкая",
+              "en": "Quiet and intimate"
+            }
+          },
+          {
+            "value": "theatrical",
+            "label": {
+              "ru": "Театральная",
+              "en": "Theatrical"
+            }
+          }
+        ]
+      },
+      {
+        "key": "voice_casting",
+        "label": {
+          "ru": "Кастинг голосов",
+          "en": "Voice casting"
+        },
+        "type": "enum",
+        "options": [
+          {
+            "value": "match_character",
+            "label": {
+              "ru": "По герою",
+              "en": "Match character"
+            }
+          },
+          {
+            "value": "distinct",
+            "label": {
+              "ru": "Разные голоса",
+              "en": "Distinct voices"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+.scenarist-open{margin-right:auto;border:1px solid var(--edge,var(--line));background:transparent;color:inherit;border-radius:8px;padding:6px 10px;cursor:pointer}
+.scenarist-dialog{width:min(860px,calc(100vw - 32px));border:1px solid var(--edge,var(--line));border-radius:14px;background:var(--panel,var(--soft));color:var(--text,var(--ink));padding:20px}
+.scenarist-dialog::backdrop{background:#0008}
+.scenarist-dialog label{display:block;margin:10px 0;font-size:13px;color:var(--subtle,var(--muted))}
+.scenarist-dialog textarea,.scenarist-dialog input{display:block;width:100%;box-sizing:border-box;margin-top:4px;background:var(--panel-raised,#fff);color:inherit;border:1px solid var(--edge,var(--line));border-radius:8px;padding:8px;font:inherit}
+.scenarist-row{display:grid;grid-template-columns:120px 1fr;gap:12px}
+.scenarist-camera{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:10px 12px;border:1px solid var(--edge,var(--line));border-radius:10px;background:rgba(108,78,184,.08)}
+.scenarist-dialog select{display:block;width:100%;box-sizing:border-box;margin-top:4px;background:var(--panel-raised,#fff);color:inherit;border:1px solid var(--edge,var(--line));border-radius:8px;padding:8px;font:inherit}
+.scenarist-actions{display:flex;gap:8px;flex-wrap:wrap}
+.scenarist-problems{color:#f4a261;font-size:13px}
+.scenarist-hint,.scenarist-status{font-size:13px;color:var(--subtle,var(--muted))}
+@media (max-width:600px){.scenarist-row{grid-template-columns:1fr}}
+@media (max-width:600px){.scenarist-camera{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.scenarist-actions button{border:1px solid var(--edge,var(--line));background:var(--panel-raised,#fff);color:inherit;border-radius:8px;padding:8px 14px;cursor:pointer;font:inherit}
+.scenarist-actions .scenarist-primary{background:var(--purple,var(--accent));border-color:transparent;color:#fff}
+.scenarist-actions button:disabled{opacity:.5;cursor:default}
+.scenes-button{border:1px solid var(--edge,var(--line));background:transparent;color:inherit;border-radius:8px;padding:6px 10px;cursor:pointer}
+.scenes-status{font-size:13px;color:var(--subtle,var(--muted));margin:6px 0 0}
+.scenarist-actions .scenes-primary{background:var(--purple,var(--accent));border-color:transparent;color:#fff}
+.scenarist-check{display:flex!important;gap:8px;align-items:center;color:inherit!important}.scenarist-check input{width:auto!important;display:inline!important;margin:0!important}

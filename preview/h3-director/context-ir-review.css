@@ -1,0 +1,9 @@
+.context-review { margin: 12px 0; padding: 14px; border: 1px solid #30343a; border-radius: 14px; background: #1b1f24; color: #e9ecef; }
+.context-review summary { cursor: pointer; font-weight: 600; }
+.context-review p, .motion-frame-review p { font-size: 13px; line-height: 1.5; overflow-wrap: anywhere; }
+.context-review button, .motion-frame-review button { margin: 10px 6px 0 0; padding: 10px 12px; border: 1px solid #484e56; border-radius: 9px; background: #292e35; color: #f1f3f5; font: inherit; font-size: 13px; cursor: pointer; }
+.context-review button:disabled, .motion-frame-review button:disabled { opacity: .45; cursor: default; }
+.context-review button:focus-visible, .motion-frame-review button:focus-visible { outline: 2px solid #d7ff4f; outline-offset: 3px; }
+.motion-frame-review { margin-top: 16px; padding: 14px; border: 1px solid #30343a; border-radius: 14px; }
+.motion-frame-review img { display: block; max-width: 100%; border-radius: 8px; }
+.motion-frame-review img[hidden] { display: none; }

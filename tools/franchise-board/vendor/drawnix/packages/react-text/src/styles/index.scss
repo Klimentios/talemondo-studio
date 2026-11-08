@@ -1,0 +1,55 @@
+.plait-board-container {
+    .text {
+        foreignObject {
+            overflow-y: auto;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            scrollbar-width: none;
+        }
+    }
+}
+
+.plait-text-container {
+    font-size: 14px;
+    min-height: 20px;
+    line-height: 20px;
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang SC', 'Noto Sans', 'Noto Sans CJK SC', 'Microsoft Yahei', 'Hiragino Sans GB', Arial, sans-serif;
+}
+
+.slate-editable-container {
+    outline: none;
+    padding: 0;
+    cursor: default;
+    & [data-slate-node='element'] {
+        user-select: none;
+    }
+    &[contenteditable="true"] {
+        cursor: text;
+        & [data-slate-node='element'] {
+            user-select: text;
+        }
+    }
+    [plait-underlined][plait-strike] {
+        text-decoration: underline line-through;
+    }
+    [plait-strike] {
+        text-decoration: line-through;
+    }
+    [plait-underlined] {
+        text-decoration: underline;
+    }
+    [plait-italic] {
+        font-style: italic;
+    }
+    [plait-bold] {
+        font-weight: bold;
+    }
+    @for $size from 8 through 78 {
+        [plait-font-size='#{$size}'] {
+            font-size: #{$size}px;
+            line-height: 1.5;
+        }
+    }
+}

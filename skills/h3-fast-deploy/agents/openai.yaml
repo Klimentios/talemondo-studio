@@ -1,0 +1,4 @@
+interface:
+  display_name: "H3: быстрое развёртывание"
+  short_description: "Развернуть H3 из R2 и HF, подключить Studio"
+  default_prompt: "Используй $h3-fast-deploy: разверни новый GPU-сервер как проверенный H3 и подключи мою Studio."

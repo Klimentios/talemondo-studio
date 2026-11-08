@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "profiles": [
+    {
+      "visual_profile": {
+        "id": "ritchie-crime-ensemble",
+        "revision": 1,
+        "label": "Гай Ричи · криминальный ансамбль",
+        "sources": [
+          "https://rts.org.uk/article/upper-crust-crims-working-guy-ritchie-netflix-s-gentlemen",
+          "https://www.company3.com/videos/the-gentlemen/"
+        ],
+        "reference_asset_ids": [],
+        "frame_direction": "Establish who controls the exchange and who lacks critical information. Place the transaction object or clue where it connects the participants. Choose the camera position to reveal the intended distribution of knowledge; keep faces, hands, exits and actionable space readable. Preserve the franchise character designs and scene geography.",
+        "video_direction": "Build a change of initiative: claim, test, revealing detail, response and new tactic. Cut or change framing when information or control changes. Use prop inserts, accelerated montage or a reveal only when they clarify a specific causal turn. Preserve screen direction and the physical result of each action.",
+        "director_config": {}
+      },
+      "status": "authored_method_not_render_verified",
+      "source_note": "Production-participant interview about The Gentlemen and an official finishing-studio project page. Supports project-specific tone, lookbook and visual storytelling; does not reveal a universal Ritchie recipe.",
+      "evidence_limit": "Sources were read as documentation. No film or video was watched or timecoded in this research; no frames were imported and no H3/Seedance render has verified this adaptation. Select reviewed reference assets separately before generation."
+    },
+    {
+      "visual_profile": {
+        "id": "tarantino-dialogue-tension",
+        "revision": 1,
+        "label": "Тарантино · напряжённый диалог",
+        "sources": [
+          "https://www.kodak.com/en/motion/blog-post/quentin-tarantino-once-upon-a-time-in-hollywood/",
+          "https://www.panavision.com/highlights/highlights-detail/richardson-creates-a-retro-look-with-a-twist-for-once-upon-a-time-in-hollywood"
+        ],
+        "reference_asset_ids": [],
+        "frame_direction": "Stage a legible relationship between speakers: distance, exit, obstacle, eyelines and any object that changes the stakes. Choose a specific period and production reference, then coordinate costume, environment and texture. Frame the character who holds or discovers the decisive information. Preserve the franchise identity.",
+        "video_direction": "Let the exchange develop through expectation, concealed conflict, a changed position and a meaningful pause. Hold long enough for intention and reaction to read; change scale or move the camera at a motivated realization. Treat zooms, grain and aspect ratio as explicit scene choices rather than automatic author signatures.",
+        "director_config": {}
+      },
+      "status": "authored_method_not_render_verified",
+      "source_note": "Cinematographer Robert Richardson interviews about Once Upon a Time in Hollywood. Period, format and optics are specific to that production; dialogue method here is our authored adaptation, not an attributed quotation.",
+      "evidence_limit": "Sources were read as documentation. No film or video was watched or timecoded in this research; no frames were imported and no H3/Seedance render has verified this adaptation. Select reviewed reference assets separately before generation."
+    },
+    {
+      "visual_profile": {
+        "id": "pixar-emotional-3d",
+        "revision": 1,
+        "label": "Pixar · эмоциональная 3D-анимация",
+        "sources": [
+          "https://history.siggraph.org/wp-content/uploads/2022/10/2015-Talks-Lin_The-Ins-and-Outs-of-Inside-Outs-Camera-Structure.pdf",
+          "https://prod.renderman.pixar.com/stories/stylization-at-pixar"
+        ],
+        "reference_asset_ids": [],
+        "frame_direction": "Select a clear key pose and silhouette that express a thought, desire or obstacle. Keep the face, hands or paws and important object contacts visible. Define the scene visual language in relation to the emotional arc. Preserve the approved anatomy, proportions, costume and materials of the franchise.",
+        "video_direction": "Plan readable key poses and visible changes of thought before action. Make camera and performance follow the emotional progression; use coherent differences between worlds or states only when established by the story. Keep secondary movement subordinate to the main intention, with believable weight and contact.",
+        "director_config": {}
+      },
+      "status": "authored_method_not_render_verified",
+      "source_note": "Pixar-authored SIGGRAPH camera paper for Inside Out and official RenderMan stylization article. Describes production methods, not a model preset or a guarantee of Pixar-equivalent output.",
+      "evidence_limit": "Sources were read as documentation. No film or video was watched or timecoded in this research; no frames were imported and no H3/Seedance render has verified this adaptation. Select reviewed reference assets separately before generation."
+    },
+    {
+      "visual_profile": {
+        "id": "disney-expressive-staging",
+        "revision": 1,
+        "label": "Disney · выразительная постановка",
+        "sources": [
+          "https://www.disneyanimation.com/process/animation/",
+          "https://www.disneyanimation.com/process/layout/"
+        ],
+        "reference_asset_ids": [],
+        "frame_direction": "Compose a specific emotional moment through pose, silhouette and staging. Separate the main action from background clutter; keep gaze, hands or paws and important contacts readable. Establish positions, obstacles and movement routes, and check the frame against adjacent shots. Preserve approved franchise design.",
+        "video_direction": "Break action into anticipation, action, contact, follow-through and response. Specify observable timing, weight and secondary movement for each performer. Block characters and camera before final generation, then review framing, focus and continuity with neighboring shots. Adapt exaggeration to the established character and scene.",
+        "director_config": {}
+      },
+      "status": "authored_method_not_render_verified",
+      "source_note": "Official Disney animation and layout process documentation. Our direction text adapts published principles; it is not a proprietary Disney configuration.",
+      "evidence_limit": "Sources were read as documentation. No film or video was watched or timecoded in this research; no frames were imported and no H3/Seedance render has verified this adaptation. Select reviewed reference assets separately before generation."
+    }
+  ]
+}

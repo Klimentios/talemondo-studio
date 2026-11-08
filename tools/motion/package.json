@@ -1,0 +1,14 @@
+{
+  "name": "studio-motion",
+  "private": true,
+  "type": "module",
+  "description": "Motion graphics for the H3 Studio edit sheet: Remotion compositions rendered with alpha (local_studio/motion.py).",
+  "scripts": {},
+  "dependencies": {
+    "@remotion/bundler": "4.0.535",
+    "@remotion/renderer": "4.0.535",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "remotion": "4.0.535"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "experiment_id": "P01-seed-20260923",
+  "hypothesis": "Full BF16 preserves identity and fine detail better than full INT8 at the same sampling settings.",
+  "controlled": {
+    "prompt_sha256": "record-at-run-time",
+    "reference_sha256": ["record-at-run-time"],
+    "mode": "ref2va",
+    "resolution": [768, 1344],
+    "frames": 107,
+    "fps": 24,
+    "sampler": "res_multistep",
+    "scheduler": "simple",
+    "steps": 25,
+    "seed": 20260923,
+    "ref_image_size": "max",
+    "turbo": false
+  },
+  "factor": "precision_profile",
+  "a": {
+    "value": "bf16",
+    "job_id": "243fdd75-528d-42e7-b0b7-a10e2bda0c63",
+    "output": "~/Desktop/MiniMax_H3_BF16_identity_test_20260923.mp4",
+    "output_sha256": "f374c923a42b0a0601dd0d1e61a3e1479d7bb9d81b0ff887bcf77c6a444d1947",
+    "server_execution_seconds": 303.8
+  },
+  "b": {
+    "value": "int8_full",
+    "job_id": "706cc19a-85b6-4a58-b43b-70e56d53d382",
+    "output": "~/Desktop/MiniMax_H3_INT8_identity_test_20260923.mp4",
+    "output_sha256": "4ce5a6ee11c48dec989cb210ebde858531a4fb1e7cb112ce36416f75196f6a4d",
+    "server_execution_seconds": 253.68
+  },
+  "evaluation": {
+    "identity": null,
+    "prompt_adherence": null,
+    "motion_physics": null,
+    "camera": null,
+    "lighting_materials": null,
+    "temporal_stability": null,
+    "audio_sync": null,
+    "artifact_severity": null,
+    "pair_diagnostics": {
+      "video_psnr_db": 33.695822,
+      "video_ssim": 0.964904,
+      "audio_psnr_db": [161.794, 161.852]
+    },
+    "notes": "Pair diagnostics measure difference between outputs, not quality. Score blind before revealing A/B labels. Repeat with at least two additional seeds."
+  }
+}

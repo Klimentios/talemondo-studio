@@ -1,0 +1,28 @@
+.preset-art:has(.motion-preview),.director-tile-art:has(.motion-preview){background:#111c2a}
+.director-tile-art:has(.motion-preview):after{display:none}
+.motion-preview{position:relative;display:block;width:100%;height:100%;overflow:hidden;border-radius:inherit;background:linear-gradient(160deg,#233b52,#101b29 72%);isolation:isolate}
+.motion-scene{display:block;width:100%;height:100%;overflow:visible}
+.motion-world{transform-origin:50% 56%}
+.motion-horizon{fill:#234058}.motion-building{fill:#2c4963;stroke:#88a6bd;stroke-width:1}.motion-window{fill:#f4c475}.motion-road{fill:#162332}.motion-road-mark{fill:none;stroke:#e0b770;stroke-width:3;stroke-dasharray:15 9}.motion-subject{fill:#e6b565;stroke:#fae3ad;stroke-width:2}.motion-wheel{fill:#101b25;stroke:#b8cbcf;stroke-width:3}.motion-orbit-track{fill:none;stroke:var(--k-accent-text);stroke-width:3;stroke-dasharray:10 6}.motion-reticle{fill:none;stroke:#d8ebff;stroke-width:3;opacity:.72}
+.motion-direction{position:absolute;right:8px;bottom:7px;display:grid;place-items:center;min-width:25px;height:23px;padding:0 5px;border:1px solid #c6d9e880;border-radius:6px;background:#07131bc9;color:#f5de9e;font-size:17px;font-weight:800;line-height:1;box-shadow:0 2px 9px #0008}
+.motion-preview[data-motion=push] .motion-world{animation:motion-push 3.6s ease-in-out infinite alternate}
+.motion-preview[data-motion=pull] .motion-world{animation:motion-pull 3.6s ease-in-out infinite alternate}
+.motion-preview[data-motion=track] .motion-world{animation:motion-track 3.2s linear infinite alternate}
+.motion-preview[data-motion=side] .motion-world{animation:motion-side 3s ease-in-out infinite alternate}
+.motion-preview[data-motion=pan] .motion-world{animation:motion-pan 4s ease-in-out infinite alternate}
+.motion-preview[data-motion=tilt] .motion-world{animation:motion-tilt 3.4s ease-in-out infinite alternate}
+.motion-preview[data-motion=handheld] .motion-world{animation:motion-handheld 2.2s linear infinite}
+.motion-preview[data-motion=crane] .motion-world{animation:motion-crane 3.8s ease-in-out infinite alternate}
+.motion-preview[data-motion=orbit] .motion-world{animation:motion-orbit 4s ease-in-out infinite}
+.motion-preview[data-motion=orbit] .motion-orbit-track{animation:motion-orbit-track 4s linear infinite}
+@keyframes motion-push{to{transform:translate(0,7%) scale(1.34)}}
+@keyframes motion-pull{from{transform:translate(0,7%) scale(1.34)}to{transform:translate(0,0) scale(1)}}
+@keyframes motion-track{from{transform:translateX(12%)}to{transform:translateX(-12%)}}
+@keyframes motion-side{from{transform:translateX(15%)}to{transform:translateX(-15%)}}
+@keyframes motion-pan{from{transform:translateX(17%)}to{transform:translateX(-17%)}}
+@keyframes motion-tilt{from{transform:translateY(12%)}to{transform:translateY(-12%)}}
+@keyframes motion-handheld{0%,100%{transform:translate(0,0) rotate(0)}20%{transform:translate(1%,.6%) rotate(.8deg)}45%{transform:translate(-.8%,-.5%) rotate(-.6deg)}70%{transform:translate(.5%,-.7%) rotate(.5deg)}}
+@keyframes motion-crane{from{transform:translateY(15%) scale(1.1)}to{transform:translateY(-15%) scale(.95)}}
+@keyframes motion-orbit{0%{transform:scale(.85) skewX(-7deg)}25%{transform:scale(1.02) skewX(0)}50%{transform:scale(1.12) skewX(7deg)}75%{transform:scale(1.02) skewX(0)}100%{transform:scale(.85) skewX(-7deg)}}
+@keyframes motion-orbit-track{to{stroke-dashoffset:-64}}
+@media(prefers-reduced-motion:reduce){.motion-preview .motion-world,.motion-preview .motion-orbit-track{animation:none!important}}

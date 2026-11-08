@@ -1,0 +1,40 @@
+body.scene-view .scene-entity-rail { padding: 10px 12px; border: 1px solid #303848; border-radius: 11px; background: #11151d; }
+body.scene-view .scene-entity-select strong { font-size: 12px; }
+body.scene-view .scene-entity-select small { font-size: 11px; }
+body.scene-view #scene-idea {  border-color: #303848;  }
+body.scene-view .scene-command-row { gap: 9px; }
+body.scene-view .scene-idea-details summary { font-size: 11px; }
+body.scene-view .scene-mode-bar {   border-color: #303848;   }
+body.scene-view .storyboard-zone { padding: 15px; border-color: #303848; background: #11151d; }
+body.scene-view .storyboard-zone>h3 { font-size: 14px; }
+body.scene-view .storyboard-hint { color: #a7b1c1; font-size: 11px; line-height: 1.5; }
+body.scene-view .storyboard-zone[aria-label="Раскадровка"] { gap: 8px 14px; padding: 15px; }
+body.scene-view .storyboard-mini-top small,
+body.scene-view .storyboard-mini small,
+body.scene-view .storyboard-mini-labels>span,
+body.scene-view .storyboard-mini-take,
+body.scene-view .storyboard-mini-no-takes,
+body.scene-view .storyboard-mini-generate { font-size: 11px; }
+body.scene-view .storyboard-mini-reference span { font-size: 11px; }
+body.scene-view .storyboard-bible-ref { border-color: #364151; background: #171d27; }
+body.scene-view .storyboard-bible-title strong,
+body.scene-view .storyboard-bible-copy>small,
+body.scene-view .storyboard-bible-settings summary,
+body.scene-view .storyboard-bible-settings select,
+body.scene-view .storyboard-bible-settings input { font-size: 11px; }
+body.scene-view .storyboard-drop button { min-height: 32px; font-size: 11px; }
+body.scene-view :is(button,a,input,select,textarea,summary):focus-visible { outline: 2px solid var(--k-accent-text); outline-offset: 2px; }
+@media (max-width: 1050px) {
+  body.scene-view .storyboard { grid-template-columns: minmax(0,1fr); grid-template-areas: 'board' 'assembly' 'assets'; }
+  body.scene-view .storyboard-zone[aria-label="Ресурсы этой сцены"] { position: static; max-height: none; }
+}
+@media (max-width: 700px) {
+  body.scene-view .page { padding: 12px 10px 60px; }
+  body.scene-view #sceneRail { gap: 9px; }
+  body.scene-view .scene-mode-bar { align-items: stretch; padding: 10px; }
+  body.scene-view .scene-mode-tabs { width: 100%; }
+  body.scene-view .scene-mode-tabs a { min-height: 34px; }
+  body.scene-view .storyboard-zone[aria-label="Раскадровка"] { padding: 12px; }
+  body.scene-view .storyboard-grid { min-height: 225px; max-height: 290px; }
+  body.scene-view .storyboard-inspector { max-height: none; }
+}

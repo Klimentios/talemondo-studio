@@ -1,0 +1,239 @@
+{
+ "model": "qwen-golden",
+ "temperature": 0,
+ "max_tokens": 3667,
+ "messages": [
+  {
+   "role": "system",
+   "content": "You are a MiniMax H3 film director and reference continuity supervisor. Extract visible design evidence precisely; never claim pixel-exact reproduction is guaranteed. Return only a valid plan matching the supplied strict JSON schema. Use only supplied asset IDs."
+  },
+  {
+   "role": "user",
+   "content": [
+    {
+     "type": "text",
+     "text": "Read the brief and inspect every attached reference image/frame closely. Assign exactly one role to each asset_id and preserve the user's explicit role override when present. Infer style, camera, motion, audio intent and scene keyframes. Never invent a reference ID. Choose ControlNet only when a selected source video and the brief justify structural control. Do not invent lighting/camera numeric values when the brief has no camera move; use camera_state null. For every visual asset, list concise concrete details that are actually visible in visual_evidence: for identity/character sheets include face and feature shapes, eyes, brows, nose/muzzle, hair/fur, head/body proportions, skin/fur colors, costume/accessories, hands and silhouette where visible; for style references include animation medium, linework, shape design, palette, shading, texture and light; for motion video include gesture, timing, anticipation, follow-through and secondary motion; for camera video include framing, movement, perspective and focus only when visually evidenced. Omit details not visible in the sampled frames. Do not transfer a style reference's characters/background, or an identity reference's background/composition, unless separately assigned those roles. Audio assets must use an empty visual_evidence list. Translate the emotional intent already present in the user's brief into visible, timed performance beats. Describe a readable progression when the story contains a change: baseline, trigger, anticipation/build, peak reaction, hold, and release. Name concrete cues suited to the subject and shot: for people, gaze, eyelids, brows, cheeks, jaw, mouth, breath and shoulders; for animals, eyes/pupils, ears, whiskers, muzzle, head, posture, weight and visible tail; for stylized 2D/3D characters, use their drawn or rigged shape language. For actor replacement, keep the mapped identity while directing the replacement's acting. Keep each visible character's emotion and reaction separate. Do not invent story beats or transfer emotion between subjects. Keep supplied timecodes; when none exist, describe relative beat order without inventing new events or dialogue. If the brief has no emotional change, preserve its baseline and use only restrained natural micro-expression, blinking and breathing. Keep expressions stable between beats; no random grimacing or jitter. Put these concrete acting beats in additional_direction.\nFrame count: 125. Studio style selection: auto (honor this explicit selection; use prompt inference only when auto). Studio structural-control selection: none (honor pose/canny/none exactly; infer only when auto). If multiple visible performers appear in one source video, preserve their separate screen positions, choreography and camera timing. Map each supplied identity picture to a source performer only when the user explicitly names that pairing; never swap identities or invent a pairing. Audio file bytes are not supplied for listening: do not claim to recognize their contents; honor the selected audio role and the user's text only. User prompt (retain its meaning):\nAUDIO DIRECTION: Generate rich synchronized native stereo audio for the scene, including voices when requested, physical sound effects, ambience, room tone and appropriate music. Keep every audible event synchronized with the visible action and camera distance.\n\nVOICE PERFORMANCE DIRECTION: Cast each named speaking character with a distinct, stable voice suited to the character's age, species and identity. A child uses a child voice, not an adult voice. A non-speaking animal uses natural species vocalizations; if the story explicitly gives an animal human speech, retain its animal identity and assign a distinct character voice. Follow the written dialogue and dramatic beats precisely. Convey each stated emotion through pacing, emphasis, breath, pauses, pitch and intonation, while keeping the same voice identity through the shot. Do not invent dialogue or exchange voices between speakers.\n\nCHARACTER REFERENCE BINDINGS:\n<Subject 1> is ADAM; body and silhouette from <Picture 1>. This is one character. Do not transfer these traits to any other Subject.\n<Subject 2> is MARTIN; face and identity from <Picture 2>. This is one character. Do not transfer these traits to any other Subject.\n\nREFERENCE ROLE CONTRACT: <Picture 1> belongs to ADAM only and defines this character's full-body design and silhouette. <Picture 2> belongs to MARTIN only and defines this character's face and identity only. <Picture 3> defines the location and set dressing only.\n\nADAM <Picture 1> and MARTIN <Picture 2> meet in the workshop <Picture 3>. ADAM laughs and pats MARTIN on the shoulder; MARTIN answers with a tired smile.\nReferences follow with stable IDs and kinds.\nReturn compact JSON without indentation. camera_state must be null; Studio already supplies the exact camera geometry. Do not rewrite or quote the screenplay, dialogue, timeline, reference bindings or preset settings. The original brief is passed to H3 unchanged. Return only concise observed reference evidence and additional acting cues that are missing from that brief, preserving all its emotional beats. Do not fill additional_direction with a repetition of the user's text."
+    },
+    {
+     "type": "text",
+     "text": "Asset 00000000-0000-0000-0000-000000000001; kind=image; visible tag=Picture 1; user role override=identity."
+    },
+    {
+     "type": "text",
+     "text": "Visual sample 1 of Picture 1 (asset 00000000-0000-0000-0000-000000000001)."
+    },
+    {
+     "type": "image_url",
+     "image_url": {
+      "url": "data:image/jpeg;base64,ZnJhbWU="
+     }
+    },
+    {
+     "type": "text",
+     "text": "Asset 00000000-0000-0000-0000-000000000002; kind=image; visible tag=Picture 2; user role override=identity."
+    },
+    {
+     "type": "text",
+     "text": "Visual sample 1 of Picture 2 (asset 00000000-0000-0000-0000-000000000002)."
+    },
+    {
+     "type": "image_url",
+     "image_url": {
+      "url": "data:image/jpeg;base64,ZnJhbWU="
+     }
+    },
+    {
+     "type": "text",
+     "text": "Asset 00000000-0000-0000-0000-000000000003; kind=image; visible tag=Picture 3; user role override=scene."
+    },
+    {
+     "type": "text",
+     "text": "Visual sample 1 of Picture 3 (asset 00000000-0000-0000-0000-000000000003)."
+    },
+    {
+     "type": "image_url",
+     "image_url": {
+      "url": "data:image/jpeg;base64,ZnJhbWU="
+     }
+    }
+   ]
+  }
+ ],
+ "response_format": {
+  "type": "json_schema",
+  "json_schema": {
+   "name": "h3_director_plan",
+   "strict": true,
+   "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+     "schema_version",
+     "references",
+     "style",
+     "additional_direction",
+     "control",
+     "camera_state",
+     "guide_frames",
+     "quality_intent",
+     "audio_intent"
+    ],
+    "properties": {
+     "schema_version": {
+      "type": "integer",
+      "enum": [
+       1
+      ]
+     },
+     "references": {
+      "type": "array",
+      "items": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "asset_id",
+        "role",
+        "fidelity",
+        "visual_evidence"
+       ],
+       "properties": {
+        "asset_id": {
+         "type": "string",
+         "enum": [
+          "00000000-0000-0000-0000-000000000001",
+          "00000000-0000-0000-0000-000000000002",
+          "00000000-0000-0000-0000-000000000003"
+         ]
+        },
+        "role": {
+         "type": "string",
+         "enum": [
+          "identity",
+          "wardrobe",
+          "prop",
+          "style",
+          "lighting",
+          "color",
+          "scene",
+          "keyframe",
+          "motion",
+          "camera",
+          "motion_camera",
+          "structure",
+          "voice",
+          "music",
+          "sfx",
+          "ambience",
+          "source"
+         ]
+        },
+        "fidelity": {
+         "type": "string",
+         "enum": [
+          "fully_preserved",
+          "partly_preserved",
+          "attribute_transfer",
+          "weak_inspiration"
+         ]
+        },
+        "visual_evidence": {
+         "type": "array",
+         "maxItems": 6,
+         "items": {
+          "type": "string",
+          "maxLength": 180
+         }
+        }
+       }
+      },
+      "minItems": 3,
+      "maxItems": 3
+     },
+     "style": {
+      "type": "string",
+      "enum": [
+       "realism",
+       "animation_2d",
+       "animation_3d",
+       "illustration"
+      ]
+     },
+     "additional_direction": {
+      "type": "string",
+      "maxLength": 2300
+     },
+     "control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "type",
+       "source_asset_id",
+       "people",
+       "strength"
+      ],
+      "properties": {
+       "type": {
+        "type": "string",
+        "enum": [
+         "none"
+        ]
+       },
+       "source_asset_id": {
+        "type": "null"
+       },
+       "people": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 4
+       },
+       "strength": {
+        "type": "number",
+        "minimum": 0.0,
+        "maximum": 2.0
+       }
+      }
+     },
+     "camera_state": {
+      "type": "null"
+     },
+     "guide_frames": {
+      "type": "array",
+      "maxItems": 9,
+      "items": {
+       "type": "object",
+       "additionalProperties": false,
+       "required": [
+        "asset_id",
+        "frame_idx"
+       ],
+       "properties": {
+        "asset_id": {
+         "type": "string"
+        },
+        "frame_idx": {
+         "type": "integer",
+         "minimum": 0
+        }
+       }
+      }
+     },
+     "quality_intent": {
+      "type": "string",
+      "enum": [
+       "draft",
+       "final"
+      ]
+     },
+     "audio_intent": {
+      "type": "string",
+      "enum": [
+       "native_stereo_effects_music",
+       "preserve_reference_audio",
+       "silent"
+      ]
+     }
+    }
+   }
+  }
+ }
+}

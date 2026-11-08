@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru" data-boot-hold>
+<head>
+  <meta charset="utf-8">
+  <script src="/page-boot.js?v=20261107-fixed-rail-1"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="/assets/talemondo-mark.svg">
+  <title>Свои воркфлоу — TaleMondo</title>
+  <link rel="stylesheet" href="/tokens.css?v=20261102-unified-1">
+  <link rel="stylesheet" href="/components.css?v=20261101-studio-finish-1">
+  <link rel="stylesheet" href="/studio-rail.css?v=20261107-fixed-rail-1">
+  <link rel="stylesheet" href="/studio-glass.css?v=20261102-status-2">
+  <link rel="stylesheet" href="/studio-system.css?v=20261102-talemondo-2">
+  <link rel="stylesheet" href="/workflows.css?v=20261108-graph-ops-1">
+  <meta name="application-name" content="TaleMondo">
+</head>
+<body class="wf-page">
+  <aside class="studio-rail"></aside>
+  <main class="wf-main">
+    <header class="wf-top">
+      <div>
+        <span class="wf-kicker">COMFYUI</span>
+        <h1>Свои воркфлоу</h1>
+        <p class="wf-hint">Любой граф ComfyUI становится кнопкой: Studio сама находит фото, видео, звук, промпты и seed. Тот же воркфлоу доступен по API и агентам (MCP <code>workflow_run</code>). Отдельно от H3-производства: принятый рецепт не меняется.</p>
+      </div>
+      <div class="wf-actions">
+        <label class="k-btn" for="wfFile">Импорт JSON</label>
+        <input id="wfFile" type="file" accept=".json,application/json" hidden>
+        <button id="wfInbox" type="button" class="k-btn">Из ComfyUI</button>
+        <button id="wfFork" type="button" class="k-btn">Из задания или рецепта</button>
+        <a class="k-btn k-btn--ghost" href="/comfy-nodes.html">Узлы и модели</a>
+      </div>
+    </header>
+    <p id="wfStatus" class="wf-status" role="status" aria-live="polite"></p>
+    <section id="wfInboxList" class="k-panel wf-inbox" hidden></section>
+    <div class="wf-layout">
+      <nav id="wfList" class="wf-list" aria-label="Воркфлоу"></nav>
+      <section id="wfDetail" class="wf-detail"></section>
+    </div>
+  </main>
+  <script type="module" src="/studio-rail.mjs?v=20261107-fixed-rail-1"></script>
+  <script type="module" src="/workflows.mjs?v=20261108-graph-ops-1"></script>
+</body>
+</html>

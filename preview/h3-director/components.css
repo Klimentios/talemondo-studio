@@ -1,0 +1,111 @@
+/* STUDIO Studio shared components: buttons, chips, fields, panels. Uses tokens.css only.
+   Loaded after page CSS and before studio-rail.css on every Studio page.
+
+   New markup: <button class="k-btn">, add k-btn--primary | --accent | --ghost | --danger,
+   and --sm / --pill for size and shape.
+
+   The "unify" section maps older per-page button classes onto the same looks. Older page
+   files style these buttons several times over (some with !important), so the visual
+   identity here is !important on purpose: this file is the one that decides how a primary
+   or secondary button looks. Layout (width, height, padding) stays with the page. */
+
+/* ---------- Base page ---------- */
+html, body { background-color: var(--k-canvas); }
+body { color: var(--k-text); font-family: var(--k-font); }
+:focus-visible { outline: 2px solid var(--k-focus); outline-offset: 2px; }
+
+/* ---------- Button API ---------- */
+.k-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  min-height: 38px; padding: 0 15px; box-sizing: border-box;
+  border: 1px solid var(--k-line); border-radius: var(--k-radius);
+  background: var(--k-surface-raised); color: var(--k-text);
+  font: 650 13px/1.15 var(--k-font); text-decoration: none; white-space: nowrap; cursor: pointer;
+  transition: background .18s, border-color .18s, color .18s, box-shadow .18s;
+}
+.k-btn:hover:not(:disabled) { border-color: var(--k-line-strong); background: var(--k-surface-hover); box-shadow: 0 5px 16px color-mix(in srgb, var(--k-rail) 65%, transparent); }
+.k-btn:disabled, .k-btn[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
+.k-btn--primary { border-color: transparent; background: var(--k-primary); color: var(--k-primary-ink); font-weight: 750; box-shadow: 0 6px 22px color-mix(in srgb, var(--k-primary) 14%, transparent); }
+.k-btn--primary:hover:not(:disabled) { border-color: transparent; background: var(--k-primary-hover); }
+.k-btn--accent { border-color: var(--k-accent-line); background: var(--k-accent-soft); color: var(--k-accent-text); }
+.k-btn--accent:hover:not(:disabled) { border-color: var(--k-accent); background: #45372b; }
+.k-btn--ghost { border-color: transparent; background: transparent; color: var(--k-muted); }
+.k-btn--ghost:hover:not(:disabled) { border-color: transparent; background: var(--k-surface-raised); color: var(--k-text); }
+.k-btn--danger { border-color: #6b3a3a; background: transparent; color: var(--k-bad); }
+.k-btn--danger:hover:not(:disabled) { border-color: var(--k-bad); background: #2a1b1b; }
+.k-btn--sm { min-height: 30px; padding: 0 10px; font-size: 12px; }
+.k-btn--pill { border-radius: var(--k-radius-pill); }
+
+/* Chips: toggles and filters. Selected = aria-pressed / .active / .selected */
+.k-chip {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 0 12px;
+  border: 1px solid var(--k-line); border-radius: var(--k-radius-pill);
+  background: var(--k-surface); color: var(--k-muted); font: 600 12px/1 var(--k-font); cursor: pointer;
+}
+.k-chip:hover { color: var(--k-text); border-color: var(--k-line-strong); }
+.k-chip[aria-pressed="true"], .k-chip.active, .k-chip.selected {
+  border-color: var(--k-accent-line); background: var(--k-accent-soft); color: var(--k-accent-text);
+}
+
+/* Fields and panels */
+.k-field {
+  min-height: 38px; padding: 0 12px; box-sizing: border-box;
+  border: 1px solid var(--k-line); border-radius: var(--k-radius);
+  background: var(--k-inset); color: var(--k-text); font: 13px var(--k-font);
+}
+.k-field:focus { border-color: var(--k-primary); outline: 2px solid color-mix(in srgb, var(--k-primary) 20%, transparent); outline-offset: 1px; }
+.k-panel { border: 1px solid var(--k-line-soft); border-radius: var(--k-radius-lg); background: var(--k-surface); box-shadow: var(--k-shadow); }
+
+/* ---------- Unify: older page classes ---------- */
+/* :root:not(#k) adds id-level specificity so these beat the older chained page selectors. */
+
+/* Primary: the one main action of a screen */
+:root:not(#k) :is(.send-button, .mc-generate, .look-primary, .compute-primary, .storyboard-primary,
+  .audio-page #renderAudio, .editor-app #export):not(:disabled) {
+  border-color: transparent !important; background: var(--k-primary) !important;
+  color: var(--k-primary-ink) !important; box-shadow: none !important;
+}
+:root:not(#k) :is(.send-button, .mc-generate, .look-primary, .compute-primary, .storyboard-primary,
+  .audio-page #renderAudio, .editor-app #export):not(:disabled):hover {
+  background: var(--k-primary-hover) !important;
+}
+:root:not(#k) :is(.send-button, .mc-generate, .look-primary, .compute-primary, .storyboard-primary,
+  .audio-page #renderAudio, .editor-app #export):disabled {
+  border-color: var(--k-line) !important; background: var(--k-surface-raised) !important;
+  color: var(--k-faint) !important; box-shadow: none !important;
+}
+
+/* Secondary: ordinary actions next to content */
+:root:not(#k) :is(.job-card .job-actions :is(button, a, summary), .job-more-content > button, .queue-controls > button,
+  .audio-page #saveProject, .audio-page #addLine, .audio-page #exportPlan,
+  .context-review > button, .look-page .look-section-head button:not(.look-primary),
+  .look-page #newDraft, .look-page #refreshAvailability, .editor-app .project-actions > button) {
+  border: 1px solid var(--k-line) !important; border-radius: var(--k-radius) !important;
+  background: var(--k-surface-raised) !important; color: var(--k-text) !important; box-shadow: none !important;
+}
+:root:not(#k) :is(.job-card .job-actions :is(button, a, summary), .job-more-content > button, .queue-controls > button,
+  .audio-page #saveProject, .audio-page #addLine, .audio-page #exportPlan,
+  .context-review > button, .look-page .look-section-head button:not(.look-primary),
+  .look-page #newDraft, .look-page #refreshAvailability, .editor-app .project-actions > button):hover:not(:disabled) {
+  border-color: var(--k-line-strong) !important; background: var(--k-surface-hover) !important;
+}
+
+/* Chips: presets and filters; the chosen one takes the accent */
+:root:not(#k) :is(.reference-types > button, .voice-presets > button) {
+  border: 1px solid var(--k-line) !important; border-radius: var(--k-radius-pill) !important;
+  background: var(--k-surface) !important; color: var(--k-muted) !important;
+}
+:root:not(#k) :is(.reference-types > button, .voice-presets > button):is(.active, .selected, [aria-pressed="true"]) {
+  border-color: var(--k-accent-line) !important; background: var(--k-accent-soft) !important; color: var(--k-accent-text) !important;
+}
+
+/* Accent: the positive secondary action next to a result (download) */
+:root:not(#k) :is(.job-card .job-actions .job-download) {
+  border-color: var(--k-accent-line) !important; background: var(--k-accent-soft) !important; color: var(--k-accent-text) !important;
+}
+:root:not(#k) :is(.job-card .job-actions .job-download):hover {
+  border-color: var(--k-accent) !important; background: #45372b !important;
+}
+
+/* The hidden attribute always wins over a component display rule (e.g. .control-pill { display: inline-flex }). */
+[hidden] { display: none !important; }

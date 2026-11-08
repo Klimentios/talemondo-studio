@@ -1,0 +1,267 @@
+{
+ "92": {
+  "inputs": {
+   "filename_prefix": "video/MiniMax_H3_Studio",
+   "format": "auto",
+   "format.codec": "auto",
+   "codec": "auto",
+   "video": [
+    "130",
+    0
+   ]
+  },
+  "class_type": "SaveVideo",
+  "_meta": {
+   "title": "Сохранить видео"
+  }
+ },
+ "119": {
+  "inputs": {
+   "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+  },
+  "class_type": "VAELoader",
+  "_meta": {
+   "title": "Видео VAE"
+  }
+ },
+ "120": {
+  "inputs": {
+   "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+  },
+  "class_type": "VAELoader",
+  "_meta": {
+   "title": "Аудио VAE"
+  }
+ },
+ "121": {
+  "inputs": {
+   "samples": [
+    "125",
+    0
+   ],
+   "vae": [
+    "120",
+    0
+   ]
+  },
+  "class_type": "VAEDecodeAudio",
+  "_meta": {
+   "title": "Декодировать аудио"
+  }
+ },
+ "122": {
+  "inputs": {
+   "samples": [
+    "125",
+    0
+   ],
+   "vae": [
+    "119",
+    0
+   ]
+  },
+  "class_type": "VAEDecode",
+  "_meta": {
+   "title": "Декодировать видео"
+  }
+ },
+ "123": {
+  "inputs": {
+   "sampler_name": "res_multistep"
+  },
+  "class_type": "KSamplerSelect",
+  "_meta": {
+   "title": "Сэмплер"
+  }
+ },
+ "124": {
+  "inputs": {
+   "scheduler": "simple",
+   "steps": 25,
+   "denoise": 1.0,
+   "model": [
+    "310",
+    0
+   ]
+  },
+  "class_type": "BasicScheduler",
+  "_meta": {
+   "title": "Base — 25 шагов"
+  }
+ },
+ "125": {
+  "inputs": {
+   "noise": [
+    "129",
+    0
+   ],
+   "guider": [
+    "126",
+    0
+   ],
+   "sampler": [
+    "123",
+    0
+   ],
+   "sigmas": [
+    "124",
+    0
+   ],
+   "latent_image": [
+    "136",
+    1
+   ]
+  },
+  "class_type": "SamplerCustomAdvanced",
+  "_meta": {
+   "title": "Генерация"
+  }
+ },
+ "126": {
+  "inputs": {
+   "model": [
+    "310",
+    0
+   ],
+   "conditioning": [
+    "136",
+    0
+   ]
+  },
+  "class_type": "BasicGuider",
+  "_meta": {
+   "title": "Гид"
+  }
+ },
+ "127": {
+  "inputs": {
+   "unet_name": "minimax_h3_ref2va_bf16.safetensors",
+   "weight_dtype": "default"
+  },
+  "class_type": "UNETLoader",
+  "_meta": {
+   "title": "Полная MiniMax H3 Ref2VA"
+  }
+ },
+ "128": {
+  "inputs": {
+   "clip_name": "qwen3vl_32b_minimax_h3_bf16.safetensors",
+   "type": "minimax",
+   "device": "default"
+  },
+  "class_type": "CLIPLoader",
+  "_meta": {
+   "title": "Полный текстовый энкодер"
+  }
+ },
+ "129": {
+  "inputs": {
+   "noise_seed": 4242424242
+  },
+  "class_type": "RandomNoise",
+  "_meta": {
+   "title": "Seed"
+  }
+ },
+ "130": {
+  "inputs": {
+   "fps": 24.0,
+   "bit_depth": 8,
+   "color_space": "sRGB",
+   "codec": "none",
+   "images": [
+    "122",
+    0
+   ],
+   "audio": [
+    "121",
+    0
+   ]
+  },
+  "class_type": "CreateVideo",
+  "_meta": {
+   "title": "Собрать MP4"
+  }
+ },
+ "137": {
+  "inputs": {
+   "image": "picture1.png"
+  },
+  "class_type": "LoadImage",
+  "_meta": {
+   "title": "@ref1"
+  }
+ },
+ "138": {
+  "inputs": {
+   "file": "video1.mp4"
+  },
+  "class_type": "LoadVideo",
+  "_meta": {
+   "title": "@video1"
+  }
+ },
+ "139": {
+  "inputs": {
+   "video": [
+    "138",
+    0
+   ]
+  },
+  "class_type": "GetVideoComponents",
+  "_meta": {
+   "title": "@video1 components"
+  }
+ },
+ "136": {
+  "inputs": {
+   "width": 640,
+   "height": 1152,
+   "length": 124,
+   "ref_image_size": "max",
+   "clip": [
+    "128",
+    0
+   ],
+   "vae": [
+    "119",
+    0
+   ],
+   "audio_vae": [
+    "120",
+    0
+   ],
+   "ref_images.ref_image_0": [
+    "137",
+    0
+   ],
+   "ref_videos.ref_video_0": [
+    "139",
+    0
+   ],
+   "prompt": "AUDIO DIRECTION: Generate rich synchronized native stereo audio for the scene, including voices when requested, physical sound effects, ambience, room tone and appropriate music. Keep every audible event synchronized with the visible action and camera distance.\n\nVOICE PERFORMANCE DIRECTION: Cast each named speaking character with a distinct, stable voice suited to the character's age, species and identity. A child uses a child voice, not an adult voice. A non-speaking animal uses natural species vocalizations; if the story explicitly gives an animal human speech, retain its animal identity and assign a distinct character voice. Follow the written dialogue and dramatic beats precisely. Convey each stated emotion through pacing, emphasis, breath, pauses, pitch and intonation, while keeping the same voice identity through the shot. Do not invent dialogue or exchange voices between speakers.\n\nCHARACTER REFERENCE BINDINGS:\n<Subject 1> is ADAM; body and silhouette from <Picture 1>. This is one character. Do not transfer these traits to any other Subject.\nattribute_transfer: only the body motion, pose progression and action timing of the visible person in <Video 1> are transferred onto ADAM. ADAM's hairstyle, hair length, hair color, facial hair or clean-shaven face, face and visible anatomical features come only from <Picture 1> and stay exactly as pictured in every frame, including fast turns and motion blur. Hair moves only as secondary motion of ADAM's own pictured hairstyle. Clothing follows its assigned costume reference.\n\nREFERENCE ROLE CONTRACT: <Picture 1> belongs to ADAM only and defines this character's full-body design and silhouette. <Video 1> belongs to ADAM only and provides the assigned performer's choreography, timing, gestures and expressions together with camera movement and framing; retarget the performance to the named character's own anatomy, build and hands from the assigned identity pictures and brief, with wardrobe from the assigned costume picture; the performer supplies performance, not appearance or graphic design; use an original unbranded location inspired only by source spatial relationships, with original lighting unless a separate environment or lighting reference is assigned; preserve source framing and focus rather than introducing close-ups or background defocus; do not reproduce source logos, lettering, captions, usernames, interface graphics or watermarks; The target hairstyle retains the silhouette, length, hairline and colors visible in its identity picture, including the shape around the ears, nape and shoulders. Hair motion follows that target hairstyle's own length and volume..\n\nADAM <Picture 1> repeats the movement and camera of <Video 1> in a snowy yard."
+  },
+  "class_type": "MiniMaxH3ReferenceToVideo",
+  "_meta": {
+   "title": "MiniMax H3 Ref2VA"
+  }
+ },
+ "310": {
+  "inputs": {
+   "model": [
+    "127",
+    0
+   ],
+   "mode": "H3 Fast — 0.10 / max 2",
+   "threshold": 0.08,
+   "start_percent": 0.1,
+   "end_percent": 0.95,
+   "max_consecutive_hits": 2,
+   "temporal_guard": false
+  },
+  "class_type": "ApplyMiniMaxH3FirstBlockCache",
+  "_meta": {
+   "title": "H3 FirstBlockCache"
+  }
+ }
+}

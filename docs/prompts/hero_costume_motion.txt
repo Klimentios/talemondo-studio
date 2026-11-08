@@ -1,0 +1,23 @@
+subject_definitions:
+<Subject 1> is NOVA, whose face and identity come from <Picture 1> and whose costume comes from <Picture 2>, and whose body motion and action timing is transferred from the separate performer in <Video 1>: [HERO FEATURES EXACTLY AS IN THE PHOTO: age, build, hairstyle and hair color, eye color and shape, eyebrows, nose, lips, freckles or moles, jewelry], wearing [COSTUME AS IN THE PHOTO].
+<Video 1> is the reference for the target video's body motion, action timing and spatial depth.
+
+summary:
+[reference generation] The target video shows <Subject 1> performing the full movement sequence of <Video 1> as one continuous shot in a bright, minimal studio, wearing the costume from <Picture 2>, with her own face and hair from <Picture 1>.
+
+retention_analysis:
+<Subject 1> (appears in [Shot 1]): fully_preserved - NOVA's face and identity, [3-5 KEY FEATURES] and the costume from <Picture 2> are retained, including hairstyle, hair length, hair color and facial features.
+<Video 1> (body motion and action timing): attribute_transfer - only the performer's body motion and action timing are transferred to <Subject 1>; NOVA's hairstyle, hair length, hair color, face, build and clothing stay as in <Picture 1> and <Picture 2>; its on-screen text, captions, logos and title cards stay in the reference file.
+
+detailed_description:
+The target video uses a photorealistic cinematic style with soft, even daylight from large windows, a clean neutral grade, natural skin texture and a 50 mm lens look.
+[Shot 1] A medium-full shot frames <Subject 1>, NOVA, from the knees up in the center of a bright, minimal studio with a pale concrete floor and a soft white wall. She wears [COSTUME] from <Picture 2>, and her [HAIRSTYLE] frames her face exactly as in <Picture 1>, with [KEY FACE FEATURES]. On the first beat she begins the movement of <Video 1> and performs the entire sequence in the same order, rhythm and timing: every step, turn, arm path, hip and shoulder accent, pause and direction change follows the performer's choreography, carried out by NOVA's own body. Each step lands with clear ground contact and weight transfer, the knees absorb every landing, and her arms finish each gesture with a small, natural follow-through. Her hair swings and settles with each turn as secondary motion of her own short hair, and the loose sweater ripples and falls back with every move.
+Her face stays alive and readable throughout. She starts focused, eyebrows slightly lifted and lips gently pressed together as she counts the first beat. As the movement gains energy, her eyes brighten, the corners of her mouth rise into a confident half-smile and her breathing becomes visible in her shoulders and chest. On the strongest accents her eyebrows flash upward and she lets out a short, audible exhale. Whenever her face turns toward the camera she meets the lens for a moment with a playful, self-assured look, then her gaze follows the direction of the movement again. Her face stays crisp and detailed at every moment, with sharp [EYE COLOR] irises, clean catchlights and natural skin texture. Each blink is a quick, crisp eyelid movement, and when her eyes open the irises and pupils are immediately sharp and stable.
+The camera follows the moving subject in a tracking shot at slow speed, travelling with her to keep her framed from the knees up so her head stays large in the frame; when she moves away the camera follows forward, and when she comes closer it eases back. Focus tracks her eyes continuously, with the studio wall falling softly out of focus behind her. The whole frame is clean photographed footage of this scene from the very first frame, pure picture edge to edge.
+In the final moments she completes the last movement of <Video 1>, holds the final pose for a beat, then relaxes her shoulders, breathes out and gives the camera a warm, slightly breathless smile, her hair settling back into place.
+
+overall_soundscape:
+Soft studio room tone, the light rhythmic sound of her footsteps and sneaker squeaks on the concrete floor, the rustle of the loose sweater, and her audible breathing on the strongest accents and at the end.
+
+non_diegetic_music:
+An upbeat, rhythmic modern pop instrumental with a clear beat that matches the tempo of the movement throughout.

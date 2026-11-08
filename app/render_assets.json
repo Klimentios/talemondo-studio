@@ -1,0 +1,94 @@
+{
+  "version": 1,
+  "profiles": {
+    "bf16": {
+      "repo": "Comfy-Org/MiniMax-H3",
+      "revision": "e5eb578a89295337b8ff433a035929ce0279e0b6",
+      "path": "diffusion_models/minimax_h3_ref2va_bf16.safetensors",
+      "filename": "minimax_h3_ref2va_bf16.safetensors",
+      "bytes": 66280487368,
+      "sha256": "e32c54c1a7b4f5f397f195cea267ccb18806303bb665678c4bee60953bdf3026",
+      "label": "BF16 · исходная модель"
+    },
+    "int8_full": {
+      "repo": "Comfy-Org/MiniMax-H3",
+      "revision": "e5eb578a89295337b8ff433a035929ce0279e0b6",
+      "path": "diffusion_models/minimax_h3_ref2va_int8_convrot.safetensors",
+      "filename": "minimax_h3_ref2va_int8_convrot.safetensors",
+      "bytes": 34038894550,
+      "sha256": "9eef934046a0671bc8a5daf87100705e1478419c574cfde70c50fbe6885f76a9",
+      "label": "INT8 ConvRot · полный DiT"
+    },
+    "int8_pruned": {
+      "repo": "Comfy-Org/MiniMax-H3",
+      "revision": "e5eb578a89295337b8ff433a035929ce0279e0b6",
+      "path": "diffusion_models/minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "filename": "minimax_h3_ref2va_pruned_int8_convrot.safetensors",
+      "bytes": 20970379616,
+      "sha256": "9255f52b6677845ad238f20dfaafa94727053694127ab7f255c048f0f9365779",
+      "label": "INT8 ConvRot · pruned DiT"
+    },
+    "w4a8": {
+      "repo": "Winnougan/MiniMax-H3-INT4_Convrot_ComfyUI",
+      "revision": "6387f8cd370fd8b4deaa9aa7e9e1be4d7298e7df",
+      "path": "minimax_h3_ref2va_pruned-w4a8_convrot_pruned.safetensors",
+      "filename": "minimax_h3_ref2va_pruned-w4a8_convrot_pruned.safetensors",
+      "bytes": 12540857840,
+      "sha256": "16be87247dff1f49c7141d6bcde4c0465fc254128e2de60e34aebc744a8177df",
+      "label": "INT4 W4A8 · pruned DiT"
+    },
+    "hybrid_bf16": {
+      "repo": "Winnougan/Cobijada_Minimax-H3_Hybrid_Pruned_ComfyUI",
+      "revision": "d14d58723efadf84de98bc2c3a3613cfedea4d04",
+      "path": "Cobijada_H3_Hybrid_Uncensored_pruned_hybrid_BF16_pruned.safetensors",
+      "filename": "Cobijada_H3_Hybrid_Uncensored_pruned_hybrid_BF16_pruned.safetensors",
+      "bytes": 40225743096,
+      "sha256": "abbc4fea81dd3ef35743fad8a8b2123c67ab0502969cc0128ef1201cf0bf59bf",
+      "label": "Cobijada BF16 · hybrid pruned"
+    },
+    "singularity_int8": {
+      "repo": "WarmBloodAban/Minimax-h3_Singularity",
+      "revision": "d7a254d59c93427175f6ac07e194418e28e20f07",
+      "path": "Minimax-h3_Singularity_ref2va_v2_int8.safetensors",
+      "filename": "Minimax-h3_Singularity_ref2va_v2_int8.safetensors",
+      "bytes": 34004507622,
+      "sha256": "db3ec568863db6f5ec1840210d41653afef73d4df7b0cb489c52ad458b6f8a7f",
+      "label": "Singularity v2 · INT8"
+    }
+  },
+  "adapters": {
+    "orb360": {
+      "repo": "MATLOWAI/MiniMax-H3-ORB360-CardSpin",
+      "revision": "de8aa4db6f9a0d949855f3dc62948ffc691aa6ce",
+      "path": "minimax_h3_orb360_step1500.safetensors",
+      "filename": "minimax_h3_orb360_step1500.safetensors",
+      "bytes": 596450168,
+      "sha256": "e9275b2f456f6bd004c9cb3cf5c636cad87217c5bc96e6a5b5533e917de121da",
+      "label": "ORB360 · облёт",
+      "strength": 1.0,
+      "trigger": "ORB360_CW"
+    },
+    "cardspin": {
+      "repo": "MATLOWAI/MiniMax-H3-ORB360-CardSpin",
+      "revision": "de8aa4db6f9a0d949855f3dc62948ffc691aa6ce",
+      "path": "minimax_h3_orb360_cardspin_v2_step50.safetensors",
+      "filename": "minimax_h3_orb360_cardspin_v2_step50.safetensors",
+      "bytes": 596449416,
+      "sha256": "0e405410ed07c8c63cfb28fa5de3b1f1447b2165fdf5099542b9ad64194a053b",
+      "label": "CardSpin v2 · вращение фото",
+      "strength": 1.0,
+      "trigger": "ORB360_CARDSPIN"
+    },
+    "wushu_r2v_v7": {
+      "repo": "Jojocodex/wushu-action-v7-minimax-h3-fl2va-ref2va-lora",
+      "revision": "4808de9b30812e00c027a05befba283250015d96",
+      "path": "wushu_h3_r2v_v7_2000.safetensors",
+      "filename": "wushu_h3_r2v_v7_2000.safetensors",
+      "bytes": 310167928,
+      "sha256": "f070becda73c65a19a8204384db51bb8204d2303055852172c25aa699589326e",
+      "label": "Wushu Ref2VA v7 · экшен",
+      "strength": 0.5,
+      "trigger": "wushu_action"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+/* «Агент» beside the «Создать видео» form (agent-dock.mjs). Colours and radii: tokens.css only. */
+.ad-toggle { position: fixed; right: 20px; bottom: 20px; z-index: 60; box-shadow: var(--k-shadow); }
+.ad-toggle[aria-expanded="true"] { display: none; }
+.ad-panel { position: fixed; top: 12px; right: 12px; bottom: 12px; z-index: 61; width: min(440px, calc(100vw - 24px));
+  display: flex; flex-direction: column; overflow: hidden; padding: 0;
+  background: var(--k-surface); border: 1px solid var(--k-line); border-radius: var(--k-radius-lg); box-shadow: var(--k-shadow);
+  color: var(--k-text); font-family: var(--k-font); }
+.ad-panel[hidden] { display: none !important; }
+.ad-panel [hidden] { display: none !important; }
+.ad-head { display: flex; align-items: center; gap: 6px; padding: 12px 12px 10px 16px; border-bottom: 1px solid var(--k-line-soft); }
+.ad-title { display: grid; margin-right: auto; }
+.ad-title strong { font-size: 15px; }
+.ad-title small { color: var(--k-faint); font-size: 11.5px; }
+.ad-settings { display: grid; gap: 8px; padding: 10px 16px; border-bottom: 1px solid var(--k-line-soft); }
+.ad-settings select { width: 100%; }
+.ad-row { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.ad-login { margin: 8px 16px 0; padding: 8px 10px; border-radius: var(--k-radius); background: var(--k-inset); color: var(--k-warn); font-size: 12.5px; }
+.ad-head, .ad-settings, .ad-login, .ad-compose { flex: none; }
+/* Flex, not a row grid: the hidden login line used to shift the rows and the messages lost their height limit. */
+.ad-messages { flex: 1 1 auto; min-height: 0; display: grid; align-content: start; gap: 14px; overflow-y: auto;
+  overscroll-behavior: contain; padding: 14px 16px; }
+.ad-empty { display: grid; gap: 8px; color: var(--k-muted); font-size: 13px; line-height: 1.5; }
+.ad-empty p { margin: 0 0 4px; }
+.ad-empty .k-btn { justify-content: flex-start; text-align: left; white-space: normal; height: auto; padding-block: 8px; }
+.ad-msg { display: grid; gap: 8px; min-width: 0; font-size: 13.5px; line-height: 1.55; }
+.ad-user { justify-self: end; max-width: 85%; padding: 8px 12px; border-radius: var(--k-radius-lg); background: var(--k-surface-raised); white-space: pre-wrap; }
+.ad-text { overflow-wrap: anywhere; }
+.ad-text p, .ad-text ul, .ad-text ol { margin: 0 0 6px; }
+.ad-text h4 { margin: 10px 0 4px; font-size: 13.5px; }
+.ad-text code { padding: 1px 4px; border-radius: 4px; background: var(--k-inset); font-size: 12px; }
+.ad-text pre { overflow-x: auto; padding: 8px 10px; border-radius: var(--k-radius); background: var(--k-inset); font-size: 12px; }
+.ad-text pre code { padding: 0; background: none; }
+.ad-text a { color: var(--k-accent); }
+.ad-tools { display: flex; flex-wrap: wrap; gap: 4px; }
+.ad-tool { padding: 2px 8px; border: 1px solid var(--k-line-soft); border-radius: var(--k-radius-pill); color: var(--k-muted); font-family: var(--k-mono); font-size: 11px; }
+.ad-tool.is-started { color: var(--k-info); }
+.ad-tool.is-done { color: var(--k-good); }
+.ad-tool.is-error { color: var(--k-bad); }
+.ad-thinking { margin: 0; color: var(--k-faint); }
+.ad-error { margin: 0; color: var(--k-bad); overflow-wrap: anywhere; }
+.ad-draft { display: grid; gap: 8px; padding: 12px; border: 1px solid var(--k-accent-line); border-radius: var(--k-radius); background: var(--k-accent-soft); }
+.ad-draft header { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.ad-draft header strong { margin-right: 4px; }
+.ad-chip { padding: 1px 8px; border-radius: var(--k-radius-pill); background: var(--k-surface); color: var(--k-muted); font-size: 11.5px; }
+.ad-draft-note { margin: 0; color: var(--k-muted); font-size: 12.5px; }
+.ad-refs { display: flex; flex-wrap: wrap; gap: 6px; }
+.ad-refs figure { display: grid; gap: 2px; width: 62px; margin: 0; }
+.ad-refs img { width: 62px; height: 62px; object-fit: cover; border-radius: var(--k-radius-sm); background: var(--k-inset); }
+.ad-refs figcaption { overflow: hidden; color: var(--k-faint); font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.ad-draft details summary { cursor: pointer; color: var(--k-muted); font-size: 12px; }
+.ad-draft pre { max-height: 260px; margin: 6px 0 0; overflow: auto; padding: 8px 10px; border-radius: var(--k-radius-sm); background: var(--k-inset); white-space: pre-wrap; font-size: 11.5px; }
+.ad-draft-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.ad-draft-result { color: var(--k-muted); font-size: 12px; }
+.ad-compose { display: grid; gap: 8px; padding: 10px 12px 12px; border-top: 1px solid var(--k-line-soft); }
+.ad-input { width: 100%; resize: vertical; min-height: 64px; box-sizing: border-box; }
+.ad-compose .ad-row { justify-content: flex-end; }
+.ad-status { margin-right: auto; color: var(--k-warn); font-size: 12px; }
+.ad-shots { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.ad-shots li { border-radius: var(--k-radius-sm); background: var(--k-surface); }
+.ad-shots summary { display: grid; gap: 1px; padding: 6px 9px; cursor: pointer; }
+.ad-shots summary strong { font-size: 12.5px; }
+.ad-shots summary small { color: var(--k-faint); font-size: 11px; }
+.ad-shots p { margin: 0; padding: 0 9px 6px; color: var(--k-muted); font-size: 12px; }
+.ad-shots pre { margin: 0 9px 8px; }
+.ui-bridge-notice { position: fixed; left: 50%; bottom: 84px; z-index: 70; transform: translateX(-50%); max-width: min(560px, calc(100vw - 32px));
+  padding: 9px 16px; border: 1px solid var(--k-accent-line); border-radius: var(--k-radius-pill); background: var(--k-surface-raised);
+  color: var(--k-text); font: 600 13px var(--k-font); box-shadow: var(--k-shadow); }
+.ui-bridge-notice[hidden] { display: none; }
+.ad-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.ad-pair select { min-width: 0; }
+/* Photos for the agent (agent-attachments.mjs): the tray above the input and the photos of a sent message. */
+.ad-attachments { display: flex; flex-wrap: wrap; gap: 6px; }
+.ad-attachments figure { position: relative; margin: 0; width: 56px; height: 56px; border-radius: var(--k-radius-sm); overflow: hidden; background: var(--k-inset); border: 1px solid var(--k-line-soft); display: grid; place-items: center; color: var(--k-muted); }
+.ad-attachments img { width: 100%; height: 100%; object-fit: cover; }
+.ad-attachments button { position: absolute; top: 2px; right: 2px; width: 18px; height: 18px; padding: 0; border: 0; border-radius: 50%; background: rgba(0, 0, 0, .65); color: #fff; font-size: 12px; line-height: 18px; cursor: pointer; }
+.ad-sent-photos { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.ad-sent-photos img { width: 72px; height: 72px; object-fit: cover; border-radius: var(--k-radius-sm); display: block; }
+.ad-compose.is-dropping, .ad-composer.is-dropping { outline: 2px dashed var(--k-muted); outline-offset: -4px; }
+/* Subscription of the agent (agent-accounts.mjs): pick another account when one hits its usage limit. */
+.agent-accounts { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px; align-items: center; }
+.agent-accounts select { min-width: 0; }
+.agent-accounts-actions { display: flex; gap: 4px; }
+.agent-accounts[hidden] { display: none; }
+.ad-previz-box summary { cursor: pointer; font-size: 12px; color: var(--k-muted); }
+.ad-previz { display: grid; gap: 6px; margin-top: 6px; }
+.ad-previz-plan { width: 100%; max-height: 320px; object-fit: contain; border-radius: var(--k-radius-sm); background: var(--k-inset); }
+.ad-previz ol { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 12px; }
+.ad-previz p { margin: 0; }
+.ad-previz-finding { display: block; color: var(--k-muted); }

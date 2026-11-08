@@ -1,0 +1,111 @@
+/* STUDIO Studio design tokens — the only place colours, radii and the font are defined.
+   Loaded first on every Studio page. Page CSS uses var(--k-*); the older per-page names
+   below are aliases kept so existing rules keep working. New code: use --k-* directly. */
+:root {
+  color-scheme: dark;
+
+  /* Surfaces, from the page background up */
+  --k-rail: #0d0d0f;
+  --k-canvas: #101012;
+  --k-inset: #171719;
+  --k-surface: #222124;
+  --k-surface-raised: #302e32;
+  --k-surface-hover: #39363a;
+
+  /* Glass surfaces for the conversation workspace. */
+  --k-glass: #24232688;
+  --k-glass-strong: #1a191ce8;
+  --k-glass-line: #dbceb138;
+  --k-glass-glow: #c9a766;
+  --k-glass-warm: #b89bd2;
+  --k-glass-action: #f2d181;
+  --k-glass-action-ink: #211b10;
+  --k-neon: #c9a766;
+  --k-neon-hot: #f5d894;
+  --k-neon-cyan: #66dbe9;
+
+  /* Lines and text */
+  --k-line-soft: #343235;
+  --k-line: #484347;
+  --k-line-strong: #6a6265;
+  --k-text: #f5f5ef;
+  --k-muted: #bdc9ca;
+  --k-faint: #96a5a8;
+
+  /* Primary action: one per screen (Создать, Запустить, Экспорт) */
+  --k-primary: #f2d181;
+  --k-primary-hover: #ffe3a0;
+  --k-primary-ink: #211b10;
+
+  /* Brand accent: selection, chosen chips, highlights */
+  --k-accent: #e0be79;
+  --k-accent-hover: #f3d799;
+  --k-accent-soft: #352e20;
+  --k-accent-line: #b49a65;
+  --k-accent-text: #f0dbb1;
+  --k-accent-ink: #241c0f;
+
+  /* Status */
+  --k-good: #79c9b7;
+  --k-warn: #e9c46a;
+  --k-bad: #e57f7f;
+  --k-info: #5d9bd5;
+
+  /* Shape and type */
+  --k-radius-sm: 8px;
+  --k-radius: 11px;
+  --k-radius-lg: 18px;
+  --k-radius-pill: 999px;
+  --k-font: "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --k-mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --k-shadow: 0 20px 54px #0007;
+  --k-focus: var(--k-primary);
+
+  accent-color: var(--k-accent);
+  font-family: var(--k-font);
+
+  /* ---- Aliases for older stylesheets (do not add new ones) ---- */
+  --studio-font: var(--k-font);
+  /* styles.css / editor / audio-refinement / video-look */
+  --ink: var(--k-text); --text: var(--k-text);
+  --muted: var(--k-muted); --subtle: var(--k-muted);
+  --line: var(--k-line); --edge: var(--k-line); --line-strong: var(--k-line-strong);
+  --canvas: var(--k-canvas); --bg: var(--k-canvas);
+  --panel: var(--k-surface); --surface: var(--k-surface);
+  --panel2: var(--k-surface-raised); --panel-raised: var(--k-surface-raised);
+  --surface-raised: var(--k-surface-raised); --raised: var(--k-surface-raised); --soft: var(--k-surface-raised);
+  --accent: var(--k-accent); --purple: var(--k-accent); --focus: var(--k-focus);
+  --accent-pale: var(--k-accent-soft); --accent-soft: var(--k-accent-soft);
+  --acid: var(--k-primary);
+  --success: var(--k-good); --ready: var(--k-good);
+  --shadow: var(--k-shadow);
+  /* product-shell-v2.css */
+  --product-bg: var(--k-canvas); --product-panel: var(--k-surface); --product-panel-2: var(--k-surface-raised);
+  --product-line: var(--k-line); --product-line-strong: var(--k-line-strong);
+  --product-text: var(--k-text); --product-muted: var(--k-muted);
+  --product-lime: var(--k-primary); --product-warm: var(--k-accent);
+  /* studio-shell.css */
+  --studio-canvas: var(--k-canvas); --studio-panel: var(--k-surface); --studio-panel-2: var(--k-surface-raised);
+  --studio-border: var(--k-line); --studio-ink: var(--k-text); --studio-muted: var(--k-muted); --studio-purple: var(--k-accent);
+  /* studio-craft.css */
+  --craft-bg: var(--k-canvas); --craft-surface: var(--k-surface); --craft-soft: var(--k-surface-raised);
+  --craft-line: var(--k-line); --craft-ink: var(--k-text); --craft-muted: var(--k-muted); --craft-accent: var(--k-accent);
+  /* create-workspace.css */
+  --create-bg: var(--k-canvas); --create-panel: var(--k-surface); --create-raised: var(--k-surface-raised);
+  --create-line: var(--k-line); --create-line-strong: var(--k-line-strong);
+  --create-ink: var(--k-text); --create-muted: var(--k-muted); --create-faint: var(--k-faint);
+  --create-accent: var(--k-accent); --create-accent-strong: var(--k-accent); --create-good: var(--k-good);
+  /* audio-product-v2.css */
+  --audio-accent: var(--k-accent); --audio-accent-soft: var(--k-accent-soft); --audio-line: var(--k-line);
+  --audio-panel: var(--k-surface); --audio-panel-2: var(--k-inset); --audio-muted: var(--k-faint);
+  /* motion-control.css */
+  --mc-bg: var(--k-canvas); --mc-panel: var(--k-inset); --mc-card: var(--k-surface); --mc-line: var(--k-line-soft);
+  --mc-text: var(--k-text); --mc-muted: var(--k-faint); --mc-accent: var(--k-primary); --mc-accent-ink: var(--k-primary-ink);
+  --mc-ok: var(--k-good); --mc-warn: var(--k-warn); --mc-bad: var(--k-bad);
+  /* story-canvas.css */
+  --kc-bg: var(--k-canvas); --kc-card: var(--k-surface); --kc-raised: var(--k-surface-raised); --kc-inset: var(--k-inset);
+  --kc-line: var(--k-line-soft); --kc-text: var(--k-text); --kc-muted: var(--k-faint); --kc-accent: var(--k-accent);
+  --kc-good: var(--k-good); --kc-wire: var(--k-info); --kc-bad: var(--k-bad);
+  /* studio-rail.css */
+  --rail-bg: var(--k-rail); --rail-line: #22282e; --rail-text: #c3c9cd; --rail-muted: #8a939a; --rail-accent: var(--k-primary);
+}

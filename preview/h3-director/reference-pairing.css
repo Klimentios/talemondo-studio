@@ -1,0 +1,21 @@
+.reference-pair-button{width:100%;margin-top:5px;padding:5px 6px;border:1px solid var(--k-accent-line);border-radius:6px;background:var(--k-accent-soft);color:var(--k-accent-text);font-size:10px;text-align:center}
+.reference-pair-button:hover,.reference-pair-button:focus-visible{background:var(--k-accent);border-color:var(--k-accent-text)}
+.reference-pair-dialog{width:min(440px,calc(100vw - 24px));padding:22px;border:1px solid var(--k-accent-line);border-radius:16px;background:#1c202b;color:#f6f1fb;box-shadow:0 20px 70px #0009}
+.reference-pair-dialog::backdrop{background:#080d18ba}
+.reference-pair-dialog form{display:grid;gap:14px}
+.reference-pair-dialog h2{font-size:20px}
+.reference-pair-dialog p{color:#b9bbc8;font-size:13px;line-height:1.5}
+.reference-pair-dialog label{display:grid;gap:5px;font-size:13px;font-weight:650}
+.reference-pair-dialog label input[type=text]{width:100%;padding:10px 12px;border:1px solid #5e5872;border-radius:9px;background:#262b39;color:#fff}
+.reference-pair-dialog .reference-pair-keep{display:flex;align-items:center;font-weight:400}
+.reference-pair-actions{display:flex;justify-content:flex-end;gap:8px}
+.reference-pair-actions button{padding:9px 13px;border:1px solid #665a78;border-radius:8px;background:#343244;color:#fff}
+.reference-pair-actions button[type=submit]{border-color:var(--k-accent);background:var(--k-accent)}
+.swap-mask-dialog{width:min(560px,calc(100vw - 24px))}
+.swap-mask-stage{position:relative;width:fit-content;max-width:100%;margin:0 auto;line-height:0}
+.swap-mask-stage video{max-width:100%;max-height:60vh;display:block;border-radius:var(--k-radius-sm)}
+.swap-mask-layer{position:absolute;inset:0;cursor:crosshair;touch-action:none}
+.swap-mask-box{position:absolute;border:2px solid var(--k-accent-line);color:var(--k-accent-text);font:600 12px var(--k-font);padding:2px 4px;box-sizing:border-box;pointer-events:none}
+.swap-mask-box.active{border-color:var(--k-accent)}
+.swap-mask-heroes{display:flex;gap:8px;flex-wrap:wrap}
+.swap-mask-heroes button[aria-pressed="true"]{outline:2px solid var(--k-accent)}

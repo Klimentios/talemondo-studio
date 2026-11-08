@@ -1,0 +1,20 @@
+H3 Studio
+Copyright (c) 2026 Klimentios (Klimentioss@gmail.com)
+Licensed under the PolyForm Noncommercial License 1.0.0 (see LICENSE).
+
+"TaleMondo" is the author's name for this studio. The licence covers the code, not the name: modified versions
+must be distributed under a different name and must not suggest they come from the author.
+
+Third-party components included in this repository keep their own licences:
+
+- app/camera_guide_vendor/ — H3 3D Camera Guide contributors, MIT (app/camera_guide_vendor/LICENSE)
+- local_studio/luts/ — Nixua, MIT (local_studio/luts/LICENSE)
+- preview/h3-director/vendor/xterm/ — xterm.js authors, MIT (LICENSE.xterm, LICENSE.addon-fit)
+- preview/h3-director/franchise-board/ and tools/franchise-board/ — Drawnix (MIT) and bundled npm packages
+  (MIT, ISC, BSD-2-Clause, Apache-2.0, 0BSD, CC0-1.0), listed in preview/h3-director/franchise-board/THIRD_PARTY_LICENSES.txt
+- skills/cinematic-director/ — wangzhang-wu, MIT
+- skills/h3-camera-shots/, skills/h3-shot-iteration/ — Loop Forge, MIT
+- skills/visual-dramaturgy/ — CC BY 4.0 (skills/visual-dramaturgy/LICENSE, NOTICE)
+
+Model weights (MiniMax H3, Qwen, LoRAs and others) are not part of this repository and are governed by their own
+licences; check them before use.

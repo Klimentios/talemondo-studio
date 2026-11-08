@@ -1,0 +1,226 @@
+/* Shared side rail (studio-rail.mjs). Loaded last on every Studio page so it wins over older per-page rules. */
+:root{
+  --rail-width: 224px;
+}
+@media (min-width: 901px) {
+  body.has-studio-rail { padding-left: var(--rail-width) !important; }
+  body.has-studio-rail .studio-rail {
+    position: fixed; z-index: 60; inset: 0 auto 0 0; display: flex !important; flex-direction: column;
+    width: var(--rail-width) !important; box-sizing: border-box; padding: 18px 13px 16px !important; overflow-y: auto;
+    border-right: 1px solid var(--rail-line);
+    background: radial-gradient(circle at 35% 0, #172028 0, transparent 28%), linear-gradient(180deg, #0c1116, #090d11 68%);
+    /* Same geometry on every page: page CSS used to change the gap, line height and scrollbar,
+       so the whole menu jumped 4–20 px when switching sections. */
+    gap: 0 !important; font-family: var(--k-font); line-height: 1.35; scrollbar-width: none;
+  }
+  body.has-studio-rail .studio-rail::-webkit-scrollbar { display: none; }
+  body.has-studio-rail .studio-rail .rail-brand { box-sizing: border-box; height: 62px; min-height: 62px; line-height: 1.2; }
+  body.has-studio-rail .studio-rail .rail-brand .brand-mark { width: 36px !important; height: 36px !important; }
+}
+.studio-rail .rail-brand { display: flex; align-items: center; gap: 11px; min-height: 48px; padding: 0 8px 14px; color: #f2f3ef; text-decoration: none; }
+.studio-rail .rail-brand .brand-mark { flex: none; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(145deg, #f3b37a, #e1894c); color: #15100b; }
+.studio-rail .rail-brand .brand-mark svg { width: 24px; height: 24px; }
+.studio-rail .rail-brand > span:last-child { display: grid; gap: 1px; }
+.studio-rail .rail-brand strong { font-size: 19px; letter-spacing: -.035em; }
+.studio-rail .rail-brand small { color: var(--rail-muted); font-size: 9px; letter-spacing: .15em; }
+.studio-rail .rail-caption { padding: 16px 11px 7px; color: var(--rail-muted); font-size: 10px; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+.studio-rail nav { display: grid; gap: 3px; min-width: 0; }
+.studio-rail nav a { width: auto !important; min-width: 0; max-width: 100%; margin-inline: 0 !important; }
+.studio-rail nav a {
+  display: flex; align-items: center; gap: 11px; min-height: 40px; padding: 8px 11px; box-sizing: border-box;
+  border: 1px solid transparent; border-radius: 10px; color: var(--rail-text); font-size: 13px; font-weight: 560;
+  text-decoration: none; transition: background .15s, border-color .15s, color .15s;
+}
+.studio-rail nav.rail-secondary a { min-height: 36px; font-size: 12.5px; color: #aab2b7; }
+.studio-rail nav a > .rail-label { display: block; width: auto; flex: 1; min-width: 0; color: inherit; font-size: inherit; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.studio-rail .rail-icon { flex: none; width: 18px; height: 18px; color: var(--rail-muted); }
+.studio-rail .rail-badge { flex: none; padding: 2px 6px; border: 1px solid #3a434b; border-radius: 99px; color: var(--rail-muted); font-size: 10px; font-style: normal; font-weight: 600; }
+.studio-rail nav a:hover { border-color: #2e373e; background: #161d23; color: #fff; transform: none; }
+.studio-rail nav a:hover .rail-icon { color: #dfe4e7; }
+.studio-rail nav a.rail-active { border-color: #3c474e; background: linear-gradient(100deg, #212a31, #171d22); color: #fff; box-shadow: inset 3px 0 var(--rail-accent); }
+.studio-rail nav a.rail-active .rail-icon { color: var(--rail-accent); }
+.studio-rail nav a:focus-visible { outline: 2px solid var(--rail-accent); outline-offset: 2px; }
+.studio-rail .rail-project { display: grid; gap: 7px; margin-top: 14px; padding: 14px 10px; border-top: 1px solid var(--rail-line); }
+.studio-rail .rail-project > span { color: var(--rail-muted); font-size: 10px; font-weight: 650; letter-spacing: .12em; text-transform: uppercase; }
+.studio-rail .rail-project a { display: grid; gap: 4px; padding: 10px; border: 1px solid #283139; border-radius: 9px; background: #12181e; color: #f2f3ef; text-decoration: none; }
+.studio-rail .rail-project strong { overflow: hidden; font-size: 12.5px; text-overflow: ellipsis; white-space: nowrap; }
+.studio-rail .rail-project small { color: var(--rail-muted); font-size: 11px; }
+.studio-rail .rail-note { display: grid; gap: 4px; margin: auto 0 0; padding: 13px 10px 0; border-top: 1px solid var(--rail-line); }
+.studio-rail .rail-note strong { color: #b9c0c4; font-size: 11px; }
+.studio-rail .rail-note span { color: var(--rail-muted); font-size: 11px; line-height: 1.4; }
+@media (max-width: 900px) {
+  body.has-studio-rail .studio-rail { position: static; display: flex !important; flex-wrap: wrap; gap: 6px; width: auto; padding: 8px 12px; border-bottom: 1px solid var(--rail-line); background: var(--rail-bg); }
+  .studio-rail .rail-brand, .studio-rail .rail-caption, .studio-rail .rail-project, .studio-rail .rail-note { display: none; }
+  .studio-rail nav { display: flex; flex-wrap: wrap; gap: 4px; }
+  .studio-rail nav a { min-height: 34px; padding: 6px 10px; }
+}
+@media (prefers-reduced-motion: reduce) { .studio-rail nav a { transition: none; } }
+/* Page boot (page-boot.js): until the section's modules have built the page, a canvas-coloured cover
+   hides the raw layout; then it fades out. The menu column gets its own cover that drops instantly,
+   so the menu itself never fades. Pseudo-elements on <html>: page elements keep their own transitions. */
+html::after {
+  content: ""; position: fixed; z-index: 2147483647; inset: 0; pointer-events: none;
+  background: var(--k-canvas); opacity: 0; transition: opacity .18s ease-out;
+}
+html.k-boot::after { opacity: 1; transition: none; }
+@media (min-width: 901px) {
+  html::after { left: var(--rail-width); }
+}
+@media (prefers-reduced-motion: reduce) { html::after { transition: none; } }
+/* The GPU badge text changes from «Проверка GPU…» to the queue state a moment after load; a fixed width
+   keeps the top-right tools from sliding 45 px on every section switch. */
+@media (min-width: 901px) {
+  .system-tools .gpu-badge { min-width: 196px; }
+}
+@media (min-width: 901px) {
+  .audio-header .header-status { min-width: 172px; text-align: center; }  /* same reason, «Звук и речь» */
+}
+/* Sub-links of a merged section (studio-rail.mjs GROUPS[].items[].subs), open while you are in it. */
+.studio-rail .rail-subs { display: grid; gap: 2px; margin: 2px 0 6px; padding-left: 30px; }
+.studio-rail .rail-subs[hidden] { display: none; }
+.studio-rail nav a.rail-sub { min-height: 30px; padding: 5px 10px; border-color: transparent; background: none; color: #8e979d; font-size: 12.5px; box-shadow: none; }
+.studio-rail nav a.rail-sub:hover { color: #fff; background: #161d23; }
+.studio-rail nav a.rail-sub.rail-sub-active { color: #fff; box-shadow: inset 2px 0 var(--rail-accent); background: #171d22; }
+
+/* Section switches (Chromium): a cross-document view transition keeps the menu still — it has its own
+   snapshot, identical on both pages — and crossfades only the content, quickly. page-boot.js puts the
+   cached menu on screen before the first paint, so there is nothing to fade in the menu. */
+@view-transition { navigation: auto; }
+@media (min-width: 901px) { body.has-studio-rail .studio-rail { view-transition-name: studio-rail; } }
+::view-transition-group(root), ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .14s; }
+::view-transition-group(studio-rail) { animation-duration: 0s; }
+@media (prefers-reduced-motion: reduce) { ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none; } }
+
+/* Collapse button and the collapsed menu (icons only): the work area gets the width. The state is kept in
+   localStorage and set on <html> by page-boot.js before the first paint. */
+.studio-rail .rail-toggle { display: none; }
+@media (min-width: 901px) {
+  body.has-studio-rail .studio-rail { transition: none; }
+  body.has-studio-rail { transition: none; }
+  .studio-rail .rail-toggle {
+    position: absolute; top: 24px; right: 10px; display: grid; place-items: center; width: 28px; height: 28px; padding: 0;
+    border: 1px solid transparent; border-radius: 8px; background: transparent; color: var(--rail-muted); cursor: pointer;
+  }
+  .studio-rail .rail-toggle svg { width: 18px; height: 18px; }
+  .studio-rail .rail-toggle:hover { border-color: #2e373e; background: #161d23; color: #fff; }
+  .studio-rail .rail-toggle:focus-visible { outline: 2px solid var(--rail-accent); outline-offset: 2px; }
+  html.rail-collapsed { --rail-width: 68px; }
+  html.rail-collapsed .studio-rail .rail-toggle { position: static; margin: 0 auto 6px; }
+  html.rail-collapsed .studio-rail .rail-toggle svg { transform: scaleX(-1); }
+  html.rail-collapsed body.has-studio-rail .studio-rail { padding-inline: 10px !important; }
+  html.rail-collapsed .studio-rail .rail-brand { justify-content: center; padding-inline: 0; }
+  html.rail-collapsed .studio-rail .rail-brand > span:last-child,
+  html.rail-collapsed .studio-rail .rail-label,
+  html.rail-collapsed .studio-rail .rail-badge,
+  html.rail-collapsed .studio-rail .rail-subs,
+  html.rail-collapsed .studio-rail .rail-project,
+  html.rail-collapsed .studio-rail .rail-note { display: none !important; }
+  html.rail-collapsed .studio-rail .rail-caption { height: 1px; margin: 10px 6px; padding: 0; overflow: hidden; background: var(--rail-line); color: transparent; }
+  html.rail-collapsed .studio-rail nav a { justify-content: center; gap: 0; padding-inline: 0; }
+  html.rail-collapsed .studio-rail nav a.rail-active { box-shadow: inset 3px 0 var(--rail-accent); }
+}
+@media (prefers-reduced-motion: reduce) { body.has-studio-rail, body.has-studio-rail .studio-rail { transition: none; } }
+
+/* Film workspace finish: navigation, hierarchy and shared canvas surfaces. */
+@media (min-width: 901px) {
+  body.has-studio-rail .studio-rail {
+    padding: 22px 14px 18px !important;
+    background: linear-gradient(175deg, color-mix(in srgb, var(--k-surface) 50%, var(--k-rail)), var(--k-rail) 45%) !important;
+    border-right-color: var(--k-line-soft);
+  }
+}
+.studio-rail .rail-brand { padding-inline: 10px; gap: 13px; color: var(--k-text); }
+.studio-rail .rail-brand .brand-mark {
+  border-radius: var(--k-radius); color: var(--k-primary-ink);
+  background: linear-gradient(145deg, var(--k-accent-text), var(--k-accent));
+  box-shadow: 0 7px 22px color-mix(in srgb, var(--k-accent) 18%, transparent);
+}
+.studio-rail .rail-brand strong { font-size: 20px; letter-spacing: -.045em; }
+.studio-rail .rail-brand small { color: var(--k-faint); font-size: 9px; letter-spacing: .17em; }
+.studio-rail .rail-caption { padding-top: 21px; color: var(--k-faint); font-size: 10px; letter-spacing: .17em; }
+.studio-rail nav { gap: 5px; }
+.studio-rail nav a { min-height: 43px; border-radius: var(--k-radius); color: var(--k-muted); font-size: 13.5px; font-weight: 580; }
+.studio-rail nav a:hover { border-color: var(--k-line-soft); background: var(--k-surface); color: var(--k-text); }
+.studio-rail nav a.rail-active {
+  border-color: color-mix(in srgb, var(--k-primary) 24%, var(--k-line));
+  background: color-mix(in srgb, var(--k-primary) 10%, var(--k-surface));
+  box-shadow: inset 3px 0 var(--k-primary); color: var(--k-text);
+}
+.studio-rail nav a.rail-active .rail-icon { color: var(--k-primary); }
+.studio-rail nav a.rail-sub { color: var(--k-faint); }
+.studio-rail nav a.rail-sub.rail-sub-active { color: var(--k-text); background: var(--k-surface); }
+.studio-rail .rail-project, .studio-rail .rail-note { border-top-color: var(--k-line-soft); }
+.studio-rail .rail-project > span { color: var(--k-faint); }
+.studio-rail .rail-project a { border-color: var(--k-line-soft); border-radius: var(--k-radius); background: var(--k-inset); color: var(--k-text); }
+
+body[data-product-view="create"] :is(.reference-block, .prompt-block, .queue-section) {
+  border-color: var(--k-line-soft) !important; border-radius: var(--k-radius-lg) !important;
+  background: var(--k-surface) !important;
+  box-shadow: 0 16px 40px color-mix(in srgb, var(--k-rail) 43%, transparent) !important;
+}
+body[data-product-view="create"] .reference-block { padding: 20px !important; }
+body[data-product-view="create"] .generator-heading strong { font-size: 15px; letter-spacing: -.02em; }
+body[data-product-view="create"] :is(.generator-heading small, .generator-reference-count) { color: var(--k-muted); font-size: 11px; }
+body[data-product-view="create"] .generator-icon { border-radius: var(--k-radius); background: var(--k-accent-soft); color: var(--k-accent-text); }
+body[data-product-view="create"] .generator-tools { gap: 5px; border-color: var(--k-line-soft); }
+body[data-product-view="create"] .generator-tools button {
+  min-height: 39px; border-color: var(--k-line-soft); border-radius: var(--k-radius-sm);
+  background: var(--k-inset); color: var(--k-muted); font-size: 12px;
+}
+body[data-product-view="create"] .generator-tools button:hover { border-color: var(--k-accent-line); background: var(--k-accent-soft); color: var(--k-accent-text); }
+body[data-product-view="create"] .prompt-block > label { color: var(--k-text); font-size: 19px !important; }
+body[data-product-view="create"] .prompt-block > textarea { color: var(--k-text); font-size: 15px !important; }
+body[data-product-view="create"] .prompt-block > .basic-controls { border-top-color: var(--k-line-soft) !important; background: var(--k-inset) !important; }
+body[data-product-view="create"] .basic-controls .send-button {
+  min-height: 46px !important; border-radius: var(--k-radius) !important;
+  background: var(--k-primary) !important; color: var(--k-primary-ink) !important;
+  font-size: 14px !important; letter-spacing: .01em;
+}
+body[data-product-view="create"] .basic-controls .send-button:not(:disabled):hover { background: var(--k-primary-hover) !important; }
+body[data-product-view="create"] .quick-tool { border-radius: var(--k-radius-sm); }
+body[data-product-view="create"] .quick-tool.active { background: var(--k-accent-soft); color: var(--k-accent-text); }
+body.scene-view :is(#scene-board, .storyboard-inspector) { border-color: var(--k-line-soft) !important; border-radius: var(--k-radius-lg) !important; }
+body.scene-view .storyboard-grid { border-color: var(--k-line-soft) !important; background-color: var(--k-inset) !important; }
+body.scene-view .storyboard-grid .storyboard-mini { border-color: var(--k-line) !important; background: var(--k-surface) !important; }
+body.scene-view .storyboard-grid .storyboard-mini.is-selected { border-color: var(--k-primary) !important; background: color-mix(in srgb, var(--k-primary) 8%, var(--k-surface)) !important; }
+@media (max-width: 900px) {
+  body.has-studio-rail .studio-rail {
+    display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; align-items: center;
+    gap: 4px !important; width: 100%; min-height: 56px; max-height: 56px;
+    padding: 7px 12px !important; box-sizing: border-box; overflow-x: auto; overflow-y: hidden;
+    scrollbar-width: none; border-bottom-color: var(--k-line-soft); background: var(--k-rail);
+  }
+  body.has-studio-rail .studio-rail::-webkit-scrollbar { display: none; }
+  .studio-rail nav { display: flex !important; flex: none; flex-wrap: nowrap !important; gap: 4px; }
+  .studio-rail nav a { flex: none; width: auto !important; min-height: 38px; padding: 7px 11px; font-size: 12px; white-space: nowrap; }
+  .studio-rail .rail-subs { display: none !important; }
+  body[data-product-view="create"] .reference-block { padding: 14px !important; }
+}
+
+/* Главные действия остаются видимыми; рабочие разделы собраны в раскрываемом меню. */
+.studio-rail .rail-settings { margin-top: 6px; }
+.studio-rail .rail-settings summary { display: flex; align-items: center; gap: 11px; min-height: 40px; padding: 8px 11px; box-sizing: border-box; border-radius: var(--k-radius); color: var(--k-muted); font-size: 13px; cursor: pointer; list-style: none; }
+.studio-rail .rail-settings summary::-webkit-details-marker { display: none; }
+.studio-rail .rail-settings summary:hover, .studio-rail .rail-settings[open] summary { background: var(--k-surface); color: var(--k-text); }
+.studio-rail .rail-settings summary:focus-visible { outline: 2px solid var(--k-accent); outline-offset: 2px; }
+.studio-rail .rail-project, .studio-rail .rail-note { display: none; }
+@media (min-width: 901px) { html.rail-collapsed .studio-rail .rail-settings summary { justify-content: center; padding-inline: 0; } }
+@media (max-width: 900px) {
+  .studio-rail .rail-settings { flex: none; width: auto; margin: 0; }
+  .studio-rail .rail-settings summary { min-height: 38px; padding: 7px 10px; white-space: nowrap; }
+  body.has-studio-rail .studio-rail:has(.rail-settings[open]) {
+    flex-wrap: wrap !important; max-height: none; overflow: visible;
+  }
+  .studio-rail .rail-settings[open] { width: 100%; }
+  .studio-rail .rail-settings[open] nav { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+  .studio-rail .rail-settings[open] .rail-caption { display: block; }
+  .studio-rail .rail-settings[open] .rail-subs { display: grid !important; padding-left: 16px; }
+}
+
+/* Language switch and author credit at the bottom of the rail (PolyForm Noncommercial: the notice stays visible). */
+.rail-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 12px 4px; font-size: 11px; color: var(--k-faint); }
+.rail-lang { display: inline-flex; gap: 3px; padding: 3px 8px; border: 1px solid var(--k-line-soft); border-radius: var(--k-radius-pill); background: transparent; color: var(--k-muted); font: inherit; cursor: pointer; }
+.rail-lang:hover { color: var(--k-text); border-color: var(--k-line); }
+.rail-lang [data-on="true"] { color: var(--k-text); font-weight: 700; }
+.rail-credit { color: var(--k-faint); text-decoration: none; white-space: nowrap; }
+.rail-credit:hover { color: var(--k-muted); }

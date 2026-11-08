@@ -1,0 +1,7 @@
+.production-spec-editor{width:min(720px,92vw);max-height:88vh;overflow:auto;padding:24px;border:1px solid var(--k-line);border-radius:var(--k-radius-lg);background:var(--k-surface);color:var(--k-text);font-family:var(--k-font)}
+.production-spec-editor::backdrop{background:var(--k-canvas);opacity:.85}
+.production-spec-fields{display:grid;gap:12px;padding:16px 0}
+.production-spec-fields label{display:grid;gap:6px;color:var(--k-muted)}
+.production-spec-fields .k-field{width:100%;box-sizing:border-box}
+.production-spec-fields textarea{min-height:72px;resize:vertical}
+.production-spec-fields fieldset{display:grid;gap:10px;min-width:0;margin:0;padding:14px;border:1px solid var(--k-line);border-radius:var(--k-radius)}

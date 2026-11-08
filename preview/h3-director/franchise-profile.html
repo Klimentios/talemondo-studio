@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru" data-boot-hold>
+<head>
+  <meta charset="utf-8">
+    <script src="/page-boot.js?v=20261107-fixed-rail-1"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="/assets/talemondo-mark.svg">
+  <title>Паспорт франшизы — TaleMondo</title>
+  <link rel="stylesheet" href="/tokens.css?v=20261102-unified-1">
+  <link rel="stylesheet" href="/components.css?v=20261101-studio-finish-1">
+  <link rel="stylesheet" href="/studio-rail.css?v=20261107-fixed-rail-1">
+  <link rel="stylesheet" href="/franchise-profile.css?v=20261028-1">
+<link rel="stylesheet" href="/studio-glass.css?v=20261102-status-2">
+<link rel="stylesheet" href="/studio-system.css?v=20261102-talemondo-2">
+<meta name="application-name" content="TaleMondo">
+<link rel="apple-touch-icon" href="/assets/talemondo-studio-icon.png">
+</head>
+<body class="fp-page">
+  <aside class="studio-rail"></aside>
+  <main class="fp-main">
+    <header class="fp-top">
+      <div>
+        <span class="fp-kicker">ФРАНШИЗА</span>
+        <h1>Паспорт производства</h1>
+        <p class="fp-hint">Облик, язык камеры и монтажа, режиссура по умолчанию и роли ассетов. По ним каждый шот истории сам получает лица, костюмы, оружие, локации и стиль.</p>
+      </div>
+      <div class="fp-actions">
+        <select id="fpFranchise" class="k-field" aria-label="Франшиза"></select>
+        <span id="fpRevision" class="fp-hint"></span>
+        <button id="fpSave" type="button" class="k-btn k-btn--primary" disabled>Сохранить</button>
+      </div>
+    </header>
+    <p id="fpStatus" class="fp-status" role="status" aria-live="polite"></p>
+    <div id="fpSections" class="fp-sections"></div>
+    <section id="fpRoles" class="k-panel fp-section"></section>
+    <section class="k-panel fp-section">
+      <h2>Проверить шот</h2>
+      <p class="fp-hint">Что получит шот: файлы с ролями и владельцами, строки облика и режиссура. Работает по сохранённому паспорту.</p>
+      <div class="fp-row">
+        <label class="fp-field"><span>Герои (через запятую)</span><input id="fpTrialCast" class="k-field" placeholder="HERO, CHARACTER B"></label>
+        <label class="fp-field fp-field--wide"><span>Что в шоте</span><input id="fpTrialText" class="k-field" placeholder="Milo draws the laser sword in Teo's kitchen"></label>
+        <button id="fpTrial" type="button" class="k-btn k-btn--accent">Проверить</button>
+      </div>
+      <div id="fpTrialOut"></div>
+    </section>
+    <section id="fpNotes" class="k-panel fp-section"></section>
+  </main>
+  <script type="module" src="/studio-rail.mjs?v=20261107-fixed-rail-1"></script>
+  <script type="module" src="/franchise-profile.mjs?v=20261106-aspects-1"></script>
+</body>
+</html>

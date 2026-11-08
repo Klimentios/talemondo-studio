@@ -1,0 +1,132 @@
+{
+ "compiled_prompt": "AUDIO DIRECTION: Generate rich synchronized native stereo audio for the scene, including voices when requested, physical sound effects, ambience, room tone and appropriate music. Keep every audible event synchronized with the visible action and camera distance.\n\nVOICE PERFORMANCE DIRECTION: Cast each named speaking character with a distinct, stable voice suited to the character's age, species and identity. A child uses a child voice, not an adult voice. A non-speaking animal uses natural species vocalizations; if the story explicitly gives an animal human speech, retain its animal identity and assign a distinct character voice. Follow the written dialogue and dramatic beats precisely. Convey each stated emotion through pacing, emphasis, breath, pauses, pitch and intonation, while keeping the same voice identity through the shot. Do not invent dialogue or exchange voices between speakers.\n\nCHARACTER REFERENCE BINDINGS:\n<Subject 1> is ADAM; body and silhouette from <Picture 1>. This is one character. Do not transfer these traits to any other Subject.\n<Subject 2> is MARTIN; face and identity from <Picture 2>. This is one character. Do not transfer these traits to any other Subject.\n\nREFERENCE ROLE CONTRACT: <Picture 1> belongs to ADAM only and defines this character's full-body design and silhouette. <Picture 2> belongs to MARTIN only and defines this character's face and identity only. <Picture 3> defines the location and set dressing only.\n\nADAM <Picture 1> and MARTIN <Picture 2> meet in the workshop <Picture 3>. ADAM laughs and pats MARTIN on the shoulder; MARTIN answers with a tired smile.",
+ "settings": {
+  "aspect_ratio": "9:16",
+  "cache_mode": "fast",
+  "camera_optics": {
+   "aperture_f": 2.8,
+   "focal_length_mm": 35.0,
+   "focus_distance_m": 5.52,
+   "focus_mode": "subject_head",
+   "iso": 400.0,
+   "sensor_format": "full_frame",
+   "shutter_angle_deg": 180.0
+  },
+  "camera_state": {
+   "keys": [
+    {
+     "aperture_f": 2.8,
+     "distance": 5.52,
+     "elevation": 0,
+     "focal_length_mm": 35,
+     "focus_distance_m": 5.52,
+     "fov": 37.85,
+     "orbit": 0,
+     "t": 0,
+     "target": [
+      0,
+      1.1,
+      0
+     ]
+    },
+    {
+     "aperture_f": 2.8,
+     "distance": 3.2,
+     "elevation": 0,
+     "focal_length_mm": 35,
+     "focus_distance_m": 3.2,
+     "fov": 37.85,
+     "orbit": 0,
+     "t": 4.5,
+     "target": [
+      0,
+      1.1,
+      0
+     ]
+    }
+   ],
+   "version": 2
+  },
+  "character_refinement": null,
+  "color_grade": null,
+  "director_config": {
+   "lens": {
+    "id": "lens.35",
+    "parameters": {
+     "aperture_f": 2.8,
+     "focal_length_mm": 35
+    }
+   },
+   "lighting": {
+    "id": "lighting.neon",
+    "parameters": {
+     "contrast": "high",
+     "source": "neon"
+    }
+   },
+   "movement": {
+    "id": "movement.push",
+    "parameters": {
+     "movement": "dolly",
+     "speed": "slow",
+     "subject_lock": true
+    }
+   },
+   "style": {
+    "id": "style.realism",
+    "parameters": {
+     "rendering": "photoreal"
+    }
+   }
+  },
+  "duration": 5,
+  "emotional_direction": true,
+  "film_look": null,
+  "height": 1152,
+  "length": 124,
+  "megapixels": 0.7,
+  "mode": "replace",
+  "motion_control": "none",
+  "profile": "bf16",
+  "quality": "custom",
+  "ref_image_size": "max",
+  "seed": 4242424242,
+  "steps": 25,
+  "style_adapter": "none",
+  "use_video_audio": false,
+  "width": 640
+ },
+ "manifest": {
+  "audios": [],
+  "images": [
+   {
+    "asset_id": "00000000-0000-0000-0000-000000000001",
+    "display_number": 1,
+    "owner": "ADAM",
+    "role": "Персонаж целиком",
+    "sha256": "2c41748104de6ba477f547f089feb030610e7c82cbafdab3b83f84503115c934"
+   },
+   {
+    "asset_id": "00000000-0000-0000-0000-000000000002",
+    "display_number": 2,
+    "owner": "MARTIN",
+    "role": "Лицо героя",
+    "sha256": "2c41748104de6ba477f547f089feb030610e7c82cbafdab3b83f84503115c934"
+   },
+   {
+    "asset_id": "00000000-0000-0000-0000-000000000003",
+    "display_number": 3,
+    "owner": "",
+    "role": "Окружение",
+    "sha256": "2c41748104de6ba477f547f089feb030610e7c82cbafdab3b83f84503115c934"
+   }
+  ],
+  "version": 1,
+  "videos": []
+ },
+ "mapping": {
+  "<Picture 1>": "<Picture 1>",
+  "<Picture 2>": "<Picture 2>",
+  "<Picture 3>": "<Picture 3>"
+ }
+}

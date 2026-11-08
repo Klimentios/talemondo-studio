@@ -1,0 +1,90 @@
+{
+ "compiled_prompt": "AUDIO DIRECTION: Generate rich synchronized native stereo audio for the scene, including voices when requested, physical sound effects, ambience, room tone and appropriate music. Keep every audible event synchronized with the visible action and camera distance.\n\nVOICE PERFORMANCE DIRECTION: Cast each named speaking character with a distinct, stable voice suited to the character's age, species and identity. A child uses a child voice, not an adult voice. A non-speaking animal uses natural species vocalizations; if the story explicitly gives an animal human speech, retain its animal identity and assign a distinct character voice. Follow the written dialogue and dramatic beats precisely. Convey each stated emotion through pacing, emphasis, breath, pauses, pitch and intonation, while keeping the same voice identity through the shot. Do not invent dialogue or exchange voices between speakers.\n\nCHARACTER REFERENCE BINDINGS:\n<Subject 1> is ADAM; body and silhouette from <Picture 1>. This is one character. Do not transfer these traits to any other Subject.\nattribute_transfer: only the body motion, pose progression and action timing of the visible person in <Video 1> are transferred onto ADAM. ADAM's hairstyle, hair length, hair color, facial hair or clean-shaven face, face and visible anatomical features come only from <Picture 1> and stay exactly as pictured in every frame, including fast turns and motion blur. Hair moves only as secondary motion of ADAM's own pictured hairstyle. Clothing follows its assigned costume reference.\n\nREFERENCE ROLE CONTRACT: <Picture 1> belongs to ADAM only and defines this character's full-body design and silhouette. <Video 1> belongs to ADAM only and provides the assigned performer's choreography, timing, gestures and expressions together with camera movement and framing; retarget the performance to the named character's own anatomy, build and hands from the assigned identity pictures and brief, with wardrobe from the assigned costume picture; the performer supplies performance, not appearance or graphic design; use an original unbranded location inspired only by source spatial relationships, with original lighting unless a separate environment or lighting reference is assigned; preserve source framing and focus rather than introducing close-ups or background defocus; do not reproduce source logos, lettering, captions, usernames, interface graphics or watermarks; The target hairstyle retains the silhouette, length, hairline and colors visible in its identity picture, including the shape around the ears, nape and shoulders. Hair motion follows that target hairstyle's own length and volume..\n\nADAM <Picture 1> repeats the movement and camera of <Video 1> in a snowy yard.",
+ "settings": {
+  "aspect_ratio": "9:16",
+  "cache_mode": "fast",
+  "camera_optics": null,
+  "camera_state": null,
+  "character_refinement": null,
+  "color_grade": null,
+  "director_config": {
+   "lens": {
+    "id": "lens.35",
+    "parameters": {
+     "aperture_f": 2.8,
+     "focal_length_mm": 35
+    }
+   },
+   "lighting": {
+    "id": "lighting.neon",
+    "parameters": {
+     "contrast": "high",
+     "source": "neon"
+    }
+   },
+   "movement": {
+    "id": "movement.push",
+    "parameters": {
+     "movement": "dolly",
+     "speed": "slow",
+     "subject_lock": true
+    }
+   },
+   "style": {
+    "id": "style.realism",
+    "parameters": {
+     "rendering": "photoreal"
+    }
+   }
+  },
+  "duration": 5,
+  "emotional_direction": true,
+  "film_look": null,
+  "height": 1152,
+  "length": 124,
+  "megapixels": 0.7,
+  "mode": "replace",
+  "motion_control": "none",
+  "profile": "bf16",
+  "quality": "custom",
+  "ref_image_size": "max",
+  "seed": 4242424242,
+  "steps": 25,
+  "style_adapter": "none",
+  "use_video_audio": false,
+  "width": 640
+ },
+ "manifest": {
+  "audios": [],
+  "images": [
+   {
+    "asset_id": "00000000-0000-0000-0000-000000000001",
+    "display_number": 1,
+    "owner": "ADAM",
+    "role": "Персонаж целиком",
+    "sha256": "2c41748104de6ba477f547f089feb030610e7c82cbafdab3b83f84503115c934"
+   }
+  ],
+  "version": 1,
+  "videos": [
+   {
+    "asset_id": "00000000-0000-0000-0000-000000000002",
+    "display_number": 1,
+    "keep_others": false,
+    "owner": "ADAM",
+    "performers": [
+     {
+      "owner": "ADAM",
+      "performer": "the visible person"
+     }
+    ],
+    "role": "Движение и камера",
+    "sha256": "9d6012783e2e1f6672277221e76aa97bb6785b4ce9fffc00dd94cface7345913"
+   }
+  ]
+ },
+ "mapping": {
+  "<Picture 1>": "<Picture 1>",
+  "<Video 1>": "<Video 1>"
+ }
+}

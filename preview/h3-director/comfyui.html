@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru" data-boot-hold>
+<head>
+  <meta charset="utf-8">
+  <script src="/page-boot.js?v=20261107-fixed-rail-1"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="/assets/talemondo-mark.svg">
+  <title>ComfyUI — TaleMondo</title>
+  <link rel="stylesheet" href="/tokens.css?v=20261102-unified-1">
+  <link rel="stylesheet" href="/components.css?v=20261101-studio-finish-1">
+  <link rel="stylesheet" href="/studio-rail.css?v=20261107-fixed-rail-1">
+  <link rel="stylesheet" href="/studio-glass.css?v=20261102-status-2">
+  <link rel="stylesheet" href="/studio-system.css?v=20261102-talemondo-2">
+  <link rel="stylesheet" href="/workflows.css?v=20261107-wf-2">
+  <meta name="application-name" content="TaleMondo">
+</head>
+<body class="wf-page cf-page">
+  <aside class="studio-rail"></aside>
+  <main class="cf-main">
+    <header class="cf-bar">
+      <a class="k-btn k-btn--ghost" id="cfBack" href="/workflows.html">← Свои воркфлоу</a>
+      <p id="wfStatus" class="wf-status" role="status" aria-live="polite"></p>
+      <span class="wf-actions"><a class="k-btn k-btn--ghost" href="/comfy-nodes.html">Узлы и модели</a>
+      <a class="k-btn k-btn--ghost" id="cfTab" target="_blank" rel="noopener" hidden>В новой вкладке</a></span>
+    </header>
+    <iframe id="cfFrame" class="cf-frame" title="Редактор ComfyUI" hidden></iframe>
+    <section id="cfEmpty" class="k-panel wf-block cf-empty" hidden></section>
+  </main>
+  <script type="module" src="/studio-rail.mjs?v=20261107-fixed-rail-1"></script>
+  <script type="module" src="/comfyui.mjs?v=20261107-wf-3"></script>
+</body>
+</html>

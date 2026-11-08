@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru" data-boot-hold>
+<head>
+  <meta charset="utf-8">
+  <script src="/page-boot.js?v=20261107-fixed-rail-1"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="/assets/talemondo-mark.svg">
+  <title>Узлы и модели — TaleMondo</title>
+  <link rel="stylesheet" href="/tokens.css?v=20261102-unified-1">
+  <link rel="stylesheet" href="/components.css?v=20261101-studio-finish-1">
+  <link rel="stylesheet" href="/studio-rail.css?v=20261107-fixed-rail-1">
+  <link rel="stylesheet" href="/studio-glass.css?v=20261102-status-2">
+  <link rel="stylesheet" href="/studio-system.css?v=20261102-talemondo-2">
+  <link rel="stylesheet" href="/workflows.css?v=20261107-wf-2">
+  <meta name="application-name" content="TaleMondo">
+</head>
+<body class="wf-page">
+  <aside class="studio-rail"></aside>
+  <main class="wf-main">
+    <header class="wf-top">
+      <div>
+        <span class="wf-kicker">COMFYUI</span>
+        <h1>Узлы и модели</h1>
+        <p class="wf-hint">Что стоит на GPU-сервере и что добавить. Добавленное попадает в манифест Studio: пакеты узлов закреплены коммитом, модели проверяются по SHA-256. «Применить на GPU» ставит их на текущий сервер; новый сервер получает их при установке сам.</p>
+      </div>
+      <div class="wf-actions">
+        <a class="k-btn k-btn--ghost" href="/workflows.html">Свои воркфлоу</a>
+        <a class="k-btn k-btn--ghost" href="/comfyui.html">Открыть ComfyUI</a>
+      </div>
+    </header>
+    <p id="wfStatus" class="wf-status" role="status" aria-live="polite"></p>
+    <section class="k-panel wf-block">
+      <div class="wf-head"><h2>Манифест Studio</h2>
+        <div class="wf-actions"><button type="button" class="k-btn k-btn--primary" id="cnApply">Применить на GPU</button></div></div>
+      <div id="cnManifest"></div>
+    </section>
+    <div class="cn-forms">
+      <form class="k-panel wf-block" id="cnNodeForm">
+        <h2>Добавить пакет узлов</h2>
+        <label class="wf-field"><span>Git-репозиторий (https)</span><input class="k-field" name="repo" required placeholder="https://github.com/kijai/ComfyUI-KJNodes"></label>
+        <label class="wf-field"><span>Коммит (40 символов)</span><input class="k-field" name="commit" required pattern="[0-9a-fA-F]{40}" placeholder="d3cfe21625e5…"></label>
+        <label class="wf-field"><span>pip-пакеты с точной версией, через пробел (если нужны)</span><input class="k-field" name="pip" placeholder="opencv-python-headless==4.10.0.84"></label>
+        <label class="wf-field"><span>Заметка</span><input class="k-field" name="note"></label>
+        <div class="wf-run"><button class="k-btn k-btn--accent">Добавить в манифест</button></div>
+      </form>
+      <form class="k-panel wf-block" id="cnModelForm">
+        <h2>Добавить модель</h2>
+        <label class="wf-field"><span>Папка ComfyUI</span><input class="k-field" name="folder" required list="cnFolders" placeholder="loras"><datalist id="cnFolders"></datalist></label>
+        <label class="wf-field"><span>Имя файла</span><input class="k-field" name="filename" required placeholder="my_style.safetensors"></label>
+        <label class="wf-field"><span>Прямая ссылка (https)</span><input class="k-field" name="url" required placeholder="https://huggingface.co/…/resolve/main/…"></label>
+        <label class="wf-field"><span>SHA-256</span><input class="k-field" name="sha256" required pattern="[0-9a-fA-F]{64}"></label>
+        <label class="wf-field"><span>Заметка</span><input class="k-field" name="note"></label>
+        <div class="wf-run"><button class="k-btn k-btn--accent">Добавить в манифест</button></div>
+      </form>
+    </div>
+    <section class="k-panel wf-block">
+      <div class="wf-head"><h2>Сейчас на GPU</h2><div class="wf-actions"><input class="k-field" id="cnFilter" placeholder="Найти узел или модель"><button type="button" class="k-btn k-btn--ghost" id="cnRefresh">Обновить</button></div></div>
+      <div id="cnInventory"><p class="wf-hint">Читаю ComfyUI…</p></div>
+    </section>
+  </main>
+  <script type="module" src="/studio-rail.mjs?v=20261107-fixed-rail-1"></script>
+  <script type="module" src="/comfy-nodes.mjs?v=20261107-wf-3"></script>
+</body>
+</html>

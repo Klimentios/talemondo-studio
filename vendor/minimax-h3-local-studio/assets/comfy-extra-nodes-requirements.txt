@@ -1,0 +1,34 @@
+# Ready-made ComfyUI node packs (scripts/install_h3_h200_overlay.sh, pinned clones):
+#   ComfyUI-KJNodes d3cfe216 (GPL-3.0)          ColorMatch; MiniMax H3 nodes for later A/B
+#   ComfyUI-VideoHelperSuite 4d907bee (GPL-3.0) VHS_LoadVideo / VHS_VideoCombine / frame select
+#   ComfyUI-Frame-Interpolation 26545cc2 (MIT)  RIFE VFI (rife417.pth, SHA-256 in the installer)
+#
+# Installed with `pip install --no-deps -r` into the ComfyUI venv AFTER h3_comfy_venv_isolate, so
+# pip never touches torch 2.11.0+cu128, numpy 2.5.3 or opencv-contrib-python-headless 4.13.0.92.
+# The list is complete (transitive closure resolved against the isolated venv); `pip check` after
+# the install must stay clean.
+#
+# Deliberately NOT installed (upstream requirements.txt asks for them):
+#   opencv-python (VHS), opencv-python-headless (KJNodes), opencv-contrib-python (Frame-Interpolation):
+#       cv2 already comes from opencv-contrib-python-headless; a second cv2 wheel would shadow it.
+#   imageio-ffmpeg (VHS): optional bundled ffmpeg; the installer puts system ffmpeg on PATH.
+#   mss (KJNodes): screen-capture node only.
+#   cupy / taichi (Frame-Interpolation): only for GMFSS/softsplat models; RIFE is pure torch.
+# Frame-Interpolation's own needs (einops, kornia, scipy, pillow, torchvision, tqdm, pyyaml) are
+# already pinned in comfy-venv-requirements.txt / deploy/live-lock/venv.txt.
+
+# KJNodes ColorMatch: `from color_matcher import ColorMatcher` (runtime needs only numpy)
+color-matcher==0.6.0
+# color-matcher's declared dependencies (kept so `pip check` stays clean)
+ddt==1.7.2
+docutils==0.23
+imageio==2.38.0
+matplotlib==3.11.2
+# matplotlib
+contourpy==1.4.0
+cycler==0.12.1
+fonttools==4.66.1
+kiwisolver==1.5.1
+pyparsing==3.3.3
+python-dateutil==2.9.0.post0
+six==1.17.0

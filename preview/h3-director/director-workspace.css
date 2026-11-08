@@ -1,0 +1,19 @@
+.director-section .section-bar{align-items:center;gap:16px}
+.director-section .section-bar h2{letter-spacing:-.03em}
+.director-profile-actions{display:flex;align-items:center;gap:10px}.director-profile-actions label{color:#aeb6c5;font-size:11px}.director-profile-actions select{min-width:195px;min-height:38px;padding:8px 12px;border:1px solid #404757;border-radius:9px;background:#222734;color:#f2f3f8}
+.director-section .director-strip{max-width:none;margin:0;overflow:visible;padding:0}
+.director-section .director-tile{gap:12px;border:1px solid #303746;color:#f3f4f8;box-shadow:none;transition:background .18s,border-color .18s,transform .18s}
+.director-section .director-tile:hover{background:#272c3a;border-color:var(--k-accent-line);transform:translateY(-1px)}
+.director-section .director-tile:focus-visible{outline:2px solid var(--k-accent-text);outline-offset:3px}
+.director-section .director-tile-art{flex:0 0 78px;min-height:0;margin:0;border-radius:7px;background:#252c3a}
+.director-section .director-tile-art.has-photo img{object-fit:cover}
+.director-section .director-tile-art.kind-lens.has-photo img{object-fit:contain}
+.director-section .director-tile:not(.has-preset) .director-tile-art{display:none}
+.director-section .director-tile:not(.has-preset)::before{content:"+";display:grid;place-items:center;flex:0 0 40px;width:40px;height:40px;border:1px solid #485166;border-radius:10px;color:var(--k-accent);font-size:22px;font-weight:300;line-height:1;background:#252a36}
+.director-section .director-tile-caption{flex:1;}
+.director-section .director-tile-caption>span{line-height:1.3}
+.director-section .director-tile-caption strong{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-overflow:ellipsis}
+.director-section .director-tile-arrow{transform:translateY(-50%);color:#aab1bf;font-size:16px}
+@media(max-width:970px){.director-section .director-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.director-section .director-tile:last-child:nth-child(odd){grid-column:1/-1}}
+@media(max-width:650px){.director-section{padding:16px}.director-section .section-bar{display:grid;gap:10px}.director-profile-actions{justify-content:space-between}.director-section .director-strip{grid-template-columns:1fr}.director-section .director-tile:last-child:nth-child(odd){grid-column:auto}.director-section .director-tile{min-height:72px}.director-section .director-tile-art{flex-basis:70px;width:70px;height:54px}}
+@media(prefers-reduced-motion:reduce){.director-section .director-tile:hover{transform:none}}

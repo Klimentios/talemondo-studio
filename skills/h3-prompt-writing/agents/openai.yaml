@@ -1,0 +1,4 @@
+interface:
+  display_name: "MiniMax H3 Prompt Writing"
+  short_description: "Compile and audit native MiniMax H3 prompts"
+  default_prompt: "Use $h3-prompt-writing to select the correct H3 mode, assign every reference role, and compile this request into a validated native MiniMax H3 prompt."

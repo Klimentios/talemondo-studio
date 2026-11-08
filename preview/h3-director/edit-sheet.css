@@ -1,0 +1,50 @@
+/* «Монтажный лист» inside «Весь фильм» (edit-sheet.mjs). */
+.edit-sheet { display: grid; gap: 12px; padding: 14px; border: 1px solid var(--k-line); border-radius: var(--k-radius); background: var(--k-inset); }
+.edit-sheet > summary { display: flex; align-items: baseline; gap: 10px; cursor: pointer; color: var(--k-text); font-size: 15px; }
+.edit-sheet > summary span { color: var(--k-muted); font-size: 13px; }
+.edit-sheet-options { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: end; }
+.edit-sheet-options label { display: grid; gap: 4px; color: var(--k-muted); font-size: 12px; }
+.edit-sheet-options label.edit-sheet-check { display: flex; align-items: center; gap: 6px; min-height: 36px; }
+.edit-sheet select, .edit-sheet input[type="number"] { min-height: 34px; padding: 4px 8px; border: 1px solid var(--k-line); border-radius: 7px; background: var(--k-surface); color: var(--k-text); font: inherit; font-size: 13px; }
+.edit-sheet input[type="number"] { width: 84px; }
+.edit-sheet-rows { display: grid; gap: 4px; max-height: 420px; overflow: auto; }
+.edit-sheet-row { display: grid; grid-template-columns: 34px minmax(140px, 1fr) minmax(170px, 220px) 96px 120px; gap: 10px; align-items: center; padding: 6px 8px; border-radius: 7px; background: var(--k-surface); color: var(--k-text); font-size: 13px; }
+.edit-sheet-head { background: none; color: var(--k-faint); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
+.edit-sheet-row small { display: block; color: var(--k-faint); font-size: 11px; }
+.edit-sheet-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.edit-sheet-time { color: var(--k-muted); font-variant-numeric: tabular-nums; }
+.edit-sheet-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.edit-sheet-actions button { min-height: 40px; padding: 8px 15px; border-radius: 8px; font-size: 13px; font-weight: 700; }
+.edit-sheet-actions .storyboard-secondary { border: 1px solid var(--k-line); background: var(--k-surface); color: var(--k-text); cursor: pointer; }
+.edit-sheet-actions button:disabled { opacity: .5; cursor: not-allowed; }
+.edit-sheet-status { margin: 0; color: #e8ccad; font-size: 13px; }
+.edit-sheet-status:empty, .edit-sheet-notes:empty { display: none; }
+.edit-sheet-notes { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: 12px; line-height: 1.45; color: var(--k-muted); }
+.edit-sheet-notes .is-error { color: var(--k-bad); }
+.edit-sheet-notes .is-warning { color: var(--k-warn); }
+.edit-sheet-final video { aspect-ratio: auto; max-height: 520px; }
+@media (max-width: 720px) {
+  .edit-sheet-row { grid-template-columns: 30px 1fr; }
+  .edit-sheet-head { display: none; }
+  .edit-sheet-row > span:nth-child(n+3) { grid-column: 2; }
+}
+/* Borrowed into the story canvas side panel («Весь фильм»). */
+.kc-panel:has(.edit-sheet) { width: min(640px, calc(100% - 32px)); }
+.kc-panel .edit-sheet { padding: 0; border: 0; background: none; }
+.kc-panel .edit-sheet > summary { display: none; }
+.kc-panel .edit-sheet-row { grid-template-columns: 26px minmax(0, 1fr) 150px 70px 92px; gap: 8px; }
+.kc-panel .edit-sheet select, .kc-panel .edit-sheet input[type="number"] { width: 100%; box-sizing: border-box; }
+.kc-panel .edit-sheet-options label { flex: 1 1 130px; }
+.kc-panel .edit-sheet-final { grid-template-columns: minmax(0, 1fr); }
+.kc-panel .edit-sheet-final video { width: 100%; }
+.edit-sheet-issues:empty { display: none; }
+.edit-sheet-fx { grid-column: 2 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.edit-sheet-fx select { flex: 1 1 150px; }
+.edit-sheet-fx label { display: flex; align-items: center; gap: 6px; color: var(--k-muted); font-size: 12px; }
+.edit-sheet-fx input[type="number"] { width: 64px; }
+.kc-panel .edit-sheet-fx { grid-column: 2 / -1; }
+.edit-sheet-title input[type="text"] { flex: 1 1 140px; min-height: 34px; padding: 4px 8px; border: 1px solid var(--k-line); border-radius: 7px; background: var(--k-surface); color: var(--k-text); font: inherit; font-size: 13px; }
+.edit-sheet-export:empty { display: none; }
+.edit-sheet-export { display: grid; gap: 8px; padding: 10px 12px; border: 1px solid var(--k-line); border-radius: var(--k-radius); background: var(--k-surface); font-size: 13px; color: var(--k-muted); }
+.edit-sheet-export p { margin: 0; }
+.edit-sheet-export a.storyboard-secondary { display: inline-flex; align-items: center; min-height: 40px; padding: 8px 15px; border: 1px solid var(--k-line); border-radius: 8px; color: var(--k-text); text-decoration: none; font-weight: 700; }

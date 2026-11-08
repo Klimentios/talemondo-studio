@@ -1,0 +1,36 @@
+/* «Звук и речь» in the shared Studio palette: the last purple accents become warm/neutral like Создать and Сюжет. */
+.mode-picker button.selected::before { background: var(--audio-accent, #efa96e) !important; border-color: var(--audio-accent, #efa96e) !important; box-shadow: none !important; }
+#addLine.quiet-button, #exportPlan { border-color: #4a545d !important; background: #191e24 !important; color: #f2f3ef !important; }
+#addLine.quiet-button:hover, #exportPlan:hover { border-color: #6a737b !important; }
+.upload-label { color: #c3c9cd !important; }
+.preset-group > span { color: #9aa1a7 !important; border-color: transparent !important; }
+.preset-group > button { border-color: #2c333b !important; background: #191e24 !important; color: #dfe4e7 !important; }
+.preset-group > button[aria-pressed="true"], .preset-group > button.selected { border-color: var(--audio-accent, #efa96e) !important; color: #fff !important; }
+#taskSummary > span { border-color: #3a434b !important; background: #191e24 !important; color: #dfe4e7 !important; }
+#taskSummary > span:first-child { border-color: #a06a3b !important; color: #ffd3ad !important; }
+input[type="range"], input[type="checkbox"], input[type="radio"] { accent-color: var(--audio-accent, #efa96e); }
+.track-block, .dot.speech { background: var(--audio-accent, #efa96e) !important; }
+/* Tool tiles: two per row so «Создать музыку» and «Перевод и дубляж» are not cut. */
+.workflow-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+.workflow-tabs button strong, .workflow-tabs button small, .workflow-tabs button em { overflow: visible !important; white-space: normal !important; text-overflow: clip !important; }
+.workflow-tabs button small { font-size: 11px !important; color: #9aa1a7 !important; }
+.workflow-tabs button strong { font-size: 12.5px !important; }
+
+/* Use the available workspace width after the rail, rather than viewport width. */
+.audio-page { container-type: inline-size; }
+.audio-page :is(.intro > div, .workspace > *, .source-grid > *, .project-save, .studio-file) { min-width: 0; }
+.audio-page .project-save { max-width: 100%; }
+.audio-page .studio-file { width: 100%; max-width: 100%; }
+.audio-page .source-grid { grid-template-columns: minmax(0, 1fr); }
+@container (max-width: 860px) {
+  .audio-page .intro { flex-wrap: wrap; gap: 16px; }
+  .audio-page .intro .project-save { width: 100%; }
+  .audio-page .workspace { grid-template-columns: minmax(0, 1fr) !important; }
+  .audio-page .timeline-panel { grid-column: auto !important; grid-row: auto !important; position: static !important; min-height: 0 !important; }
+}
+@container (max-width: 440px) {
+  .audio-page .project-save { grid-template-columns: minmax(0, 1fr); }
+  .audio-page .project-save button { width: 100%; }
+  .audio-page .workflow-tabs { grid-template-columns: minmax(0, 1fr) !important; }
+  .audio-page .panel-heading { flex-wrap: wrap; }
+}

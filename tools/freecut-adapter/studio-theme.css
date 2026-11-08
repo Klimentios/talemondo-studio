@@ -1,0 +1,16 @@
+/* TaleMondo material tokens; structural editing/track colours stay upstream. */
+:root {
+ --background:#101012;--foreground:#f5f5ef;--card:#1c1b1f;--card-foreground:#f5f5ef;
+ --popover:#222124;--popover-foreground:#f5f5ef;--primary:#e4c17c;--primary-foreground:#211b10;
+ --secondary:#302c27;--secondary-foreground:#ece3d3;--muted:#262428;--muted-foreground:#aaa6a3;
+ --accent:#373027;--accent-foreground:#f4ddb0;--border:#d8c39c2d;--input:#d8c39c35;--ring:#d6b477;
+ --radius:.75rem;--panel-header:0.19 0.005 65;
+ font-family:'Avenir Next',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+body { background:radial-gradient(ellipse at 20% 0%,#d4aa6510,transparent 45%),var(--background); }
+button,a { transition:background-color .16s,border-color .16s; }
+.panel-header { background:linear-gradient(125deg,#ffffff08,#101012a0)!important;backdrop-filter:blur(20px);border-color:var(--border); }
+[data-slot=button] { border-radius:999px; }
+[data-slot=dialog-content],[data-slot=dropdown-menu-content],[data-slot=popover-content] { border-color:var(--border);background:var(--popover);box-shadow:0 18px 55px #0008; }
+input:not([type=range]),select { border-color:var(--border);background-color:#10101288; }
+@media(prefers-reduced-motion:reduce) { button,a { transition:none; } }

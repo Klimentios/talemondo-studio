@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+    <script src="/page-boot.js?v=20261107-fixed-rail-1"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>Звук и речь — TaleMondo</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/talemondo-mark.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" />
+  <link rel="stylesheet" href="./tokens.css?v=20261102-unified-1">
+  <link rel="stylesheet" href="./audio-studio.css?v=20261027-tokens-3" />
+  <link rel="stylesheet" href="./audio-refinement.css?v=20261027-tokens-3" />
+  <link rel="stylesheet" href="./studio-shell.css?v=20261028-prune-1" />
+  <link rel="stylesheet" href="./studio-craft.css?v=20261028-prune-1" />
+  <link rel="stylesheet" href="./product-shell-v2.css?v=20261028-prune-1" />
+  <link rel="stylesheet" href="./audio-product-v2.css?v=20261027-tokens-3" />
+    <link rel="stylesheet" href="./studio-polish.css?v=20261027-tokens-3" />
+  <link rel="stylesheet" href="./audio-theme.css?v=20261027-tokens-3" />
+  <link rel="stylesheet" href="./components.css?v=20261101-studio-finish-1">
+  <link rel="stylesheet" href="./studio-rail.css?v=20261107-fixed-rail-1" />
+<link rel="stylesheet" href="/studio-glass.css?v=20261102-status-2">
+<link rel="stylesheet" href="/studio-system.css?v=20261102-talemondo-2">
+<meta name="application-name" content="TaleMondo">
+<link rel="apple-touch-icon" href="/assets/talemondo-studio-icon.png">
+</head>
+<body>
+  <header class="audio-header">
+    <a class="brand" href="/" aria-label="TaleMondo — назад в Studio"><span class="mark" aria-hidden="true"><img src="/assets/talemondo-mark.svg" alt="" width="32" height="40"></span><strong>TaleMondo</strong></a>
+    <nav class="audio-mobile-nav" aria-label="Переходы"><a href="/index.html">Создать</a><a href="/?view=scenes">Сюжет</a><a href="/#jobQueue">Очередь</a></nav>
+    <span class="header-status" id="connectionStatus">Локальная Studio…</span>
+  </header>
+  <aside class="studio-rail" aria-label="Разделы Studio"></aside>
+  <main class="audio-page">
+    <section class="intro">
+      <div><span class="eyebrow">ЗВУК И РЕЧЬ</span><h1>Голос, перевод и звук фильма.</h1><p>Выбери одну задачу, добавь исходник и собери настоящий файл через доступные локальные модели.</p></div>
+      <div class="project-save"><label for="projectTitle">Название проекта</label><input id="projectTitle" maxlength="120" value="Новый звуковой проект" /><button type="button" id="saveProject">Сохранить проект</button><small id="saveStatus" role="status">Изменения ещё не сохранены</small></div>
+    </section>
+
+    <section class="mode-picker" aria-label="Что создать"><button type="button" data-mode="video" class="selected"><strong>Видео с новым звуком</strong><span>Речь, музыка и сведение в отдельный MP4</span></button><button type="button" data-mode="audio"><strong>Только аудио</strong><span>Голос, музыка и готовые эффекты без видеоряда</span></button></section>
+
+    <div class="workspace">
+      <div class="editor">
+        <nav class="workflow-tabs" aria-label="Задача со звуком">
+          <button type="button" data-workflow="speech" aria-current="page"><span aria-hidden="true">◖</span><strong>Текст в речь</strong><small>Реплики и голоса</small></button>
+          <button type="button" data-workflow="voice"><span aria-hidden="true">≈</span><strong>Сменить голос</strong><small>Видео + образец</small></button>
+          <button type="button" data-workflow="translate"><span aria-hidden="true">文</span><strong>Перевод и дубляж</strong><small>Новая речь в ролике</small></button>
+          <button type="button" data-workflow="music"><span aria-hidden="true">♫</span><strong>Создать музыку</strong><small>ACE-Step</small></button>
+          <button type="button" data-workflow="mix"><span aria-hidden="true">≋</span><strong>Сведение</strong><small>Все дорожки</small></button>
+        </nav>
+        <div class="model-status" id="modelStatus" role="status">Проверяем звуковой сервер…</div>
+        <label class="upload-label shared-audio-upload"><span id="audioUploadLabel">Добавить голосовой образец</span><input id="audioUpload" type="file" accept="audio/wav,audio/mpeg,audio/mp4,audio/x-m4a,audio/flac,audio/ogg" /></label>
+
+        <section class="panel source-panel" id="videoSourcePanel"><div class="panel-heading"><span class="step">01</span><div><h2>Исходный ролик</h2><p>Выбери готовый H3 ролик или видео из медиатеки.</p></div></div><div class="source-grid"><label>Видео<select id="sourceSelect"><option value="">Выбери ролик</option></select></label><label class="upload-label">Добавить видео<input id="videoUpload" type="file" accept="video/mp4,video/quicktime,video/webm" /></label></div><div class="source-preview" id="sourcePreview"><span>После выбора ролик появится здесь.</span></div></section>
+
+        <section class="panel script-panel"><div class="panel-heading"><span class="step">02</span><div><h2>Реплики и голоса</h2><p>Каждая реплика получает своего героя, подачу и место на дорожке.</p></div><button type="button" class="quiet-button" id="addLine">＋ Реплика</button></div><div id="lines" class="lines"></div><p class="field-help">Голосовой референс задаёт тембр; Итоговое сходство и произношение нужно проверить по готовому аудио.</p></section>
+
+        <section class="panel sound-panel"><div class="panel-heading"><span class="step">03</span><div><h2 id="soundHeading">Создать музыку</h2><p id="soundDescription">Опиши звучание и при желании добавь текст песни.</p></div></div><details class="music-details" id="musicDetails"><summary>Создать музыку по описанию <span>необязательно</span></summary><div class="music-composer"><div class="music-composer-head"><span class="eyebrow">ACE-STEP 1.5 · SFT</span><strong>Твоя музыка для сцены</strong><p>Стиль задаёт жанр, инструменты и настроение. Если добавить слова, модель создаст песню с вокалом; без слов — инструментальную дорожку.</p></div><div class="preset-group" id="musicPresets" aria-label="Шаблоны стиля музыки"><span>Начать с шаблона</span></div><label>Стиль и звучание<textarea id="musicPrompt" maxlength="500" placeholder="Например: кинематографичный синтпоп, тёплый женский вокал, 100 BPM, мягкий бас, широкий припев"></textarea></label><label>Текст песни <span>необязательно · до 4096 символов</span><textarea id="musicLyrics" maxlength="4096" placeholder="[Куплет]&#10;Строки песни…&#10;&#10;[Припев]&#10;Строки припева…"></textarea></label><small id="musicStatus">Проверка доступности генератора…</small></div></details><div class="preset-group mix-presets" id="mixPresets" aria-label="Шаблоны сведения"><span>Баланс дорожек</span></div><div class="sound-grid"><label>Готовая музыка из медиатеки<select id="musicAsset"><option value="">Без готовой музыки</option></select></label><label class="level">Уровень музыки<input id="musicLevel" type="range" min="0" max="2" step="0.05" /><output id="musicLevelValue"></output></label><label class="level">Звук исходного видео<input id="sourceLevel" type="range" min="0" max="2" step="0.05" /><output id="sourceLevelValue"></output></label><label class="level">Синтезированная речь<input id="speechLevel" type="range" min="0" max="2" step="0.05" /><output id="speechLevelValue"></output></label><label>Звуковой эффект<select id="effectsAsset"><option value="">Без эффекта</option></select></label><label class="level">Уровень эффекта<input id="effectsLevel" type="range" min="0" max="2" step="0.05" /><output id="effectsLevelValue"></output></label></div><div class="sound-prompts"><label>Эффекты по описанию <span>доступность зависит от GPU</span><textarea id="effectsPrompt" maxlength="500" placeholder="Например: шаги по мокрому асфальту, приглушённый городской шум"></textarea></label></div><label class="check"><input id="ducking" type="checkbox" /> Приглушать музыку во время речи</label></section>
+
+        <section class="panel finish-panel"><div class="panel-heading"><span class="step">04</span><div><h2>Итог</h2><p>Проверь, что войдёт в новый файл.</p></div></div><label class="check" id="lipSyncRow"><input id="lipSync" type="checkbox" /> Подстроить губы под новую речь</label><label id="lipTargetRow">Кто говорит в кадре<input id="lipTarget" maxlength="80" placeholder="Имя героя, как в репликах" /></label><label id="outputFormatRow">Формат аудио<select id="outputFormat"><option value="wav">WAV · без потерь</option><option value="mp3">MP3 · компактнее</option></select></label><div class="finish-actions"><button type="button" id="exportPlan">Скачать план проекта</button><button type="button" id="renderAudio" disabled>Собрать результат на сервере</button></div><p class="availability" id="availability" role="status">Проверяем доступность звукового сервера.</p><div class="audio-jobs" id="audioJobs" aria-live="polite"></div></section>
+      </div>
+
+      <aside class="timeline-panel" aria-label="Предпросмотр и дорожки проекта"><div class="stage-heading"><span class="eyebrow">ПРЕДПРОСМОТР</span><h2 id="stageTitle">Звук для твоей сцены</h2><p id="stageDescription">Выбери задачу слева. Видео, голос и музыка остаются отдельными исходниками; готовый результат появится в истории заданий.</p><div id="taskSummary" class="task-summary" aria-label="Состав результата"></div></div><div class="music-stage" id="musicStage" hidden><div class="music-orbit"><div class="music-orbit-inner"><span>♪</span></div></div><div class="music-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><strong id="musicStageTitle">Твоя композиция начнётся здесь</strong><p id="musicStagePrompt">Опиши стиль, добавь текст песни и укажи длительность.</p><audio id="musicPreview" controls preload="none" hidden></audio></div><div class="timeline-heading"><span class="eyebrow">МОНТАЖНЫЙ ЛИСТ</span><h2>Звуковая дорожка</h2><p>Здесь видно расположение реплик и слоёв. Точный тайминг и длительность речи проверятся после синтеза.</p></div><label class="duration-label">Длина проекта, сек<input id="duration" type="number" min="1" max="3600" value="15" /></label><div class="ruler"><span>0:00</span><span id="rulerMid">0:08</span><span id="rulerEnd">0:15</span></div><div class="tracks" id="tracks"></div><div class="timeline-key"><span><i class="dot speech"></i> речь</span><span><i class="dot music"></i> музыка</span><span><i class="dot source"></i> оригинал</span></div><section class="result-history"><span class="eyebrow">МЕДИАТЕКА</span><h2>Аудиофайлы</h2><p>Прослушай дорожку и добавь её в проект. Голосовой образец выбирается в карточке реплики.</p><input id="audioLibrarySearch" type="search" placeholder="Найти аудиофайл…" aria-label="Поиск аудиофайла" /><div id="audioLibrary" class="audio-library"></div></section><section class="result-history"><span class="eyebrow">РЕЗУЛЬТАТЫ</span><h2>История заданий</h2><p>Готовые файлы появятся здесь. Музыка сохраняется отдельным WAV.</p><div id="stageJobs"></div></section></aside>
+    </div>
+  </main>
+  <script type="module" src="./studio-rail.mjs?v=20261107-fixed-rail-1"></script>
+  <script type="module" src="./product-shell-v2.mjs?v=20261103-no-qwen-1"></script>
+  <script type="module" src="./audio-studio.mjs?v=20261102-talemondo-1"></script>
+  <script type="module" src="./studio-polish.mjs?v=20261007-2"></script>
+  </body>
+</html>

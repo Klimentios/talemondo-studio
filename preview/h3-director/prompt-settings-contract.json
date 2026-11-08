@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "keys": ["duration", "aspect_ratio", "mode", "quality", "megapixels", "steps", "seed", "ref_image_size", "style_adapter", "cache_mode", "sampling_profile", "use_video_audio", "emotional_direction", "agent_prepared_prompt", "camera_state", "camera_optics", "director_config", "color_grade", "color_match", "film_look", "guide_frames", "camera_effect", "character_refinement"],
+  "audio_direction": "Always generate audible scene ambience and action-synchronized sound effects. Keep every explicitly requested line of dialogue, its speaker and timing. Do not invent dialogue or narration when none is requested."
+}

@@ -1,0 +1,81 @@
+/* Studio-wide polish (Claude, 2026-10-07): library density and small layout fixes. */
+
+/* Library: a dense media grid (Создать → «Из библиотеки» and the «Библиотека» page) */
+#libraryDialog .library-grid { display: grid !important; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important; gap: 10px !important; align-content: start; }
+#libraryDialog .library-item { position: relative; padding: 6px !important; border-radius: 12px !important; min-width: 0; height: auto !important; }
+#libraryDialog .library-item > input[type="checkbox"] { position: absolute; top: 10px; left: 10px; z-index: 2; width: 18px; height: 18px; }
+#libraryDialog .library-thumb { width: 100% !important; height: auto !important; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 9px; display: grid; place-items: center; background: #111418; }
+#libraryDialog .library-item-fields { gap: 4px !important; margin-top: 6px; }
+#libraryDialog .library-item-title { font-size: 12px !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#libraryDialog .library-item-category { font-size: 11px !important; }
+#libraryDialog .library-item-fields input, #libraryDialog .library-item-fields select { font-size: 11px !important; padding: 4px 6px !important; min-height: 0 !important; height: auto !important; }
+#libraryDialog .library-toolbar { display: flex !important; flex-wrap: wrap; gap: 8px !important; align-items: center; }
+#libraryDialog .library-toolbar input[type="search"], #libraryDialog #librarySearch { flex: 1 1 200px; }
+#libraryDialog .library-toolbar button { padding: 7px 10px !important; font-size: 12px !important; }
+#libraryDialog #libraryCount { font-size: 12px; color: #8f989d; }
+#libraryDialog .library-more { position: static !important; display: block; margin: 12px auto !important; }
+
+/* «Библиотека» page: the whole height, the grid scrolls inside */
+body.assets-view:not(.scene-view):not(.compute-view) #libraryDialog .library-shell { height: calc(100vh - 110px) !important; max-height: none !important; display: flex !important; flex-direction: column; }
+body.assets-view:not(.scene-view):not(.compute-view) #libraryDialog .library-panel:not([hidden]) { flex: 1 1 auto; min-height: 0; display: flex !important; flex-direction: column; overflow: hidden; }
+body.assets-view:not(.scene-view):not(.compute-view) #libraryDialog #libraryGrid,
+body.assets-view:not(.scene-view):not(.compute-view) #libraryDialog #stockGrid,
+body.assets-view:not(.scene-view):not(.compute-view) #libraryDialog #libraryResultsGrid { flex: 1 1 auto; min-height: 0; overflow: auto !important; max-height: none !important; height: auto !important; }
+body.assets-view:not(.scene-view):not(.compute-view) #libraryDialog .library-header { padding-bottom: 6px !important; }
+body.assets-view:not(.scene-view):not(.compute-view) #libraryDialog .library-header p { display: none; }
+body.assets-view:not(.scene-view):not(.compute-view) #libraryDialog .library-header h2 { font-size: 20px !important; margin: 0 !important; }
+#libraryDialog .library-tabs { padding-top: 4px !important; padding-bottom: 4px !important; }
+#libraryDialog .library-tabs button { padding: 7px 12px !important; }
+#libraryDialog .library-types button { padding: 5px 11px !important; font-size: 12px !important; }
+
+/* «Звук и речь»: one heading, no overlapping summary */
+body[data-product-view="audio"] main > .intro { padding: 14px 18px !important; min-height: 0 !important; align-items: center; }
+body[data-product-view="audio"] main > .intro h1 { font-size: 22px !important; line-height: 1.2 !important; margin: 4px 0 !important; }
+body[data-product-view="audio"] main > .intro p { display: none; }
+body[data-product-view="audio"] main > .intro .project-save { padding: 10px 12px !important; }
+body[data-product-view="audio"] .stage-heading h2 { font-size: 22px !important; line-height: 1.2 !important; }
+body[data-product-view="audio"] .workspace .finish-panel { position: static !important; top: auto !important; bottom: auto !important; z-index: auto !important; }
+
+/* «GPU и модели» uses the same shell as every other page: side rail, slim top bar */
+@media (min-width: 901px) {
+  body.compute-view { padding-left: var(--product-rail, 224px) !important; background: var(--product-bg, #0b0f13); }
+  body.compute-view .studio-rail {
+    position: fixed; z-index: 60; inset: 0 auto 0 0; display: flex !important; width: var(--product-rail, 224px);
+    box-sizing: border-box; padding: 18px 13px 16px; overflow-y: auto; border-right: 1px solid #22282e;
+    background: radial-gradient(circle at 35% 0,#172028 0,transparent 28%),linear-gradient(180deg,#0c1116,#090d11 68%);
+  }
+  body.compute-view .site-header {
+    position: sticky; top: 0; z-index: 50; width: 100%; height: 66px; min-height: 66px; margin: 0 !important;
+    box-sizing: border-box; grid-template-columns: minmax(0,1fr) auto auto !important; padding: 0 24px !important;
+    border-bottom: 1px solid #22282e; background: #090d11e8; backdrop-filter: blur(20px);
+  }
+  body.compute-view .site-header > .brand, body.compute-view .site-header > .top-nav { display: none !important; }
+  body.compute-view .site-header .system-tools { grid-column: 2; }
+  body.compute-view .site-header .locale-switch { grid-column: 3; }
+  body.compute-view .page { padding: 22px 24px 40px !important; }
+}
+
+/* another tab saved the project: this tab stops saving */
+.draft-stale-bar { position: fixed; z-index: 1000; left: 50%; top: 12px; transform: translateX(-50%); display: flex; gap: 12px; align-items: center; max-width: min(720px, calc(100vw - 32px));
+  padding: 10px 12px 10px 16px; border-radius: 12px; background: #2a2116; border: 1px solid #e8aa73; color: #f3f0e9; font-size: 13px; box-shadow: 0 12px 30px rgba(0,0,0,.5); }
+.draft-stale-bar button { flex: none; border: 0; border-radius: 9px; padding: 7px 14px; font: inherit; font-weight: 650; background: #e8aa73; color: #1b1410; cursor: pointer; }
+
+/* One typeface everywhere. Inter was named in every stack but never loaded (not installed on the
+   Mac), so the real font depended on the machine; it is now loaded from Google Fonts, with the
+   system font as the offline fallback. Small labels use it too; only technical tags
+   (<Picture N>, mentions, logs) stay monospace. */
+
+body, button, input, select, textarea, dialog { font-family: var(--studio-font); }
+.eyebrow, .create-step, .locale-switch, .cut-index, .scene-page-kicker, .compute-kicker, .kc-label, .kc-num {
+  font-family: var(--studio-font) !important; letter-spacing: .06em;
+}
+body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; font-feature-settings: "cv11", "ss01"; }
+body[data-product-view="audio"] :is(main, header, aside, nav, section, div, h1, h2, h3, h4, p, span, strong, small, label, a, button, input, select, textarea):not(.reference-tag):not(code):not(pre),
+body[data-product-view="edit"] :is(main, header, aside, nav, section, div, h1, h2, h3, h4, p, span, strong, small, label, a, button, input, select, textarea):not(code):not(pre) {
+  font-family: var(--studio-font) !important;
+}
+
+/* Library cards: long names and categories end with «…» inside the card instead of running past its edge. */
+#libraryDialog .library-item-fields { display: grid !important; grid-template-columns: minmax(0, 1fr); min-width: 0; }
+#libraryDialog .library-item-title { display: block; min-width: 0; max-width: 100%; }
+#libraryDialog .library-item-category { display: block; justify-self: start; max-width: 100%; box-sizing: border-box; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

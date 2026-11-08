@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "TaleMondo Subscription Connector",
+  "version": "0.1.0",
+  "description": "Connect the local Studio conversation to your signed-in ChatGPT browser session.",
+  "permissions": ["storage", "unlimitedStorage", "tabs"],
+  "background": {"service_worker": "background.js"},
+  "content_scripts": [
+    {"matches": ["http://127.0.0.1:18187/*", "http://localhost:18187/*"], "js": ["studio.js"]},
+    {"matches": ["https://chatgpt.com/*"], "js": ["chatgpt.js"]}
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "studio-franchise-board",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "vite build && node licenses.mjs"
+  },
+  "dependencies": {
+    "@floating-ui/react": "^0.26.24",
+    "@plait-board/markdown-to-drawnix": "^0.0.8",
+    "@plait-board/mermaid-to-drawnix": "^0.0.8",
+    "@plait/common": "^0.94.0",
+    "@plait/core": "^0.94.0",
+    "@plait/draw": "^0.94.0",
+    "@plait/layouts": "^0.94.0",
+    "@plait/mind": "^0.94.0",
+    "@plait/text-plugins": "^0.94.0",
+    "ahooks": "^3.9.7",
+    "browser-fs-access": "^0.38.0",
+    "classnames": "^2.5.1",
+    "is-hotkey": "^0.2.0",
+    "laser-pen": "^1.0.1",
+    "localforage": "^1.10.0",
+    "mobile-detect": "^1.4.5",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "roughjs": "^4.6.6",
+    "slate": "^0.116.0",
+    "slate-dom": "^0.116.0",
+    "slate-history": "^0.115.0",
+    "slate-react": "^0.116.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "vite": "6.1.0",
+    "sass": "1.101.0",
+    "@vitejs/plugin-react": "4.3.4"
+  }
+}

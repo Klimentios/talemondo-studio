@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>MiniMax H3 Studio</title>
+    <script>
+      // This package is not the user's Studio or its library. When opened from
+      // Finder, return to the existing app so its saved jobs and results remain visible.
+      if (location.protocol === 'file:') location.replace('http://127.0.0.1:18187/');
+    </script>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">H3</div>
+          <div>
+            <h1>MiniMax H3 Studio</h1>
+            <p>Ref2VA BF16 · native 1344×768 · stereo audio</p>
+          </div>
+        </div>
+        <div class="engine-status" id="engineStatus"><span></span> Проверка GPU…</div>
+      </header>
+
+      <form id="studioForm" class="workspace">
+        <aside class="reference-panel" aria-label="Референсы">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Референсы</span>
+              <h2>Что сохранить</h2>
+            </div>
+            <span class="counter">до 12</span>
+          </div>
+          <p class="hint">Изображения задают identity, видео — движение/камеру, аудио — голос или звук. Порядок файлов задаёт номера.</p>
+          <div class="reference-slots">
+            <label class="media-slot">
+              <strong>@ref1…@ref9</strong>
+              <span>Лицо, персонаж, материал, стиль</span>
+              <input id="images" type="file" name="images" accept="image/png,image/jpeg,image/webp" multiple />
+              <em id="imagesCount">Не выбрано</em>
+            </label>
+            <label class="media-slot">
+              <strong>@video1…@video3</strong>
+              <span>Движение, поза, физика, камера</span>
+              <input id="videos" type="file" name="videos" accept="video/mp4,video/quicktime,video/webm" multiple />
+              <em id="videosCount">Не выбрано</em>
+            </label>
+            <label class="media-slot">
+              <strong>@audio1…@audio3</strong>
+              <span>Музыка, голос, атмосфера или звуковой эффект</span>
+              <input id="audios" type="file" name="audios" accept="audio/*" multiple />
+              <em id="audiosCount">Не выбрано</em>
+            </label>
+          </div>
+          <label class="check-row">
+            <input type="checkbox" name="use_video_audio" value="true" checked />
+            <span>Использовать звук из @video как @video1audio</span>
+          </label>
+        </aside>
+
+        <section class="creation-panel">
+          <div class="prompt-header">
+            <div>
+              <span class="eyebrow">Сцена</span>
+              <h2>Что должно произойти?</h2>
+            </div>
+            <button class="ghost-button" type="button" id="insertRefs">H3 Ref2VA шаблон</button>
+          </div>
+          <label class="sr-only" for="prompt">Промпт</label>
+          <textarea id="prompt" name="prompt" required maxlength="12000" placeholder="Используйте шесть секций H3 Ref2VA. Для личности: @ref1. Для движения: @video1. Для голоса: @audio1."></textarea>
+
+          <div class="settings-grid">
+            <fieldset>
+              <legend>Формат</legend>
+              <div class="segmented" data-field="aspect_ratio">
+                <button type="button" class="active" data-value="16:9">16:9 <small>широкий</small></button>
+                <button type="button" data-value="9:16">9:16 <small>TikTok / Reels</small></button>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Профиль весов</legend>
+              <div class="segmented" data-field="profile">
+                <button type="button" class="active" data-value="bf16">BF16 <small>максимум</small></button>
+              </div>
+            </fieldset>
+            <fieldset class="duration-field">
+              <legend>Длительность</legend>
+              <div class="duration-control">
+                <input id="duration" name="duration" type="range" min="5" max="15" step="1" value="5" />
+                <output id="durationOutput" for="duration">5 сек</output>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Шаги</legend>
+              <input class="text-input" name="steps" type="number" min="20" max="25" value="25" />
+            </fieldset>
+            <fieldset>
+              <legend>Seed (пусто = случайный)</legend>
+              <input class="text-input" name="seed" type="number" min="0" placeholder="random" />
+            </fieldset>
+            <fieldset>
+              <legend>Движение камеры</legend>
+              <select class="text-input" name="camera">
+                <option value="none">Без видеогида камеры</option>
+                <option value="static">Статичный кадр</option>
+                <option value="push_in">Dolly in · наезд</option>
+                <option value="pull_back">Dolly out · отъезд</option>
+                <option value="orbit_left">Орбита влево</option>
+                <option value="orbit_right">Орбита вправо</option>
+              </select>
+            </fieldset>
+            <fieldset>
+              <legend>Объектив в начале</legend>
+              <select class="text-input" name="camera_focal_length_mm">
+                <option value="24">24 mm · широкий</option>
+                <option value="35" selected>35 mm · нормальный</option>
+                <option value="50">50 mm · стандартный</option>
+                <option value="85">85 mm · портретный</option>
+              </select>
+            </fieldset>
+            <fieldset>
+              <legend>Объектив в конце</legend>
+              <select class="text-input" name="camera_focal_length_end_mm">
+                <option value="24">24 mm · широкий</option>
+                <option value="35" selected>35 mm · нормальный</option>
+                <option value="50">50 mm · стандартный</option>
+                <option value="85">85 mm · портретный</option>
+              </select>
+            </fieldset>
+            <fieldset>
+              <legend>Диафрагма</legend>
+              <select class="text-input" name="camera_aperture_f">
+                <option value="1.8">f/1.8 · малая ГРИП</option>
+                <option value="2.8" selected>f/2.8 · мягкое боке</option>
+                <option value="4">f/4</option>
+                <option value="5.6">f/5.6</option>
+                <option value="8">f/8 · больше резкости</option>
+                <option value="11">f/11</option>
+              </select>
+            </fieldset>
+            <fieldset>
+              <legend>Фокус в начале, м</legend>
+              <input class="text-input" name="focus_start_m" type="number" min="0.3" max="50" step="0.1" value="2" />
+            </fieldset>
+            <fieldset>
+              <legend>Фокус в конце, м</legend>
+              <input class="text-input" name="focus_end_m" type="number" min="0.3" max="50" step="0.1" value="2" />
+            </fieldset>
+          </div>
+
+          <input type="hidden" name="aspect_ratio" value="16:9" />
+          <input type="hidden" name="quality" value="native" />
+          <input type="hidden" name="profile" value="bf16" />
+          <input type="hidden" name="camera_state_json" value="null" />
+
+          <div class="action-row">
+            <div class="estimate">
+              <strong id="summary">16:9 · native · BF16 · 5 сек</strong>
+              <span>Turbo выключен · ref_image_size=max · 25 шагов</span>
+            </div>
+            <button class="generate-button" id="generateButton" type="submit">
+              <span class="button-label">Сгенерировать видео</span>
+              <span class="button-progress">Запускаю…</span>
+            </button>
+          </div>
+        </section>
+
+        <aside class="result-panel" aria-live="polite">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Результат</span>
+              <h2>Видео</h2>
+            </div>
+          </div>
+          <div class="result-empty" id="resultEmpty">
+            <div class="play-glyph">▶</div>
+            <p>Готовый ролик появится здесь.</p>
+            <span>Окно можно закрыть: задача продолжит считаться на сервере.</span>
+          </div>
+          <div class="result-working hidden" id="resultWorking">
+            <div class="spinner"></div>
+            <strong id="jobState">Задача в очереди</strong>
+            <span>Полная H3 может считать несколько минут.</span>
+          </div>
+          <div class="result-ready hidden" id="resultReady">
+            <video id="resultVideo" controls playsinline></video>
+            <a id="downloadVideo" class="download-button" download>Скачать MP4</a>
+          </div>
+          <div class="result-error hidden" id="resultError">
+            <strong>Генерация не завершилась</strong>
+            <p id="errorText"></p>
+          </div>
+        </aside>
+      </form>
+    </main>
+    <script src="./app.js" defer></script>
+  </body>
+</html>

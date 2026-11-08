@@ -1,0 +1,42 @@
+# ComfyUI venv (/workspace/h3/venv): packages that used to come from the Vast base image's
+# system Python while the venv was created with --system-site-packages. The venv is now
+# self-contained; these pins are installed into it right after torch and ComfyUI requirements
+# (and used as constraints for them), so a newer vastai/base-image cannot change them.
+#
+# Lives in the base bundle (vendor/minimax-h3-local-studio) because deploy_h3_local_studio.sh creates
+# the venv; scripts/deploy_h3_new_server.sh ships it to the overlay too. Applied by
+# h3_comfy_venv_isolate (scripts/h3_gpu_env.sh).
+#
+# Versions = the approved server snapshot h3-20261004-1826 (lock/venv.txt). Only what
+# ComfyUI b5cc8830, its requirements, our 6 custom nodes (h3_native_helpers, FirstBlockCache,
+# h3-3D-camera-guide, h3-color-grade, h3-character-refine incl. sam2/iopath/hydra, websocket_image_save)
+# and torch/torchvision/transformers/huggingface-hub actually import. Found with `pip check` in a
+# venv without system packages + a CPU ComfyUI start on the local stand (docs/H3_GOLDEN_IMAGE_PLAN.md).
+# Deliberately absent: jupyter/notebook/tornado/twisted/tensorboard and other base-image tooling.
+
+# ComfyUI requirements.txt (imported by ComfyUI itself)
+numpy==2.5.3
+pillow==12.3.0
+pyyaml==6.0.3
+tqdm==4.70.0
+psutil==7.2.2
+requests==2.34.2
+# requests
+certifi==2026.7.22
+charset-normalizer==3.5.1
+idna==3.19
+urllib3==2.7.0
+# torch, transformers, kornia, hydra-core, pydantic, sqlalchemy, aiohttp
+jinja2==3.1.6
+markupsafe==3.0.3
+packaging==26.3
+typing-extensions==4.16.0
+attrs==26.1.0
+# huggingface-hub (transformers)
+click==8.5.0
+httpx==0.28.1
+httpcore==1.0.9
+h11==0.16.0
+anyio==4.15.1
+# rich (typer, huggingface-hub CLI)
+pygments==2.21.0

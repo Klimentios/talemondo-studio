@@ -1,0 +1,191 @@
+/* Eight square Director controls; smaller windows scroll the same row. */
+.director-strip {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 7px;
+  max-width: 1320px;
+  margin-inline: auto;
+  overflow: visible;
+}
+.director-tile {
+  min-width: 0;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  gap: 4px;
+  border-radius: 10px;
+}
+.director-tile-art {
+  flex: 1;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  border-radius: 7px;
+}
+.director-tile-art .director-camera-photo,
+.preset-art .director-camera-photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  background: #151b23;
+}
+/* Product photos need the whole physical lens in view. */
+.kind-lens .director-camera-photo {
+  object-fit: contain;
+}
+.director-tile-caption {
+  min-width: 0;
+  height: 31px;
+  min-height: 0;
+  flex: none;
+  justify-content: center;
+}
+.director-tile-caption strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.preset-art { background: #151b23; }
+@media (max-width: 1150px) {
+  .director-strip {
+    display: flex;
+    grid-template-columns: none;
+    max-width: none;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    padding-bottom: 4px;
+  }
+  .director-tile { flex: 0 0 134px; scroll-snap-align: start; }
+}
+@media (max-width: 699px) {
+  .director-tile { flex-basis: 120px; }
+}
+
+/* The creation workspace shows job state; full technical text lives in Queue. */
+body:not(.queue-view) .job-card > div:first-child > p,
+body:not(.queue-view) .job-card .job-reference-read {
+  display: none;
+}
+body:not(.queue-view) .job-card {
+  min-height: 76px;
+  padding: 12px 14px;
+  align-items: center;
+}
+body:not(.queue-view) .job-card > div:first-child {
+  display: grid;
+  gap: 5px;
+}
+body:not(.queue-view) .job-card small {
+  margin: 0;
+  line-height: 1.4;
+}
+body:not(.queue-view) .job-card > div:first-child > small {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.job-details {
+  margin-top: 8px;
+  border-top: 1px solid #39424d;
+  padding-top: 7px;
+  max-width: min(850px, 100%);
+}
+.job-details summary {
+  color: var(--k-accent-text);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 650;
+}
+.job-details summary:hover { color: var(--k-accent-text); }
+.job-details pre {
+  max-height: 320px;
+  overflow: auto;
+  margin: 8px 0;
+  padding: 10px;
+  border: 1px solid #354252;
+  border-radius: 7px;
+  background: #131a22;
+  color: #c8d3dd;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font: 11px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+.job-details .job-reference-read {
+  display: block;
+  max-height: 170px;
+  overflow: auto;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 800px) {
+  .director-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .preset-choose small {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+}
+@media (max-width: 560px) {
+  .library-toolbar #libraryFilter {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+  .library-toolbar #libraryCount { margin-right: auto; }
+}
+
+/* STUDIO wordmark and a restrained language control in the same header row. */
+.brand-mark svg { display: block; width: 26px; height: 26px; color: #fff; }
+.brand strong { letter-spacing: -.045em; }
+.locale-switch {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 67px;
+  height: 31px;
+  padding: 0 8px;
+  border: 1px solid #384353;
+  border-radius: 8px;
+  background: #171f29;
+  color: #8999ac;
+  font: 700 10px/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+
+}
+.locale-switch:hover { border-color: var(--k-accent); color: var(--k-accent-text); }
+.locale-switch[data-locale="ru"] .locale-ru,
+.locale-switch[data-locale="en"] .locale-en { color: var(--k-accent-text); }
+.locale-switch span[aria-hidden="true"] { color: #657183; }
+@media (max-width: 850px) {
+  .locale-switch { order: 1; margin-left: auto; }
+  .preview-badge { order: 2; margin-left: 0; }
+  .top-nav { order: 3; }
+}
+@media (max-width: 560px) {
+  .brand { gap: 8px; font-size: 18px; }
+  .brand-mark { width: 30px; height: 30px; }
+  .brand-mark svg { width: 21px; height: 21px; }
+  .site-header { gap: 7px; }
+  .preview-badge { max-width: 112px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .top-nav a, .top-nav button { padding: 0 9px; }
+}
+
+/* «Свой пресет»: fields filled from the reference photo */
+.director-custom-fields label.from-photo select,
+.director-custom-fields label.from-photo input { border-color: var(--k-accent); box-shadow: 0 0 0 1px color-mix(in srgb, var(--k-accent) 33%, transparent); }
+.director-photo-result { margin: 0; font-size: 11px; color: var(--k-accent-text); }
+.director-photo-result:empty { display: none; }
+
+/* Result stage: real sampling progress from the GPU */
+.stage-progress { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: #ffffff14; z-index: 2; }
+.stage-progress i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--k-accent), var(--k-accent-text)); transition: width .6s ease; }
+.stage-progress.stale i { background: #6b7280; }
+.stage-progress[hidden] { display: none; }

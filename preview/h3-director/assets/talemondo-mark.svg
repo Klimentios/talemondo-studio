@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 48" role="img" aria-label="TaleMondo" focusable="false">
+    <path fill="none" stroke="#f2eadf" stroke-width="1.6" d="M4 46V20a16 16 0 0 1 32 0v26" />
+    <path fill="#d6ad7e1a" stroke="#d6ad7e" stroke-width="1" d="M9.5 46V20.5a10.5 10.5 0 0 1 21 0V46" />
+    <path fill="#e8c89e" d="M20 17.5c2.6 3.6 2.6 13.4 0 17-2.6-3.6-2.6-13.4 0-17Z" />
+    <circle fill="#e8c89e" cx="27.5" cy="9" r="1.3" />
+    <path stroke="#f2eadf" stroke-width="1.2" opacity=".45" d="M1 46h38" />
+  </svg>

@@ -1,0 +1,169 @@
+/* Finished renders keep the download action visible at every card width. */
+body:not(.queue-view) .job-card {
+  max-height: none;
+  overflow: visible;
+}
+
+.job-card {
+  align-items: start;
+}
+
+.job-card > div:first-child {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.job-card .job-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  gap: 7px;
+  flex: 0 0 142px;
+  width: 142px;
+}
+
+.job-card .job-actions :is(button, a, summary) {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  width: 100%;
+  padding: 7px 10px;
+  border: 1px solid #56647b;
+  border-radius: 9px;
+  background: #283344;
+  color: #f0f3fb;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  white-space: normal;
+  cursor: pointer;
+}
+
+.job-card .job-actions :is(button, a, summary):hover {
+  background: #36455a;
+  border-color: #8195b5;
+}
+
+.job-card .job-actions :is(button, a, summary):focus-visible {
+  outline: 2px solid var(--k-accent-text);
+  outline-offset: 2px;
+}
+
+.job-card .job-actions .job-download {
+  min-height: 42px;
+  border-color: #4ce1b6;
+  background: #14765e;
+  color: #fff;
+  box-shadow: 0 4px 14px #06755435;
+}
+
+.job-card .job-actions .job-download:hover {
+  border-color: #8af1d1;
+  background: #198d70;
+}
+
+.job-more-actions {
+  min-width: 0;
+}
+
+.job-card .job-actions .job-more-actions > summary {
+  list-style: none;
+  background: #222d3c;
+  color: #c9d5e8;
+}
+
+.job-more-actions > summary::-webkit-details-marker {
+  display: none;
+}
+
+.job-more-actions > summary::after {
+  content: '⌄';
+  margin-left: 6px;
+}
+
+.job-more-actions[open] > summary::after {
+  content: '⌃';
+}
+
+.job-more-content {
+  display: grid;
+  gap: 7px;
+  margin-top: 7px;
+}
+
+.job-more-content > span {
+  overflow-wrap: anywhere;
+  color: #ccd5e5;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.job-card.state-completed {
+  border-color: #3b685f;
+}
+
+.job-card.state-completed strong {
+  color: #a3ebcb;
+}
+
+@media (max-width: 600px) {
+  .job-card .job-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    margin-top: 12px;
+  }
+
+  .job-more-actions {
+    grid-column: 1 / -1;
+  }
+}
+
+/* «Другие задания GPU» on the queue page (job-feed.mjs sideJobsSection). */
+.side-jobs{display:grid;gap:6px;padding:12px 14px;border:1px solid rgba(255,255,255,.1);border-radius:12px;background:rgba(255,255,255,.03)}
+.side-jobs strong{font-size:12px}
+.side-jobs ul{display:grid;gap:4px;margin:0;padding:0;list-style:none}
+.side-jobs a{color:inherit;font-size:12px;line-height:1.45;overflow-wrap:anywhere;text-decoration:none}
+.side-jobs a:hover{text-decoration:underline}
+.side-job.state-failed a{color:#f2b9ae}
+.side-job.state-running a,.side-job.state-queued_gpu a,.side-job.state-uploading a,.side-job.state-downloading a{color:#cfeab3}
+.side-jobs li{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}
+.side-jobs li small,.side-jobs li progress{flex:0 0 100%;color:var(--muted,#9ba6ad)}
+.side-jobs li a{flex:1 1 auto;min-width:0}
+.side-job-hide{flex:none;padding:2px 8px;border:1px solid rgba(255,255,255,.18);border-radius:7px;background:transparent;color:inherit;font-size:11px;cursor:pointer}
+.side-job-hide:hover{background:rgba(255,255,255,.08)}
+.gpu-external-job{display:grid;gap:8px;padding:14px;border:1px solid rgba(163,235,203,.35);border-radius:12px;background:rgba(163,235,203,.08)}
+.gpu-external-job strong{font-size:14px}
+.gpu-external-job small{color:var(--muted,#9ba6ad)}
+.gpu-external-job progress{width:100%}
+
+/* Studio ↔ ComfyUI (comfy-edits.mjs): edits sent back from the ComfyUI editor. */
+.job-comfy-edits > summary {
+  cursor: pointer;
+  color: var(--k-muted);
+  font-size: 12px;
+}
+
+.job-comfy-edits[open] > div {
+  display: grid;
+  gap: 8px;
+  margin-top: 7px;
+}
+
+.comfy-edit {
+  display: grid;
+  gap: 4px;
+  padding: 8px;
+  border: 1px solid var(--k-line);
+  border-radius: var(--k-radius-sm);
+}
+
+.comfy-edit ul {
+  margin: 0;
+  padding-left: 16px;
+  color: var(--k-muted);
+  font: 11px/1.4 var(--k-mono);
+  overflow-wrap: anywhere;
+}

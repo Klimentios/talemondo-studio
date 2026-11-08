@@ -1,0 +1,157 @@
+/* Shared glass layer: workspaces keep ownership of their content and controls. */
+body.has-studio-rail {
+  background-color: var(--k-canvas);
+  background-image: linear-gradient(color-mix(in srgb, var(--k-canvas) 38%, transparent), color-mix(in srgb, var(--k-canvas) 38%, transparent)), url('/assets/studio-ambient-v1.png');
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+body.has-studio-rail .studio-rail {
+  background: var(--k-glass-strong) !important;
+  border-color: var(--k-glass-line) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(130%);
+  backdrop-filter: blur(28px) saturate(130%);
+}
+.studio-rail nav a.rail-active {
+  border-color: var(--k-glass-line) !important;
+  background: color-mix(in srgb, var(--k-glass-glow) 18%, var(--k-inset)) !important;
+  box-shadow: none !important;
+}
+.studio-rail nav a.rail-active .rail-icon { color: var(--k-primary) !important; }
+.studio-rail .rail-brand .brand-mark { box-shadow: none; }
+body.has-studio-rail :is(.site-header, .audio-header),
+body.has-studio-rail:has(.filterbar) > header {
+  border-color: var(--k-glass-line);
+  background: var(--k-glass-strong);
+  -webkit-backdrop-filter: blur(24px) saturate(130%);
+  backdrop-filter: blur(24px) saturate(130%);
+}
+body[data-product-view="create"] :is(.composer-card, .queue-section),
+body.scene-view :is(#scene-board, .storyboard-inspector),
+body.assets-view :is(.assets-workspace, .assets-panel),
+.audio-page :is(.panel, .timeline-panel),
+.look-page :is(.look-panel, .look-section),
+.mc-page :is(.mc-panel, .mc-section),
+.editor-app :is(.panel, .editor-panel) {
+  border-color: var(--k-glass-line) !important;
+  background-color: var(--k-glass-strong) !important;
+}
+.k-btn, .k-chip, .studio-rail nav a, .studio-rail .rail-settings summary, .kc-float button, .filterbar button, header nav button {
+  transition: background-color .18s ease, border-color .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .glass-pointer:hover { background-image: radial-gradient(120px circle at var(--glass-pointer-x, 50%) var(--glass-pointer-y, 50%), color-mix(in srgb, var(--k-text) 13%, transparent), transparent 75%); }
+  .k-btn:hover:not(:disabled), .k-chip:hover:not(:disabled) {
+    box-shadow: 0 6px 20px color-mix(in srgb, var(--k-rail) 35%, transparent), inset 0 1px color-mix(in srgb, var(--k-text) 14%, transparent);
+    transform: translateY(-1px);
+  }
+  .k-btn:active:not(:disabled), .k-chip:active:not(:disabled) { transform: translateY(0) scale(.985); }
+  .kc-float button:hover:not(:disabled), .filterbar button:hover:not(:disabled), header nav button:hover:not(:disabled) { border-color: var(--k-glass-line); filter: brightness(1.12); }
+  .studio-rail nav a:hover { background: color-mix(in srgb, var(--k-glass-glow) 12%, var(--k-inset)); }
+}
+:focus-visible { outline: 2px solid var(--k-focus); outline-offset: 3px; }
+@media (prefers-reduced-transparency: reduce) {
+  body.has-studio-rail .studio-rail, body.has-studio-rail :is(.site-header, .audio-header),
+body.has-studio-rail:has(.filterbar) > header {
+    background: var(--k-inset) !important; -webkit-backdrop-filter: none; backdrop-filter: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .k-btn, .k-chip, .studio-rail nav a, .studio-rail .rail-settings summary { transition: none !important; }
+  .k-btn:hover:not(:disabled), .k-chip:hover:not(:disabled), .k-btn:active:not(:disabled), .k-chip:active:not(:disabled) { transform: none; }
+}
+
+/* Float the storyboard controls above the work without tinting image and video previews. */
+body.scene-view :is(.kc-float, .kc-panel, .kc-popover) {
+  background: var(--k-glass-strong); border-color: var(--k-glass-line);
+  -webkit-backdrop-filter: blur(24px) saturate(130%); backdrop-filter: blur(24px) saturate(130%);
+}
+body.has-studio-rail:has(.filterbar) :is(.account-card, main .panel, dialog) {
+  background: var(--k-glass-strong); border-color: var(--k-glass-line); border-radius: var(--k-radius-lg);
+}
+body.has-studio-rail:has(.filterbar) :is(header nav button, .filterbar button, .filterbar select, .tools select) {
+  border-radius: var(--k-radius);
+}
+@media (prefers-reduced-transparency: reduce) {
+  body.scene-view :is(.kc-float, .kc-panel, .kc-popover), body.has-studio-rail:has(.filterbar) > header {
+    background: var(--k-inset) !important; -webkit-backdrop-filter: none; backdrop-filter: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kc-float button, .filterbar button, header nav button { transition: none !important; }
+}
+
+/* Violet/cyan lighting marks interaction and navigation, never GPU state or media pixels. */
+.studio-rail nav a.rail-active {
+  background: linear-gradient(105deg, color-mix(in srgb, var(--k-neon) 34%, var(--k-inset)), color-mix(in srgb, var(--k-neon-hot) 18%, var(--k-inset))) !important;
+  border-color: color-mix(in srgb, var(--k-neon-hot) 50%, var(--k-glass-line)) !important;
+  box-shadow: inset 0 1px color-mix(in srgb, var(--k-text) 14%, transparent), 0 0 20px color-mix(in srgb, var(--k-neon) 22%, transparent) !important;
+}
+.studio-rail .rail-brand .brand-mark { background: linear-gradient(140deg, var(--k-neon-hot), var(--k-neon)); color: var(--k-primary-ink); box-shadow: 0 0 24px color-mix(in srgb, var(--k-neon) 45%, transparent); }
+body.has-studio-rail :is(.k-btn--primary, .kc-accent, .send-button):not(:disabled) {
+  background-image: linear-gradient(135deg, var(--k-neon-hot), var(--k-neon));
+  border-color: color-mix(in srgb, var(--k-text) 22%, var(--k-neon));
+  color: var(--k-primary-ink);
+  box-shadow: inset 0 1px color-mix(in srgb, var(--k-text) 25%, transparent), 0 5px 22px color-mix(in srgb, var(--k-neon) 30%, transparent);
+}
+body.has-studio-rail .k-chip[aria-pressed="true"] { border-color: var(--k-accent-line); box-shadow: 0 0 14px color-mix(in srgb, var(--k-neon) 14%, transparent); }
+body.scene-view :is(.kc-float, .kc-panel, .kc-popover) { box-shadow: 0 12px 34px color-mix(in srgb, var(--k-rail) 80%, transparent), 0 0 20px color-mix(in srgb, var(--k-neon) 12%, transparent); }
+
+/* Scene canvas: the backdrop must be behind the glass, not hidden by an opaque shell. */
+body.scene-view .kc-shell {
+  background: linear-gradient(color-mix(in srgb, var(--k-canvas) 30%, transparent), color-mix(in srgb, var(--k-canvas) 46%, transparent)), url('/assets/studio-ambient-v1.png') center / cover no-repeat;
+}
+body.scene-view .kc-viewport { background-color: transparent; }
+body.scene-view :is(.kc-float, .kc-panel, .kc-popover) {
+  background: color-mix(in srgb, var(--k-glass) 88%, transparent);
+  border: 1px solid color-mix(in srgb, var(--k-accent) 40%, var(--k-glass-line));
+  box-shadow: inset 0 1px color-mix(in srgb, var(--k-text) 20%, transparent), 0 12px 38px color-mix(in srgb, var(--k-rail) 70%, transparent), 0 0 25px color-mix(in srgb, var(--k-neon) 18%, transparent);
+  -webkit-backdrop-filter: blur(28px) saturate(155%);
+  backdrop-filter: blur(28px) saturate(155%);
+}
+body.scene-view .kc-float button:not(.kc-accent) {
+  background: linear-gradient(155deg, color-mix(in srgb, var(--k-text) 14%, var(--k-glass)), color-mix(in srgb, var(--k-glass) 74%, transparent));
+  border-color: var(--k-glass-line); border-radius: var(--k-radius);
+  box-shadow: inset 0 1px color-mix(in srgb, var(--k-text) 14%, transparent);
+}
+body.scene-view .kc-float button:not(.kc-accent):hover:not(:disabled) {
+  border-color: var(--k-accent); background: color-mix(in srgb, var(--k-accent) 24%, var(--k-glass-strong));
+  box-shadow: inset 0 1px color-mix(in srgb, var(--k-text) 25%, transparent), 0 0 18px color-mix(in srgb, var(--k-neon) 28%, transparent);
+}
+body.scene-view .kc-node .kc-card { border-color: var(--k-glass-line); box-shadow: 0 12px 32px color-mix(in srgb, var(--k-rail) 80%, transparent); }
+body.scene-view .kc-node.is-selected .kc-card { border-color: var(--k-accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--k-accent) 45%, transparent), 0 0 24px color-mix(in srgb, var(--k-neon) 32%, transparent); }
+@media (max-width: 1800px) {
+  body.scene-view .kc-top-left { max-width: calc(100% - 32px); overflow-x: auto; }
+  body.scene-view .kc-top-right { top: 76px; max-width: calc(100% - 32px); overflow-x: auto; }
+  body.scene-view .kc-top-left > *, body.scene-view .kc-top-right > * { flex-shrink: 0; white-space: nowrap; }
+}
+@media (max-width: 760px) {
+  body.scene-view .kc-dock { max-width: calc(100% - 32px); overflow-x: auto; }
+  body.scene-view .kc-dock > * { flex-shrink: 0; white-space: nowrap; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  body.scene-view :is(.kc-float, .kc-panel, .kc-popover) { background: var(--k-inset) !important; -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
+@media (max-width: 760px) {
+  body.scene-view .kc-zoom { bottom: 78px; }
+  body.scene-view .kc-dock { left: 8px; right: 112px; bottom: 12px; max-width: none; }
+}
+
+/* Live status is a compact glass control; progress comes from the existing queue display. */
+.studio-status-panel { position: relative; }
+.studio-status-panel summary { display: flex; align-items: center; gap: 8px; min-height: 38px; padding: 0 12px; border: 1px solid var(--k-glass-line); border-radius: var(--k-radius); background: var(--k-glass); color: var(--k-text); cursor: pointer; list-style: none; font-size: 12px; white-space: nowrap; }
+.studio-status-panel summary::-webkit-details-marker { display: none; }
+.studio-status-panel summary:focus-visible { outline: 2px solid var(--k-focus); outline-offset: 3px; }
+.studio-status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--k-warn); }
+.studio-status-panel.is-online .studio-status-dot { background: var(--k-good); }
+.studio-status-card { position: absolute; z-index: 150; top: calc(100% + 8px); right: 0; display: grid; gap: 8px; width: min(320px, calc(100vw - 32px)); padding: 16px; border: 1px solid var(--k-glass-line); border-radius: var(--k-radius-lg); background: var(--k-glass-strong); box-shadow: var(--k-shadow); -webkit-backdrop-filter: blur(24px); backdrop-filter: blur(24px); color: var(--k-text); }
+.studio-status-card p { margin: 0; color: var(--k-muted); font-size: 12px; line-height: 1.45; }
+.studio-status-card progress { width: 100%; accent-color: var(--k-accent); }
+.studio-status-card progress[hidden] { display: none; }
+.studio-status-card a { color: var(--k-accent-text); font-size: 12px; }
+@media (max-width: 700px) { .studio-status-panel summary { padding: 0 8px; max-width: 190px; overflow: hidden; } .studio-status-panel summary span:last-child { overflow: hidden; text-overflow: ellipsis; } }
+@media (prefers-reduced-transparency: reduce) { .studio-status-card { background: var(--k-inset); -webkit-backdrop-filter: none; backdrop-filter: none; } }
+
+@media (max-width: 760px) {
+  .ac-page .studio-status-card { left: 0; right: auto; }
+}

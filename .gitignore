@@ -1,0 +1,23 @@
+# Local environments and caches
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+node_modules/
+.DS_Store
+
+# Logs, experiments, scratch work (never committed)
+logs/
+work/
+test-results/
+
+# Studio data lives in $H3_MAC_DATA_DIR, never in the repo
+runtime/
+*.sqlite3
+
+# Secrets
+.env
+*.pem
+*.key
+minimax-api-key

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru" data-boot-hold>
+<head>
+  <meta charset="utf-8">
+  <script src="/page-boot.js?v=20261107-fixed-rail-1"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/svg+xml" href="/assets/talemondo-mark.svg">
+  <title>Первый запуск — TaleMondo</title>
+  <link rel="stylesheet" href="/tokens.css?v=20261102-unified-1">
+  <link rel="stylesheet" href="/components.css?v=20261101-studio-finish-1">
+  <link rel="stylesheet" href="/studio-rail.css?v=20261107-fixed-rail-1">
+  <link rel="stylesheet" href="/studio-glass.css?v=20261102-status-2">
+  <link rel="stylesheet" href="/studio-system.css?v=20261102-talemondo-2">
+  <link rel="stylesheet" href="/workflows.css?v=20261108-wizard-2">
+  <meta name="application-name" content="TaleMondo">
+</head>
+<body class="wf-page">
+  <aside class="studio-rail"></aside>
+  <main class="wf-main">
+    <header class="wf-top">
+      <div>
+        <span class="wf-kicker">H3 Studio</span>
+        <h1>Первый запуск</h1>
+        <p class="wf-hint">Пять шагов до первого ролика. Сверху — что уже готово; каждый пункт ниже исправляется кнопкой.</p>
+      </div>
+      <div class="wf-actions"><button type="button" class="k-btn k-btn--ghost" id="suRefresh">Проверить снова</button></div>
+    </header>
+    <p id="wfStatus" class="wf-status" role="status" aria-live="polite"></p>
+    <section class="k-panel wf-block"><h2>Готовность</h2><div id="suChecks" class="su-checks"></div></section>
+    <section class="k-panel wf-block">
+      <h2>1. SSH-ключ</h2>
+      <p class="wf-hint">Нужен один раз. Токены и регистрации на Hugging Face не нужны: все модели открытые.</p>
+      <div class="su-step">
+        <b>SSH-ключ</b>
+        <p class="wf-hint">Им Studio заходит на GPU-сервер. Создайте и добавьте открытый ключ в аккаунт провайдера
+          (Vast.ai: <a href="https://cloud.vast.ai/manage-keys/" target="_blank" rel="noopener">Keys → SSH Keys</a>).</p>
+        <div class="wf-run"><button type="button" class="k-btn k-btn--accent" id="suSshCreate">Создать SSH-ключ</button>
+          <button type="button" class="k-btn k-btn--ghost" id="suSshCopy" hidden>Скопировать открытый ключ</button></div>
+        <pre id="suSshPublic" hidden></pre>
+      </div>
+    </section>
+    <section class="k-panel wf-block">
+      <h2>2. GPU-сервер</h2>
+      <p class="wf-hint">Нужна NVIDIA от 96 ГБ видеопамяти. Проще всего — аренда на Vast.ai прямо из Studio: вставьте API-ключ,
+        откройте «GPU и модели», выберите предложение и нажмите «Установить». Сервер поставится с нуля (≈1 ч, веса ~150 ГБ)
+        и подключится к Studio сам.</p>
+      <form class="wf-form su-secret" data-kind="vast">
+        <b>API-ключ Vast.ai <span class="su-saved" hidden>✓ сохранён</span></b>
+        <div class="wf-run"><input class="k-field" name="value" type="password" autocomplete="off" placeholder="ключ из cloud.vast.ai → Keys"><button class="k-btn k-btn--accent">Сохранить</button></div>
+      </form>
+      <div class="wf-run"><a class="k-btn k-btn--primary" href="/?view=compute">Открыть «GPU и модели»</a></div>
+      <details class="su-own">
+        <summary>У меня свой сервер</summary>
+        <p class="wf-hint">Откройте «GPU и модели» → «Сервер», вставьте SSH-команду сервера (например, из панели RunPod или Vast)
+          и нажмите «Установить H3 на этот сервер». Если сервер уже работает, укажите адреса туннеля:</p>
+        <form id="suSettings" class="wf-form su-settings">
+          <label class="wf-field"><span>GPU API</span><input class="k-field" name="gpu_url" placeholder="http://127.0.0.1:18190"></label>
+          <label class="wf-field"><span>ComfyUI</span><input class="k-field" name="comfy_url" placeholder="http://127.0.0.1:18188"></label>
+          <div class="wf-run"><button class="k-btn k-btn--accent">Сохранить адреса</button><span class="wf-hint" id="suEnv"></span></div>
+        </form>
+      </details>
+    </section>
+    <section class="k-panel wf-block">
+      <h2>3. MiniMax API <small>необязательно</small></h2>
+      <p class="wf-hint">Генерация в облаке MiniMax без своего GPU (768P, оплата по тарифу MiniMax). Включается переключателем
+        «Свой GPU / MiniMax API» в параметрах ролика.</p>
+      <form class="wf-form su-secret" data-kind="minimax_api">
+        <b>Ключ MiniMax API <span class="su-saved" hidden>✓ сохранён</span></b>
+        <div class="wf-run"><input class="k-field" name="value" type="password" autocomplete="off" placeholder="ключ с platform.minimax.io"><button class="k-btn k-btn--accent">Сохранить</button></div>
+      </form>
+    </section>
+    <section class="k-panel wf-block wf-api">
+      <h2>4. Агенты <small>необязательно</small></h2>
+      <p class="wf-hint">Claude Code и Codex управляют Studio через MCP-сервер <code>h3-studio</code>: собирают сцены, ставят рендер
+        по вашему разрешению, проверяют ролики. Работают по вашей подписке.</p>
+      <div id="suAgents"></div>
+    </section>
+    <section class="k-panel wf-block">
+      <h2>5. Свои модели и воркфлоу</h2>
+      <p class="wf-hint">Любой граф ComfyUI с любой моделью становится формой Studio в «Свои воркфлоу»; пакеты узлов и веса — в «Узлы и модели».</p>
+      <div class="wf-run"><a class="k-btn k-btn--ghost" href="/comfy-nodes.html">Узлы и модели</a><a class="k-btn k-btn--ghost" href="/workflows.html">Свои воркфлоу</a></div>
+    </section>
+  </main>
+  <script type="module" src="/studio-rail.mjs?v=20261107-fixed-rail-1"></script>
+  <script type="module" src="/setup.mjs?v=20261108-wizard-2"></script>
+</body>
+</html>
