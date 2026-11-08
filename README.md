@@ -2,9 +2,11 @@
 
 **Plan a film. Direct each shot. Keep the references, renders, reviews and edit in one place.**
 
-TaleMondo Studio is my local AI filmmaking workspace built around [MiniMax H3](https://huggingface.co/MiniMaxAI/MiniMax-H3). The Mac interface connects story worlds, scene boards, reference assets, a render queue, take review, editing, ComfyUI graphs and coding agents through MCP. Rendering runs on your own NVIDIA GPU. The interface supports English and Russian. This is an independent, noncommercial application by Klimentios.
+TaleMondo Studio is my local AI filmmaking workspace built from production work with [MiniMax H3](https://huggingface.co/MiniMaxAI/MiniMax-H3). Its tested generation path uses H3; it also lets users import ComfyUI graphs as custom workflows. Other models depend on their graphs, nodes and hardware and have not been verified here. The Mac interface connects story worlds, scene boards, reference assets, a render queue, take review, editing, ComfyUI graphs and coding agents through MCP. Rendering runs on your own NVIDIA GPU. The interface supports English and Russian. This is an independent, noncommercial application by Klimentios.
 
-**[Watch the Studio tour](https://github.com/Klimentios/Klimentios/blob/main/writing/media/talemondo/studio-interface-tour.mp4)** · **[Explore seven video examples](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#video-gallery)** · **[Read the product walkthrough](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md)** · [MiniMax H3 field notes](https://github.com/Klimentios/Klimentios/blob/main/writing/minimax-h3-field-notes.md)
+**[Watch the Studio tour](docs/media/studio-interface-tour.mp4)** · **[Explore seven video examples](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#video-gallery)** · **[Read the product walkthrough](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md)** · [MiniMax H3 field notes](https://github.com/Klimentios/Klimentios/blob/main/writing/minimax-h3-field-notes.md)
+
+**Hardware for the documented MiniMax H3 setup:** 96 GB VRAM GPU and 256 GB system RAM. Other ComfyUI graphs may have different requirements; they have not been verified here.
 
 The 25-second tour is an edited, silent view of the interface and selected creative clips; it does not show a live GPU render.
 
@@ -12,11 +14,11 @@ The 25-second tour is an edited, silent view of the interface and selected creat
 
 The first image is a real character project in the working Studio, shown without its internal board notes. The three workspace captures below use an isolated empty data directory; their empty queue and offline GPU reflect that showcase session.
 
-[![TaleMondo Studio franchise overview and character references](https://raw.githubusercontent.com/Klimentios/Klimentios/main/writing/media/talemondo/studio-franchise-overview.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio)
+[![TaleMondo Studio franchise overview and character references](docs/media/studio-franchise-overview.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio)
 
 | Direct a shot | Build the scene | Bring your ComfyUI graph |
 |:---:|:---:|:---:|
-| [![Video generation workspace](https://raw.githubusercontent.com/Klimentios/Klimentios/main/writing/media/talemondo/studio-video-generation.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio) | [![Scene board](https://raw.githubusercontent.com/Klimentios/Klimentios/main/writing/media/talemondo/studio-scene-board.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio) | [![Custom ComfyUI workflows](https://raw.githubusercontent.com/Klimentios/Klimentios/main/writing/media/talemondo/studio-custom-workflows.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio) |
+| [![Video generation workspace](docs/media/studio-video-generation.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio) | [![Scene board](docs/media/studio-scene-board.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio) | [![Custom ComfyUI workflows](docs/media/studio-custom-workflows.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio) |
 
 **Production path:** reference library → story world → scene and shots → GPU queue → take review → edit. [See how the workspaces connect](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#the-production-path).
 
@@ -41,11 +43,11 @@ Use the RU/EN switch at the bottom of the side menu. On first launch, Studio sel
 
 ## Install on Mac
 
-Run the `.command` installer in the repository root. If macOS blocks it, use the Finder context menu and choose **Open**. The installer sets up Python, ffmpeg, and the Studio service, then opens the five-step first-run wizard at `http://127.0.0.1:18187/setup.html`. Studio data lives in `$H3_MAC_DATA_DIR`, defaulting to `~/Library/Application Support/H3 Studio`, outside the repository. See the [installation guide](docs/guides/STUDIO_INSTALL.md).
+Run `Install Studio.command` in the repository root. If macOS blocks it, use the Finder context menu and choose **Open**. The installer sets up Python, ffmpeg, and the Studio service, then opens the five-step first-run wizard at `http://127.0.0.1:18187/setup.html`. Studio data lives in `$H3_MAC_DATA_DIR`, defaulting to `~/Library/Application Support/H3 Studio`, outside the repository. See the [installation guide](docs/guides/STUDIO_INSTALL.md).
 
 ## Connect a GPU server
 
-The documented H3 server baseline is an NVIDIA GPU with at least 96 GB VRAM, 256 GB system RAM, 500 GB storage, and Ubuntu with root SSH access. Vast.ai and RunPod are example hosts; availability and prices vary.
+For the bundled MiniMax H3 server setup, plan for an NVIDIA GPU with at least 96 GB VRAM, 256 GB system RAM, 500 GB storage, and Ubuntu with root SSH access. The custom-workflow importer accepts ComfyUI graphs, but other model paths have not been verified here; requirements depend on the graph and model. Vast.ai and RunPod are example hosts; availability and prices vary.
 
 The first-run wizard can provision a Vast.ai machine through **GPU & Models**. To configure an existing server from the Mac:
 
@@ -84,7 +86,7 @@ These commands run existing tests. They do not certify the visual or audio quali
 
 ## Author and licence
 
-Copyright 2026 **Klimentios** · Klimentioss@gmail.com.
+Copyright 2026 **Klimentios**. Contact details are available through the GitHub profile.
 
 The Studio code is licensed under [PolyForm Noncommercial 1.0.0](LICENSE). You may use, study, modify, extend, and share it for noncommercial purposes under that licence. Keep the `LICENSE` file and its `Required Notice: Copyright (c) 2026 Klimentios` line in redistributed copies, including modified versions. Commercial use requires separate written permission from the author. Third-party components retain their own licences; see [NOTICE](NOTICE).
 

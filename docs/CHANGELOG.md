@@ -1,4 +1,6 @@
-# Журнал изменений
+# Change log
+
+2026-11-08 · Klimentios · Clarified the verified MiniMax H3 path and hardware requirements, renamed and translated the Mac launcher, moved README media into this repository, and updated the installation guide. Shell syntax and links checked.
 
 2026-11-08 · Klimentios · Added a real franchise overview image to the English README; kept internal project notes outside the capture.
 

@@ -49,7 +49,7 @@
 - **Первый запуск (фаза 4)**: `local_studio/setup_status.py`, `setup.html/.mjs`: Python, папка данных, ffmpeg, GPU API, ComfyUI, мост,
   текущий сервер, SSH-ключ, MCP у Claude/Codex — у каждого пункта способ исправить; адреса GPU/ComfyUI сохраняются в
   `<данные>/settings.json` (`config.py` читает его, если LaunchAgent не задаёт `H3_GPU_API_URL`/`H3_COMFY_URL`). Установщик для
-  других: «Установить Studio.command» в корне репозитория (`docs/guides/STUDIO_INSTALL.md`)
+  других: «Install Studio.command» в корне репозитория (`docs/guides/STUDIO_INSTALL.md`)
   в конце открывает `/setup.html`.
 - **Агенты**: ещё `workflow_graph_update`, `comfy_inventory`, `comfy_manifest`, `comfy_manifest_add_node`, `comfy_manifest_add_model`
   (только манифест; установку запускает пользователь кнопкой), `studio_setup_status`.

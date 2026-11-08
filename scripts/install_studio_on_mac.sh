@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
-# H3 Studio on this Mac: Python environment, background service on 127.0.0.1:18187, then «Первый запуск».
+# H3 Studio on this Mac: Python environment, background service on 127.0.0.1:18187, then the first-run wizard.
 # Safe to run again: it updates the environment and restarts the service; data in $H3_MAC_DATA_DIR is kept.
 #
-#   bash scripts/install_studio_on_mac.sh            # or double-click «Установить Studio.command»
+#   bash scripts/install_studio_on_mac.sh            # or double-click `Install Studio.command`
 #
 # Env: H3_MAC_DATA_DIR (default ~/Library/Application Support/H3 Studio), H3_STUDIO_PORT (default 18187), H3_STUDIO_LABEL,
 #      H3_PYTHON (python 3.11+ to use; default: Homebrew python3.12, else python3 on PATH).
@@ -14,8 +14,8 @@ LABEL="${H3_STUDIO_LABEL:-com.minimax.h3-mac-studio}"
 LAUNCH="${HOME}/Library/LaunchAgents/${LABEL}.plist"
 LOGS="${HOME}/Library/Logs/H3 Studio"
 
-[[ -f "$ROOT/local_studio/main.py" && -f "$ROOT/requirements.txt" ]] || { echo "Не найдены исходники Studio: $ROOT" >&2; exit 2; }
-[[ "$(uname -s)" == Darwin ]] || { echo "Этот установщик — для macOS." >&2; exit 2; }
+[[ -f "$ROOT/local_studio/main.py" && -f "$ROOT/requirements.txt" ]] || { echo "Studio source files not found: $ROOT" >&2; exit 2; }
+[[ "$(uname -s)" == Darwin ]] || { echo "This installer supports macOS only." >&2; exit 2; }
 
 pick_python() {
   for candidate in "${H3_PYTHON:-}" /opt/homebrew/bin/python3.12 /usr/local/bin/python3.12 /opt/homebrew/bin/python3 /usr/local/bin/python3 "$(command -v python3 || true)"; do
@@ -24,12 +24,12 @@ pick_python() {
   done
   return 1
 }
-PYTHON="$(pick_python)" || { echo "Нужен Python 3.11 или новее: brew install python@3.12 (или запустите «Установить Studio.command»)." >&2; exit 2; }
-command -v ffmpeg >/dev/null 2>&1 || echo "Внимание: нет ffmpeg (brew install ffmpeg) — без него не работают вырезки, кадры и монтаж." >&2
+PYTHON="$(pick_python)" || { echo "Python 3.11 or newer is required: brew install python@3.12 (or run `Install Studio.command`)." >&2; exit 2; }
+command -v ffmpeg >/dev/null 2>&1 || echo "Warning: ffmpeg is missing (brew install ffmpeg). Video clips, frames and editing require it." >&2
 
 mkdir -p "$DATA" "$LOGS" "$(dirname "$LAUNCH")"
 chmod 700 "$DATA"
-echo "== Окружение Python: $DATA/.venv"
+echo "== Python environment: $DATA/.venv"
 if [[ -x "$DATA/.venv/bin/python" ]] && ! "$DATA/.venv/bin/python" -c 'import sys; raise SystemExit(sys.version_info < (3, 11))' 2>/dev/null; then
   rm -rf "$DATA/.venv"  # an environment from an old Python cannot be upgraded in place
 fi
@@ -37,7 +37,7 @@ fi
 "$DATA/.venv/bin/python" -m pip install --quiet --upgrade pip
 "$DATA/.venv/bin/python" -m pip install --quiet -r "$ROOT/requirements.txt"
 
-echo "== Служба Studio: $LABEL на порту $PORT"
+echo "== Studio service: $LABEL on port $PORT"
 "$DATA/.venv/bin/python" - "$LAUNCH" "$ROOT" "$DATA" "$LOGS" "$PORT" "$LABEL" <<'PY'
 import plistlib, sys
 from pathlib import Path
@@ -62,18 +62,18 @@ for _ in $(seq 1 15); do  # the previous Studio needs a moment to release its po
   sleep 1
 done
 if lsof -nP -iTCP:"$PORT" -sTCP:LISTEN >/dev/null 2>&1; then
-  echo "Порт $PORT занят другой программой. Освободите его или задайте H3_STUDIO_PORT=другой_порт." >&2
+  echo "Port $PORT is in use. Free it or set H3_STUDIO_PORT to another port." >&2
   exit 2
 fi
 launchctl bootstrap "gui/$(id -u)" "$LAUNCH"
 
 for _ in $(seq 1 45); do
   if curl -fsS --max-time 2 "http://127.0.0.1:${PORT}/api/health" >/dev/null 2>&1; then
-    echo "INSTALL_OK Studio работает: http://127.0.0.1:${PORT}/"
+    echo "INSTALL_OK Studio is running: http://127.0.0.1:${PORT}/"
     [[ -n "${H3_NO_OPEN:-}" ]] || open "http://127.0.0.1:${PORT}/setup.html" 2>/dev/null || true
     exit 0
   fi
   sleep 1
 done
-echo "Studio не ответила за 45 с. Лог: $LOGS/service-error.log" >&2
+echo "Studio did not respond within 45 seconds. Log: $LOGS/service-error.log" >&2
 exit 1

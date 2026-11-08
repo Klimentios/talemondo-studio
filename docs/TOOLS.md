@@ -153,4 +153,4 @@ MCP `freecut_timeline` вызывает локальный `/bridge/command`, а
 `bash scripts/h3_comfy_manifest_apply.sh --host root@HOST --port PORT --manifest FILE` — план;
 с `--apply` ставит закреплённые пакеты и модели с проверкой SHA-256 (`scripts/install_comfy_manifest.py` на сервере)
 и перезапускает h3-comfyui только при изменениях и пустой очереди. Кнопка «Применить на GPU» вызывает то же.
-Установка Studio на Mac: двойной щелчок «Установить Studio.command» в корне (или `bash scripts/install_studio_on_mac.sh`).
+Установка Studio на Mac: двойной щелчок «Install Studio.command» в корне (или `bash scripts/install_studio_on_mac.sh`).
