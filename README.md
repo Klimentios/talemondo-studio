@@ -4,9 +4,11 @@ TaleMondo Studio is a local AI filmmaking workspace built around [MiniMax H3](ht
 
 **[Product walkthrough and seven video examples](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md)** · [MiniMax H3 field notes](https://github.com/Klimentios/Klimentios/blob/main/writing/minimax-h3-field-notes.md)
 
-### Real interface screenshots
+### See the Studio
 
-The screenshots below show the English interface in an isolated Studio session with no private projects. The empty queue and offline GPU are the state of that showcase session.
+The first image is a real character project in the working Studio, shown without its internal board notes. The generation, scene-board and workflow screenshots below use an isolated empty data directory. The empty queue and offline GPU are the state of that showcase session.
+
+[![TaleMondo Studio franchise overview and character references](https://raw.githubusercontent.com/Klimentios/Klimentios/main/writing/media/talemondo/studio-franchise-overview.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio)
 
 [![Studio video-generation workspace](https://raw.githubusercontent.com/Klimentios/Klimentios/main/writing/media/talemondo/studio-video-generation.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio)
 

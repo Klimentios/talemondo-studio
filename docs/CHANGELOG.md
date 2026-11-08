@@ -1,5 +1,7 @@
 # Журнал изменений
 
+2026-11-08 · Klimentios · Added a real franchise overview image to the English README; kept internal project notes outside the capture.
+
 2026-11-08 · Klimentios · Changed the public ComfyUI bridge button, prompts and notices to English; checked JavaScript syntax.
 
 2026-11-08 · Klimentios · Added the English ComfyUI-to-Studio workflow explanation and a verified scene-board screenshot to README; no runtime code changed.
