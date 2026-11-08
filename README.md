@@ -1,22 +1,24 @@
 # TaleMondo Studio
 
-TaleMondo Studio is a local AI filmmaking workspace built around [MiniMax H3](https://huggingface.co/MiniMaxAI/MiniMax-H3). Plan scenes, organize references, generate and review takes, assemble an edit, and work with coding agents through MCP. The interface runs on a Mac in English or Russian; generation runs on your own NVIDIA GPU through ComfyUI. This is an independent, noncommercial application by Klimentios.
+**Plan a film. Direct each shot. Keep the references, renders, reviews and edit in one place.**
 
-**[Product walkthrough and seven video examples](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md)** · [MiniMax H3 field notes](https://github.com/Klimentios/Klimentios/blob/main/writing/minimax-h3-field-notes.md)
+TaleMondo Studio is my local AI filmmaking workspace built around [MiniMax H3](https://huggingface.co/MiniMaxAI/MiniMax-H3). The Mac interface connects story worlds, scene boards, reference assets, a render queue, take review, editing, ComfyUI graphs and coding agents through MCP. Rendering runs on your own NVIDIA GPU. The interface supports English and Russian. This is an independent, noncommercial application by Klimentios.
 
-**[Watch the 25-second Studio interface tour](https://github.com/Klimentios/Klimentios/blob/main/writing/media/talemondo/studio-interface-tour.mp4)** — working project and isolated interface screens followed by selected clip excerpts; edited without audio.
+**[Watch the Studio tour](https://github.com/Klimentios/Klimentios/blob/main/writing/media/talemondo/studio-interface-tour.mp4)** · **[Explore seven video examples](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#video-gallery)** · **[Read the product walkthrough](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md)** · [MiniMax H3 field notes](https://github.com/Klimentios/Klimentios/blob/main/writing/minimax-h3-field-notes.md)
+
+The 25-second tour is an edited, silent view of the interface and selected creative clips; it does not show a live GPU render.
 
 ### See the Studio
 
-The first image is a real character project in the working Studio, shown without its internal board notes. The generation, scene-board and workflow screenshots below use an isolated empty data directory. The empty queue and offline GPU are the state of that showcase session.
+The first image is a real character project in the working Studio, shown without its internal board notes. The three workspace captures below use an isolated empty data directory; their empty queue and offline GPU reflect that showcase session.
 
 [![TaleMondo Studio franchise overview and character references](https://raw.githubusercontent.com/Klimentios/Klimentios/main/writing/media/talemondo/studio-franchise-overview.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio)
 
-[![Studio video-generation workspace](https://raw.githubusercontent.com/Klimentios/Klimentios/main/writing/media/talemondo/studio-video-generation.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio)
+| Direct a shot | Build the scene | Bring your ComfyUI graph |
+|:---:|:---:|:---:|
+| [![Video generation workspace](https://raw.githubusercontent.com/Klimentios/Klimentios/main/writing/media/talemondo/studio-video-generation.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio) | [![Scene board](https://raw.githubusercontent.com/Klimentios/Klimentios/main/writing/media/talemondo/studio-scene-board.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio) | [![Custom ComfyUI workflows](https://raw.githubusercontent.com/Klimentios/Klimentios/main/writing/media/talemondo/studio-custom-workflows.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio) |
 
-[![Studio scene board](https://raw.githubusercontent.com/Klimentios/Klimentios/main/writing/media/talemondo/studio-scene-board.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio)
-
-[![Studio custom ComfyUI workflows](https://raw.githubusercontent.com/Klimentios/Klimentios/main/writing/media/talemondo/studio-custom-workflows.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio)
+**Production path:** reference library → story world → scene and shots → GPU queue → take review → edit. [See how the workspaces connect](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#the-production-path).
 
 ## From idea to finished sequence
 

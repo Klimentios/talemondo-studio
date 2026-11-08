@@ -20,3 +20,5 @@
 2026-11-08 · Claude · публичная версия, полный обход кнопок: доска франшиз без франшиз/досок показывает пустое состояние (а не «Загрузка досок…»), её стили и кнопки — на токенах Studio, доски по умолчанию на языке интерфейса, метки TALEMONDO; аналитика — свой адрес Studio вместо :18208, местный часовой пояс (H3_TIMEZONE) вместо Кипра, число источников по факту; «Монтаж» без FreeCut — подсказка установки; паспорт без франшизы и «Граф задания» с пустым id больше не шлют пустые запросы · все кнопки 14 страниц RU/EN без ошибок; pytest 1334/1 skip, node 409 · рендер не проверялся
 
 2026-11-08 · Codex · Linked the English 25-second Studio interface tour and identified its working-project, isolated-UI, and gallery-clip segments; no live GPU render is implied.
+
+2026-11-08 · Codex · Reworked the public README opening around the real working-project screenshot, three compact workspace captures, direct gallery and tour links, and an explicit production path; no runtime or GPU claim changed.
