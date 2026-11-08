@@ -2,7 +2,9 @@
 
 **Plan a film. Direct each shot. Keep the references, renders, reviews and edit in one place.**
 
-TaleMondo Studio is my local AI filmmaking workspace built from production work with [MiniMax H3](https://huggingface.co/MiniMaxAI/MiniMax-H3). Its tested generation path uses H3; it also lets users import ComfyUI graphs as custom workflows. Other models depend on their graphs, nodes and hardware and have not been verified here. The Mac interface connects story worlds, scene boards, reference assets, a render queue, take review, editing, ComfyUI graphs and coding agents through MCP. Rendering runs on your own NVIDIA GPU. The interface supports English and Russian. This is an independent, noncommercial application by Klimentios.
+**TaleMondo Studio is an AI film production studio for MiniMax H3.** It brings the creative brief, franchise world, character references, scene plan, camera direction, GPU render queue, take review and editing into one Mac workspace. Its agent tools can carry a task across those stages: inspect the project, draft and validate shots, prepare the H3 job, monitor results and help assemble a cut. The creator approves the story and GPU work and accepts the finished takes.
+
+The documented generation route runs H3 through ComfyUI on your NVIDIA GPU. Studio also imports custom ComfyUI graphs as reusable forms, API endpoints and agent tools; other model paths depend on their graphs and installed nodes and have not been verified in this release. The interface supports English and Russian. TaleMondo is an independent, noncommercial application by Klimentios.
 
 **[Watch the Studio tour](docs/media/studio-interface-tour.mp4)** · **[Explore seven video examples](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#video-gallery)** · **[Read the product walkthrough](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md)** · [MiniMax H3 field notes](https://github.com/Klimentios/Klimentios/blob/main/writing/minimax-h3-field-notes.md)
 
@@ -35,6 +37,12 @@ These captures come from my populated Studio, not the empty showcase session abo
 A project can start in chat or the creation workspace, collect references in the library, organize a franchise world, connect material to scene shots, queue H3 generation on a connected GPU, review takes, assemble a sequence, and edit it. Channel analytics gives the creator a separate view of published video activity. The screens show the tools and existing data; they do not establish that the pictured shots were rendered in this capture session.
 
 **Production path:** reference library → story world → scene and shots → GPU queue → take review → edit. [See how the workspaces connect](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#the-production-path).
+
+## Direct with an agent or by hand
+
+Start in chat with an idea, a franchise, or an existing scene. The Studio agent can read the franchise bible and assets, build an idea package, map characters and locations to references, draft a shot sequence, check staging and prompts, then fill the same creation form used in the UI. The scene builder and MCP tools connect that plan to queued H3 jobs, receipts, take review and editing. This is a guided production workflow: story approval, paid GPU submission and creative acceptance remain explicit decisions.
+
+**Shot direction is structured.** Studio includes presets for shot size and angle, lens look, camera movement, focus, lighting, colour, visual style and acting. A shot can override scene defaults. Those selections compile into the shot request and ComfyUI graph where supported; camera-brand presets describe a visual look, not a physical camera or a guarantee that H3 will obey every optical instruction. [Inspect the preset catalog](preview/h3-director/director-presets.mjs) and [agent production playbooks](scripts/h3_studio_mcp.py).
 
 ## From idea to finished sequence
 
