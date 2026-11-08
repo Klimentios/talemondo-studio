@@ -1,5 +1,7 @@
 # Журнал изменений
 
+2026-11-08 · Klimentios · Linked two verified English interface screenshots in the public README; checked the images for private project content.
+
 2026-11-08 · Klimentios · Rewrote the public README entirely in English; checked it for Cyrillic and preserved the product, setup, credit, and licence information.
 
 2026-11-08 · Klimentios · публичная редакция: в README добавлены ссылка на обзор с семью видеопримерами и точные благодарности MiniMax AI, Comfy-Org и Kijai; код и параметры рендера не менялись.
