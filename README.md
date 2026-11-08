@@ -20,6 +20,20 @@ The first image is a real character project in the working Studio, shown without
 |:---:|:---:|:---:|
 | [![Video generation workspace](docs/media/studio-video-generation.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio) | [![Scene board](docs/media/studio-scene-board.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio) | [![Custom ComfyUI workflows](docs/media/studio-custom-workflows.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio) |
 
+### The working Studio
+
+These captures come from my populated Studio, not the empty showcase session above. They show saved franchise worlds, a reference library, a scene graph, and channel analytics. Names and project text in these captures are the creator's own working content; some of that content is written in Russian. The interface is set to English. Analytics values are a point-in-time view, not performance claims for Studio or H3. No screenshot shows a live GPU render.
+
+| Start a project | Connect shots and references | Organize source assets |
+|:---:|:---:|:---:|
+| ![Working Studio with project cards, chat, and creation entry points](docs/media/working-studio-home.png) | ![Scene graph linking characters, environment, and shots](docs/media/working-scene-graph.png) | ![Reference library with character looks and collections](docs/media/working-reference-library.png) |
+
+| Franchise canvas | Character cards | Channel analytics |
+|:---:|:---:|:---:|
+| ![Franchise planning canvas with world rules](docs/media/working-franchise-canvas.png) | ![Franchise character profiles and image references](docs/media/working-franchise-characters.png) | ![Channel analytics with recent posts and audience data](docs/media/working-channel-analytics.png) |
+
+A project can start in chat or the creation workspace, collect references in the library, organize a franchise world, connect material to scene shots, queue H3 generation on a connected GPU, review takes, assemble a sequence, and edit it. Channel analytics gives the creator a separate view of published video activity. The screens show the tools and existing data; they do not establish that the pictured shots were rendered in this capture session.
+
 **Production path:** reference library → story world → scene and shots → GPU queue → take review → edit. [See how the workspaces connect](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#the-production-path).
 
 ## From idea to finished sequence
