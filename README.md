@@ -10,6 +10,8 @@ The screenshots below show the English interface in an isolated Studio session w
 
 [![Studio video-generation workspace](https://raw.githubusercontent.com/Klimentios/Klimentios/main/writing/media/talemondo/studio-video-generation.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio)
 
+[![Studio scene board](https://raw.githubusercontent.com/Klimentios/Klimentios/main/writing/media/talemondo/studio-scene-board.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio)
+
 [![Studio custom ComfyUI workflows](https://raw.githubusercontent.com/Klimentios/Klimentios/main/writing/media/talemondo/studio-custom-workflows.png)](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#inside-the-studio)
 
 ## From idea to finished sequence
@@ -22,6 +24,10 @@ The screenshots below show the English interface in an isolated Studio session w
 - **Editing:** Build an edit list with transitions and sound, then export for Premiere Pro, DaVinci Resolve, or Final Cut Pro.
 - **Custom workflows:** Import a ComfyUI graph as a Studio form, REST endpoint, and agent tool. Compatibility depends on the graph, model, and installed nodes.
 - **Agents:** The `h3-studio` MCP server in `scripts/h3_studio_mcp.py` exposes scene-building, render-queue, and review tools to Claude Code and Codex.
+
+### ComfyUI ↔ Studio
+
+With a connected ComfyUI server and the Studio bridge extension, send a graph from ComfyUI with **Workflow to Studio**. Studio turns selected graph inputs into a form and exposes the saved workflow through its local API and MCP tools. Use **Open in ComfyUI** to edit the graph in the real ComfyUI editor, then send it back to the same Studio workflow. Revisions remain available for review and restore. You can also fork an H3 job graph or accepted recipe into a separate custom workflow without changing the original. [See the illustrated walkthrough and implementation links](https://github.com/Klimentios/Klimentios/blob/main/writing/talemondo-studio.md#the-comfyui-to-studio-loop).
 
 ## Interface language
 

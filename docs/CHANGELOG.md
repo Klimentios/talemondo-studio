@@ -1,5 +1,7 @@
 # Журнал изменений
 
+2026-11-08 · Klimentios · Added the English ComfyUI-to-Studio workflow explanation and a verified scene-board screenshot to README; no runtime code changed.
+
 2026-11-08 · Klimentios · Linked two verified English interface screenshots in the public README; checked the images for private project content.
 
 2026-11-08 · Klimentios · Rewrote the public README entirely in English; checked it for Cyrillic and preserved the product, setup, credit, and licence information.
