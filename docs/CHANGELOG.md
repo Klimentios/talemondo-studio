@@ -1,5 +1,7 @@
 # Журнал изменений
 
+2026-11-08 · Klimentios · Changed the public ComfyUI bridge button, prompts and notices to English; checked JavaScript syntax.
+
 2026-11-08 · Klimentios · Added the English ComfyUI-to-Studio workflow explanation and a verified scene-board screenshot to README; no runtime code changed.
 
 2026-11-08 · Klimentios · Linked two verified English interface screenshots in the public README; checked the images for private project content.
